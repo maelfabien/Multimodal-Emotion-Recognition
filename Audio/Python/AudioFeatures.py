@@ -1,7 +1,7 @@
 import numpy
 from scipy.fftpack.realtransforms import dct
 from scipy.stats import kurtosis, skew
-from AudioSignal import *
+from AudioLibrary.AudioSignal import *
 
 
 class AudioFeatures:
@@ -20,10 +20,10 @@ class AudioFeatures:
     '''
     Global statistics features extraction from an audio signals
     '''
-    def global_feature_extraction(self, stats=['mean', 'std'], features_list=[], nb_mfcc=12, diff=0, hamming=True):
+    def global_feature_extraction(self, stats=['mean', 'std'], features_list=[], nb_mfcc=12, nb_filter=40, diff=0, hamming=True):
 
         # Extract short term audio features
-        st_features, f_names = self.short_time_feature_extraction(features_list, nb_mfcc, hamming)
+        st_features, f_names = self.short_time_feature_extraction(features_list, nb_mfcc, nb_filter, hamming)
 
         # Number of short term features
         nb_feats = st_features.shape[1]
@@ -57,11 +57,25 @@ class AudioFeatures:
     '''
     Short-time features extraction from an audio signals
     '''
-    def short_time_feature_extraction(self, features_list=[], nb_mfcc=12, hamming=True):
+    def short_time_feature_extraction(self, features=[], nb_mfcc=12, nb_filter=40, hamming=True):
 
-        # Features names
-        mfcc_feature_names = ["mfcc_{0:d}".format(i) for i in range(1, nb_mfcc + 1)]
-        feature_names = features_list + mfcc_feature_names
+        # Copy features list to compute
+        features_list = list(features)
+
+        # MFFCs features names
+        mfcc_feature_names = []
+        if 'mfcc' in features_list:
+            mfcc_feature_names = ["mfcc_{0:d}".format(i) for i in range(1, nb_mfcc + 1)]
+            features_list.remove('mfcc')
+
+        # Filter banks features names
+        fbank_features_names = []
+        if 'filter_banks' in features_list:
+            fbank_features_names = ["fbank_{0:d}".format(i) for i in range(1, nb_filter + 1)]
+            features_list.remove('filter_banks')
+
+        # All Features names
+        feature_names = features_list + mfcc_feature_names + fbank_features_names
 
         # Number of features
         nb_features = len(feature_names)
@@ -93,10 +107,13 @@ class AudioFeatures:
                 features[cur_pos, idx] = self.compute_st_features(f, signal, dft, dft_prev,
                                                                   self._audio_signal._sample_rate)
 
-            # Compute MFCCs
-            if nb_mfcc > 0:
-                features[cur_pos, len(features_list):] = self.mfcc(signal, self._audio_signal._sample_rate,
-                                                                   nb_coeff=nb_mfcc)
+            # Compute MFCCs and Filter Banks
+            if len(mfcc_feature_names) > 0:
+                features[cur_pos, len(features_list):len(features_list) + len(mfcc_feature_names) + len(fbank_features_names)] = self.mfcc(signal, self._audio_signal._sample_rate,
+                                                                   nb_coeff=nb_mfcc, nb_filt=nb_filter, return_fbank=len(fbank_features_names) > 0)
+            # Compute Filter Banks
+            elif len(fbank_features_names) > 0:
+                features[cur_pos, len(features_list) + len(mfcc_feature_names):] = self.filter_banks_coeff(signal, self._audio_signal._sample_rate, nb_filt=nb_filter)
 
             # Keep previous Discrete Fourier Transform coefficients
             dft_prev = dft
@@ -214,10 +231,10 @@ class AudioFeatures:
         return roll_off
 
     '''
-    Computes the MFCCs
+    Computes the Filter Bank coefficients
     '''
     @staticmethod
-    def mfcc(signal, sample_rate, nb_coeff=12, nb_filt=40, nb_fft=512):
+    def filter_banks_coeff(signal, sample_rate, nb_filt=40, nb_fft=512):
 
         # Magnitude of the FFT
         mag_frames = numpy.absolute(numpy.fft.rfft(signal, nb_fft))
@@ -261,10 +278,24 @@ class AudioFeatures:
         # dB
         filter_banks = 20 * numpy.log10(filter_banks)
 
+        return filter_banks
+
+    '''
+    Computes the MFCCs
+    '''
+    def mfcc(self, signal, sample_rate, nb_coeff=12, nb_filt=40, nb_fft=512, return_fbank=False):
+
+        # Apply filter bank on spectogram
+        filter_banks = self.filter_banks_coeff(signal, sample_rate, nb_filt=nb_filt, nb_fft=nb_fft)
+
         # Compute MFCC coefficients
         mfcc = dct(filter_banks, type=2, axis=-1, norm='ortho')[1: (nb_coeff + 1)]
 
-        return mfcc
+        # Return MFFCs and Filter banks coefficients
+        if return_fbank is True:
+            return numpy.concatenate((mfcc, filter_banks))
+        else:
+            return mfcc
 
     '''
     Compute statistics on short time features

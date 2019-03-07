@@ -1,6 +1,6 @@
 import pickle
-from AudioSignal import *
-from AudioFeatures import *
+from AudioLibrary.AudioSignal import *
+from AudioLibrary.AudioFeatures import *
 
 
 class AudioEmotionRecognition:

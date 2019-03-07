@@ -65,7 +65,10 @@ class AudioSignal(object):
     def read_audio_file(self, filename):
 
         # Get audio signal
-        audio_file = AudioSegment.from_file(filename, frame_rate=self._sample_rate)
+        audio_file = AudioSegment.from_file(filename)
+
+        # Resample audio signal
+        audio_file = audio_file.set_frame_rate(self._sample_rate)
 
         # Cast to integer
         if audio_file.sample_width == 2:
