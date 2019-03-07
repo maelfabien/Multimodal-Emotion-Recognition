@@ -1,0 +1,41 @@
+
+# C extensions
+*.so
+
+__pycache__
+
+# Data
+data
+logs
+Model*
+logging.txt
+Test-trained-model.ipynb
+models_new.py
+train-old.py
+
+# Distribution / packaging
+.Python
+
+
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
