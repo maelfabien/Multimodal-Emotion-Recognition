@@ -1,6 +1,8 @@
 # Facial Emotion Recognition
 
-This section is dedicated to Facial Emotion Recognition. The aim is to provide an emotion analysis based on a user's face. The video stream we typically be captured by a webcam in the final model. 
+The aim of this section is to explore facial emotion recognition techniques from a live webcam video stream.
+
+The data set used for training is the Kaggle FER2013 emotion recognition data set : https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data
 
 ## Files
 
@@ -29,5 +31,6 @@ The Model weights can be found on this public drive :
 *Link to Come*
 
 ## Performance
+
 
 
