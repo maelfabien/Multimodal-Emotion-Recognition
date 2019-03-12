@@ -70,7 +70,7 @@ The models have been trained on Google Colab using free GPUs.
 | SVM on Facial Landmarks features        |     50.5%     |               |
 | SVM on Facial Landmarks and HOG features|     50.5%     |               |
 | Simple Deep Learning Architecture       |     62.7%     |               |
-| Inception Architecture                  |     50.5%     |               |
+| Inception Architecture                  |     59.5%     |               |
 | Xception Architecture                   |     50.5%     |               |
 | DeXpression Architecture                |     50.5%     |               |
 
