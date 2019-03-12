@@ -2,7 +2,7 @@
 
 The aim of this section is to explore facial emotion recognition techniques from a live webcam video stream.
 
-![alt text](header.png)
+![alt text](Read_Images/header.png)
 
 ## Data
 
@@ -86,3 +86,13 @@ https://maelfabien.github.io/tutorials/face-detection/#b-the-integral-image
 
 The treatment of the image is done through OpenCV
 
+1. Read the initial image
+![alt text](Read_Images/face_1.png)
+
+2. Apply gray filter and find faces
+![alt text](Read_Images/face_2.png)
+
+3. Zoom and rescale each image
+
+![alt text](Read_Images/face_3.png)
+![alt text](Read_Images/face_4.png)
