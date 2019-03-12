@@ -41,15 +41,15 @@ The set of emotions we are trying to predict are the following :
 - Neutral
 - Anger
 
-|       Features                          |   Accuracy    | 
-|-----------------------------------------|---------------|
-| LGBM on flat image                      |     29.0%     |
-| LGBM on auto-encoded image              |     39.2%     |
-| SVM on HOG Features                     |     48.2%     |
-| SVM on Facial Landmarks features        |     50.5%     |
-| SVM on Facial Landmarks and HOG features|     50.5%     |
-| Simple Deep Learning Architecture       |     50.5%     |
-| Inception Architecture                  |     50.5%     |
-| Xception Architecture                   |     50.5%     |
-| DeXpression Architecture                |     50.5%     |
+|       Features                          |   Accuracy    |    Frames/s   | 
+|-----------------------------------------|---------------|---------------|
+| LGBM on flat image                      |     29.0%     |               |
+| LGBM on auto-encoded image              |     39.2%     |               |
+| SVM on HOG Features                     |     48.2%     |               |
+| SVM on Facial Landmarks features        |     50.5%     |               |
+| SVM on Facial Landmarks and HOG features|     50.5%     |               |
+| Simple Deep Learning Architecture       |     50.5%     |               |
+| Inception Architecture                  |     50.5%     |               |
+| Xception Architecture                   |     50.5%     |               |
+| DeXpression Architecture                |     50.5%     |               |
 
