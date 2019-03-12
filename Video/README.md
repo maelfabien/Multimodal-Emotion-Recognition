@@ -64,15 +64,17 @@ The models have been trained on Google Colab using free GPUs.
 
 |       Features                          |   Accuracy    |    Frames/s   | 
 |-----------------------------------------|---------------|---------------|
-| LGBM on flat image                      |     29.0%     |               |
-| LGBM on auto-encoded image              |     39.2%     |               |
-| SVM on HOG Features                     |     48.2%     |               |
-| SVM on Facial Landmarks features        |     50.5%     |               |
-| SVM on Facial Landmarks and HOG features|     50.5%     |               |
+| LGBM on flat image                      |     --.-%     |               |
+| LGBM on auto-encoded image              |     --.-%     |               |
+| SVM on HOG Features                     |     32.8%     |               |
+| SVM on Facial Landmarks features        |     46.4%     |               |
+| SVM on Facial Landmarks and HOG features|     47.5%     |               |
+| SVM on Sliding window Landmarks & HOG   |     24.6%     |               |
 | Simple Deep Learning Architecture       |     62.7%     |               |
 | Inception Architecture                  |     59.5%     |               |
-| Xception Architecture                   |     50.5%     |               |
-| DeXpression Architecture                |     50.5%     |               |
+| Xception Architecture                   |     60.0%     |               |
+| DeXpression Architecture                |     --.-%     |               |
+| Hybrid (HOG, Landmarks, Image)          |     45.8%     |               |
 
 # Live prediction
 
