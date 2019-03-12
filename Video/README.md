@@ -106,3 +106,16 @@ The treatment of the image is done through OpenCV
 
 Live prediction Illustration :
 *Video to come*
+
+## Sources
+- Visualization : https://github.com/JostineHo/mememoji/blob/master/data_visualization.ipynb
+- State of the art Architecture : https://github.com/amineHorseman/facial-expression-recognition-using-cnn
+- Eyes Tracking : https://www.pyimagesearch.com/2017/04/24/eye-blink-detection-opencv-python-dlib/
+- Face Alignment : https://www.pyimagesearch.com/2017/05/22/face-alignment-with-opencv-and-python/
+- C.Pramerdorfer,  and  M.Kampel.Facial  Expression  Recognition  using  Con-volutional  Neural  Networks:  State  of  the  Art.  Computer  Vision  Lab,  TU  Wien. https://arxiv.org/pdf/1612.02903.pdf
+- A Brief Review of Facial Emotion Recognition Based
+on Visual Information : https://www.mdpi.com/1424-8220/18/2/401/pdf
+- Going deeper in facial expression recognition using deep neural networks : https://ieeexplore.ieee.org/document/7477450
+- Emotional Deep Alignment Network paper : https://arxiv.org/abs/1810.10529
+- Emotional Deep Alignment Network github : https://github.com/IvonaTau/emotionaldan
+- HOG, Landmarks and SVM : https://github.com/amineHorseman/facial-expression-recognition-svm
