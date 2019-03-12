@@ -4,6 +4,8 @@ The aim of this section is to explore facial emotion recognition techniques from
 
 The data set used for training is the Kaggle FER2013 emotion recognition data set : https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data
 
+![alt text](header.png)
+
 ## Files
 
 The different folders that can be found in this repo :
