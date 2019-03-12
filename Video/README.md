@@ -2,9 +2,15 @@
 
 The aim of this section is to explore facial emotion recognition techniques from a live webcam video stream.
 
+![alt text](header.png)
+
+## Data
+
 The data set used for training is the Kaggle FER2013 emotion recognition data set : https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data
 
-![alt text](header.png)
+The data consists of 48x48 pixel grayscale images of faces. The faces have been automatically registered so that the face is more or less centered and occupies about the same amount of space in each image. The task is to categorize each face based on the emotion shown in the facial expression in to one of seven categories (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral).
+
+
 
 ## Files
 
@@ -28,6 +34,7 @@ We'll now cover into more details what each notebook contains :
 - `7-Xception.ipynb` : An implementation of the Xception Architecture
 - `8-DeXpression.ipynb` : An implementation of the DeXpression Architecture
 - `9-Prediction.ipynb` : Live Webcam prediction of the model
+- `10-Hybrid.ipynb` : A hybrid deep learning model taking both the HOG/Landmarks model and the image
 
 The Model weights can be found on this public drive :
 *Link to Come*
@@ -43,6 +50,8 @@ The set of emotions we are trying to predict are the following :
 - Neutral
 - Anger
 
+The models have been trained on Google Colab using free GPUs.
+
 |       Features                          |   Accuracy    |    Frames/s   | 
 |-----------------------------------------|---------------|---------------|
 | LGBM on flat image                      |     29.0%     |               |
@@ -54,4 +63,17 @@ The set of emotions we are trying to predict are the following :
 | Inception Architecture                  |     50.5%     |               |
 | Xception Architecture                   |     50.5%     |               |
 | DeXpression Architecture                |     50.5%     |               |
+
+# Live prediction
+
+Since the input data is centered around the face, making a live prediction requires :
+- identifying the face
+- zooming on it
+- applying grayscale
+- reducing dimension to match input data
+
+The face identification is done using a pre-trained Histogram of Oriented Gradients model. For further information, check the following article :
+https://maelfabien.github.io/tutorials/face-detection/#b-the-integral-image
+
+The treatment of the image is done through OpenCV
 
