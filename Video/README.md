@@ -38,7 +38,7 @@ The different files that can be found in this repo :
 We'll now cover into more details what each notebook contains :
 - `00-Fer2013.ipynb` : Gathers all the work
 - `01-Pre-Processing.ipynb` : Transform the initial CSV file into train and test data sets
-- `02-HOG_Features.ipynb` : A manual extraction of features such as Histograms of Oriented Gradients and Landmarks
+- `02-HOG_Features.ipynb` : A manual extraction of features (Histograms of Oriented Gradients, Landmarks) and SVM
 - `03-Pre-Processing-EmotionalDAN.ipynb` : An implementation of Deep Alignment Networks to extract features
 - `04-LGBM.ipynb` : Use of classical Boosting techniques on top on flatenned image or auto-encoded image
 - `05-Simple_Arch.ipynb` : A simple Deep Learning Architecture
