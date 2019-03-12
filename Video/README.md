@@ -12,11 +12,13 @@ The data consists of 48x48 pixel grayscale images of faces. The faces have been 
 
 ## Requirements
 
-```Python : 3.6.5
+```
+Python : 3.6.5
 Tensorflow : 1.10.1
 Keras : 2.2.2
 Numpy : 1.15.4
-OpenCV : 4.0.0```
+OpenCV : 4.0.0
+```
 
 
 ## Files
