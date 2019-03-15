@@ -1,6 +1,6 @@
 # Speech Emotion Recognition
 
-The aim of this section is to explore speech emotion recognition techniques from an audio file.
+The aim of this section is to explore speech emotion recognition techniques from an audio recording.
 
 ## Data
 
