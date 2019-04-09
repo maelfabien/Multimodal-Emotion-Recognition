@@ -20,10 +20,11 @@ We have chosen to diversify the data sources we used depending on the type of da
 
 | Modality | Data | Processed Data (for training) | Pre-trained Model |
 | --- | --- | --- | --- |
+| Text | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | --- |  --- |
+| Audio | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | --- |  --- |
 | Video | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | --- |  --- |
 
-
-## III. Methodology
+## IV. Methodology
 Our aim is to develop a model able to provide a live sentiment analysis with avisual user interface.Therefore, we have decided to separate two types of inputs :
 - Textual input, such as answers to questions that would be asked to a personfrom the platform
 - Video input from a live webcam or stored from an MP4 or WAV file, fromwhich we split the audio and the images
@@ -40,8 +41,15 @@ Our aim is to develop a model able to provide a live sentiment analysis with avi
 
 ![image](/Presentation/Images/video_pipeline.png)
 
-## IV. How to use it ?
-The project currently is under the form of a set of notebooks for each domain. The combination of the video, sound and text analysis can be found in the "Common" section. We will soon be publishing .py files as well as detailed explanations on the requirements. 
+### d. Ensemble Model
+
+![image](/Presentation/Images/ensemble_pipeline.png)
+
+## V. How to use it ?
+
+The project currently is under the form of a set of notebooks for each modality. The combination of the video, sound and text analysis can be found in the "Common" section. We will soon be publishing .py files as well as detailed explanations on the requirements. 
+
+## VI. Research Paper
 
 If you are interested in the research paper we are working on currently, feel free to check out this link :
 https://www.overleaf.com/read/xvtrrfpvzwhf
