@@ -29,6 +29,7 @@ Our aim is to develop a model able to provide a live sentiment analysis with avi
 
 ### Video Processing
 
+![image](/Presentation/Images/video_pipeline.png)
 
 ## How to use it ?
 The project currently is under the form of a set of notebooks for each domain. The combination of the video, sound and text analysis can be found in the "Common" section. We will soon be publishing .py files as well as detailed explanations on the requirements. 
