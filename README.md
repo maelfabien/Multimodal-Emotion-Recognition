@@ -50,7 +50,11 @@ Our aim is to develop a model able to provide a live sentiment analysis with avi
 
 The project currently is under the form of a set of notebooks for each modality. The combination of the video, sound and text analysis can be found in the "Common" section. We will soon be publishing .py files as well as detailed explanations on the requirements. 
 
-## VI. Research Paper
+## VI. Demonstration
+
+![image](/Presentation/Images/gif.gif)
+
+## VII. Research Paper
 
 If you are interested in the research paper we are working on currently, feel free to check out this link :
 https://www.overleaf.com/read/xvtrrfpvzwhf
