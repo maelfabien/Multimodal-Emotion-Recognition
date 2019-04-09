@@ -23,6 +23,7 @@ We have chosen to diversify the data sources we used depending on the type of da
 | Text | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | --- |  --- |
 | Audio | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | --- |  --- |
 | Video | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | --- |  --- |
+| Ensemble | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | --- |  --- |
 
 ## IV. Methodology
 Our aim is to develop a model able to provide a live sentiment analysis with avisual user interface.Therefore, we have decided to separate two types of inputs :
