@@ -1,5 +1,7 @@
 # Multimodal Emotion Recognition
 
+https://img.shields.io/github/followers/maelfabien.svg?style=social
+
 In this project, we are exploring state of the art models in multimodal sentiment analysis. We have chosen to explore textual, sound and video inputs and develop an ensemble model that gathers the information from all these sources and displays it in a clear and interpretable way. 
 
 ## I. Context
