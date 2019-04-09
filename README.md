@@ -25,6 +25,8 @@ Our aim is to develop a model able to provide a live sentiment analysis with avi
 
 ### Audio Processing
 
+![image](/Presentation/Images/sound_pipeline.png)
+
 ### Video Processing
 
 
