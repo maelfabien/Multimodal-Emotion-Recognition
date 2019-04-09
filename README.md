@@ -3,10 +3,17 @@
 <img alt="GitHub followers" src="https://img.shields.io/github/followers/maelfabien.svg?style=social"> <img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/maelfabien/Multimodal-Emotion-Recognition.svg"> <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/maelfabien/Multimodal-Emotion-Recognition.svg"> <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/3.svg">
 
 Table of Content :
-- I. [Context](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#i-context)
-- II. [Data Sources](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#ii-data-sources)
-- III. [Downloads](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#iii-download)
-
+- [I. Context](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#i-context)
+- [II. Data Sources](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#ii-data-sources)
+- [III. Downloads](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#iii-download)
+- [IV. Methodology](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#iv-methodology)
+  - [IV.a. Text Processing](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#a-text-processing)
+  - [IV.b. Audio Processing](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#b-audio-processing)
+  - [IV.c. Video Processing](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#c-video-processing)
+  - [IV.d. Ensemble Model](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#d-ensemble-model)
+- [V. How to use it ?](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#v-how-to-use-it-)
+- [VI. Demonstration](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vi-demonstration)
+- [VII. Research Paper](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vii-research-paper) 
 
 In this project, we are exploring state of the art models in multimodal sentiment analysis. We have chosen to explore text, sound and video inputs and develop an ensemble model that gathers the information from all these sources and displays it in a clear and interpretable way. 
 
