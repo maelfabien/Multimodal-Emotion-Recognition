@@ -14,6 +14,7 @@ Table of Content :
 - [V. How to use it ?](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#v-how-to-use-it-)
 - [VI. Demonstration](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vi-demonstration)
 - [VII. Research Paper](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vii-research-paper) 
+- [VIII. Deployment](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment) 
 
 In this project, we are exploring state of the art models in multimodal sentiment analysis. We have chosen to explore text, sound and video inputs and develop an ensemble model that gathers the information from all these sources and displays it in a clear and interpretable way. 
 
@@ -71,3 +72,7 @@ The project currently is under the form of a set of notebooks for each modality.
 
 If you are interested in the research paper we are working on currently, feel free to check out this link :
 https://www.overleaf.com/read/xvtrrfpvzwhf
+
+## VIII. Deployment
+
+The app will soon be available based on this template : https://github.com/render-examples/fastai-v3
