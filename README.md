@@ -66,6 +66,14 @@ The video processing pipeline was built the following way :
 
 #### Model
 
+The model we have chosen is an XCeption model, since it outperformed the other approaches we developped so far. We tuned the model with :
+- data augmentation
+- early stopping
+- decreasing learning rate on plateau
+- L2-Regularization
+- Class weight balancing
+- And kept the best model
+
 ![image](/Presentation/Images/video_pipeline_xce.png)
 
 ### d. Ensemble Model
