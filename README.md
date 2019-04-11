@@ -54,6 +54,18 @@ Our aim is to develop a model able to provide a live sentiment analysis with avi
 
 ### c. Video Processing
 
+#### Pipeline
+
+The video processing pipeline was built the following way :
+- Launch the webcam
+- Identify the face by Histogram of Oriented Gradients
+- Zoom on the face
+- Dimension the face to 48 * 48 pixels
+- Make a prediction on the face using our pretrained model
+- Also identify the number of blinks on the facial landmarks on each picture
+
+#### Model
+
 ![image](/Presentation/Images/video_pipeline.png)
 
 ### d. Ensemble Model
