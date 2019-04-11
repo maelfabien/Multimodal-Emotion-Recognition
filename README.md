@@ -86,7 +86,7 @@ The project currently is under the form of a set of notebooks for each modality.
 
 ## VI. Demonstration
 
-![image](/Presentation/Images/gif.gif)
+![image](/Presentation/Images/Mon-film-7.gif)
 
 ## VII. Research Paper
 
