@@ -66,7 +66,7 @@ The video processing pipeline was built the following way :
 
 #### Model
 
-![image](/Presentation/Images/video_pipeline.png)
+![image](/Presentation/Images/video_pipeline_xce.png)
 
 ### d. Ensemble Model
 
