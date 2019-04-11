@@ -74,7 +74,11 @@ The model we have chosen is an XCeption model, since it outperformed the other a
 - Class weight balancing
 - And kept the best model
 
-As you might have understood, the aim was to limit overfitting as much as possible in order to obtain a robust model. The XCeption architecture is based on DepthWise Separable convolutions that allow to train much fewer parameters, and therefore reduce training time on Colab's GPUs to less than 90 minutes.
+As you might have understood, the aim was to limit overfitting as much as possible in order to obtain a robust model. 
+
+![image](/Presentation/Images/model_fit.png)
+
+The XCeption architecture is based on DepthWise Separable convolutions that allow to train much fewer parameters, and therefore reduce training time on Colab's GPUs to less than 90 minutes.
 
 ![image](/Presentation/Images/video_pipeline_xce.png)
 
