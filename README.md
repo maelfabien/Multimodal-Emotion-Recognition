@@ -42,7 +42,7 @@ We have chosen to diversify the data sources we used depending on the type of da
 ## IV. Methodology
 Our aim is to develop a model able to provide a live sentiment analysis with avisual user interface.Therefore, we have decided to separate two types of inputs :
 - Textual input, such as answers to questions that would be asked to a personfrom the platform
-- Video input from a live webcam or stored from an MP4 or WAV file, fromwhich we split the audio and the images
+- Video input from a live webcam or stored from an MP4 or WAV file, from which we split the audio and the images
 
 ### a. Text Processing 
 
