@@ -97,7 +97,7 @@ The project currently is under the form of a set of notebooks for each modality.
 
 ![image](/Presentation/Images/Mon-film-7.gif)
 
-https://youtu.be/qzFQEGEbzNY
+[link](https://youtu.be/qzFQEGEbzNY)
 
 ## VII. Research Paper
 
