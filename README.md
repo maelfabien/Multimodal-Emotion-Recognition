@@ -76,8 +76,8 @@ The model we have chosen is an XCeption model, since it outperformed the other a
 
 As you might have understood, the aim was to limit overfitting as much as possible in order to obtain a robust model. 
 
-To know more on how we prevented overfitting, check this article : https://maelfabien.github.io/deeplearning/regu/
-To know more on the XCeption model, check this article : https://maelfabien.github.io/deeplearning/xception/
+- To know more on how we prevented overfitting, check this article : https://maelfabien.github.io/deeplearning/regu/
+- To know more on the XCeption model, check this article : https://maelfabien.github.io/deeplearning/xception/
 
 ![image](/Presentation/Images/model_fit.png)
 
