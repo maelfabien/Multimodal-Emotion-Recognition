@@ -93,10 +93,13 @@ The XCeption architecture is based on DepthWise Separable convolutions that allo
 
 The project currently is under the form of a set of notebooks for each modality. The combination of the video, sound and text analysis can be found in the "Common" section. We will soon be publishing .py files as well as detailed explanations on the requirements. 
 
+- Run the file `live_face.py` to run the facial emotion recognition.
+
 ## VI. Demonstration
 
-![image](/Presentation/Images/Mon-film-7_1.gif)
+Here is a quick demo of the facial emotion recognition algorithm from a webcam stream :
 
+![image](/Presentation/Images/Mon-film-7_1.gif)
 
 ## VII. Research Paper
 
