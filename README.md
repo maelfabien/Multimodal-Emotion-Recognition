@@ -80,7 +80,7 @@ As you might have understood, the aim was to limit overfitting as much as possib
 
 The XCeption architecture is based on DepthWise Separable convolutions that allow to train much fewer parameters, and therefore reduce training time on Colab's GPUs to less than 90 minutes.
 
-![image](/Presentation/Images/video_pipeline_xce.png)
+![image](/Presentation/Images/video_pipeline2.png)
 
 ### d. Ensemble Model
 
