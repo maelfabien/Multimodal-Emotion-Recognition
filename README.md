@@ -27,8 +27,8 @@ Multimodal Emotion Recognition is a relatively new discipline that aims to inclu
 ## II. Data Sources
 We have chosen to diversify the data sources we used depending on the type of data considered. All data sets used are free of charge and can be directly downloaded.
 - For the text input, we are using an annotated essay text corps provided by ...
-- For sound data sets, we are using the Ryerson Audio-Visual Database ofEmotional Speech and Song (RAVDESS).”The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS)contains 7356 files (total size: 24.8 GB). The database contains 24 professional actors (12 female, 12 male), vocalizing two lexically-matched statements in a neutral North American accent. Speech includes calm, happy, sad, angry, fearful, surprise, and disgust expressions, and song contains calm, happy, sad, angry, and fearful emotions. Each expression is produced at two levels of emotional intensity(normal, strong), with an additional neutral expression. All conditions are avail-able in three modality formats: Audio-only (16bit, 48kHz .wav), Audio-Video(720p H.264, AAC 48kHz, .mp4), and Video-only (no sound).” https://zenodo.org/record/1188976#.XCx-tc9KhQI
-- For the video data sets, we are using the popular FER2013 Kaggle Challenge data set. The data consists of 48x48 pixel grayscale images of faces. The faces have been automatically registered so that the face is more or less centered and occupies about the same amount of space in each image. The data set remains quite challenging to use, since there are empty pictures, or wrongly classified images. https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data
+- For sound data sets, we are using the **Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS)**. This database contains 7356 files (total size: 24.8 GB). The database contains 24 professional actors (12 female, 12 male), vocalizing two lexically-matched statements in a neutral North American accent. Speech includes calm, happy, sad, angry, fearful, surprise, and disgust expressions, and song contains calm, happy, sad, angry, and fearful emotions. Each expression is produced at two levels of emotional intensity(normal, strong), with an additional neutral expression. All conditions are avail-able in three modality formats: Audio-only (16bit, 48kHz .wav), Audio-Video(720p H.264, AAC 48kHz, .mp4), and Video-only (no sound).” https://zenodo.org/record/1188976#.XCx-tc9KhQI
+- For the video data sets, we are using the popular **FER2013** Kaggle Challenge data set. The data consists of 48x48 pixel grayscale images of faces. The faces have been automatically registered so that the face is more or less centered and occupies about the same amount of space in each image. The data set remains quite challenging to use, since there are empty pictures, or wrongly classified images. https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data
 
 ## III. Download
 
@@ -61,10 +61,9 @@ The speech emotion recognition pipeline was built the following way :
 
 #### Model
 
-The model we have chosen is a Time distributed ConvNet, it combines convolutional and recurrent neural network. To limit overfitting, we tuned the model with :
+The model we have chosen is a **Time distributed ConvNet**, it combines convolutional and recurrent neural network. To limit overfitting, we tuned the model with :
 - Audio data augmentation
 - Early stopping
-- Decreasing learning rate on plateau
 - L2-Regularization
 - And kept the best model
 
@@ -84,7 +83,7 @@ The video processing pipeline was built the following way :
 
 #### Model
 
-The model we have chosen is an XCeption model, since it outperformed the other approaches we developed so far. We tuned the model with :
+The model we have chosen is an **XCeption** model, since it outperformed the other approaches we developed so far. We tuned the model with :
 - Data augmentation
 - Early stopping
 - Decreasing learning rate on plateau
