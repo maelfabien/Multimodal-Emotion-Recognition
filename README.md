@@ -102,6 +102,10 @@ The XCeption architecture is based on DepthWise Separable convolutions that allo
 
 ![image](/Presentation/Images/video_pipeline2.png)
 
+When it comes to applying CNNs in real life application, being able to explain the results is a great challenge. We can indeed  plot class activation maps, which display the pixels that have beenactivated by the last convolution layer. We notice how the pixels are being activated differently depending on theemotion being labeled. The happiness seems to depend on the pixels linked tothe eyes and mouth, whereas the sadness or the anger seem for example to bemore related to the eyebrows.
+
+![image](/Presentation/Images/light.png)
+
 ### d. Ensemble Model
 
 ![image](/Presentation/Images/ensemble_pipeline.png)
