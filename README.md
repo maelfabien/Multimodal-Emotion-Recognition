@@ -13,14 +13,14 @@ Table of Content :
   - [d. Ensemble Model](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#d-ensemble-model)
 - [V. How to use it ?](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#v-how-to-use-it-)
 - [VI. Demonstration](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vi-demonstration)
-- [VII. Research Paper](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vii-research-paper) 
-- [VIII. Deployment](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment) 
+- [VII. Research Paper](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vii-research-paper)
+- [VIII. Deployment](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
 
-In this project, we are exploring state of the art models in multimodal sentiment analysis. We have chosen to explore text, sound and video inputs and develop an ensemble model that gathers the information from all these sources and displays it in a clear and interpretable way. 
+In this project, we are exploring state of the art models in multimodal sentiment analysis. We have chosen to explore text, sound and video inputs and develop an ensemble model that gathers the information from all these sources and displays it in a clear and interpretable way.
 
 ## I. Context
 
-Affective computing is a field of Machine Learning and Computer Science that studies the recognition and the processing of human affects. 
+Affective computing is a field of Machine Learning and Computer Science that studies the recognition and the processing of human affects.
 Multimodal Emotion Recognition is a relatively new discipline that aims to include text inputs, as well as sound and video. This field has been rising with the development of social network that gave researchers access to a vast amount of data.
 
 
@@ -35,7 +35,7 @@ We have chosen to diversify the data sources we used depending on the type of da
 | Modality | Data | Processed Data (for training) | Pre-trained Model | Colab Notebook |Other |
 | --- | --- | --- | --- | --- | --- |
 | Text | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | --- |  --- | --- | --- |
-| Audio | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | --- |  --- | --- | --- |
+| Audio | [here](https://drive.google.com/file/d/1OL2Kx9dPdeZWoue6ofHcUNs5jwpfh4Fc/view?usp=sharing) | [X-train] [y-train] [X-test] [y-test]|  --- | --- | --- |
 | Video | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | [X-train](https://drive.google.com/file/d/14xs-0nZNQuuMdtTOwqcJQm_GZ_rTO8mB/view?usp=sharing) [y-train](https://drive.google.com/file/d/1EX5KkPquwpHD9ZKpTxGhk3_RFmVDD8bf/view?usp=sharing) [X-test](https://drive.google.com/file/d/1TFH3kvGDS0iWjqKYo3lZuIu65I9h0LYr/view?usp=sharing) [y-test](https://drive.google.com/file/d/1HTzGc_J4kTQRFvLIvcMQA3mt6PnyNT53/view?usp=sharing) |  [Weights](https://drive.google.com/file/d/1-L3LnxVXv4vByg_hqxXMZPvjKSQ12Ycs/view?usp=sharing) [Model](https://drive.google.com/file/d/1_dpHN9L6hsQYzTX2zk9K5JF2CZ1FOcZh/view?usp=sharing) | [Colab Notebook](https://colab.research.google.com/drive/1dV1IvYLV24vXGvyzMFNAA18csu8btV2-) | [Face Detect Model](https://drive.google.com/file/d/18YMrAStwXbN-aPZ45ylNrdAXQQPJx0Hd/view?usp=sharing)
 | Ensemble | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | --- |  --- | --- | --- |
 
@@ -44,11 +44,29 @@ Our aim is to develop a model able to provide a live sentiment analysis with avi
 - Textual input, such as answers to questions that would be asked to a personfrom the platform
 - Video input from a live webcam or stored from an MP4 or WAV file, from which we split the audio and the images
 
-### a. Text Processing 
+### a. Text Processing
 
 ![image](/Presentation/Images/text_pipeline.png)
 
 ### b. Audio Processing
+
+#### Pipeline
+
+The speech emotion recognition pipeline was built the following way :
+- Voice recording
+- Audio signal discretization
+- Log-mel-spectrogram extraction
+- Split spectrogram using a rolling window
+- Make a prediction using our pretrained model
+
+#### Model
+
+The model we have chosen is a Time distributed ConvNet, it combines convolutional and recurrent neural network. To limit overfitting, we tuned the model with :
+- Audio data augmentation
+- Early stopping
+- Decreasing learning rate on plateau
+- L2-Regularization
+- And kept the best model
 
 ![image](/Presentation/Images/sound_pipeline.png)
 
@@ -66,15 +84,15 @@ The video processing pipeline was built the following way :
 
 #### Model
 
-The model we have chosen is an XCeption model, since it outperformed the other approaches we developped so far. We tuned the model with :
-- data augmentation
-- early stopping
-- decreasing learning rate on plateau
+The model we have chosen is an XCeption model, since it outperformed the other approaches we developed so far. We tuned the model with :
+- Data augmentation
+- Early stopping
+- Decreasing learning rate on plateau
 - L2-Regularization
 - Class weight balancing
 - And kept the best model
 
-As you might have understood, the aim was to limit overfitting as much as possible in order to obtain a robust model. 
+As you might have understood, the aim was to limit overfitting as much as possible in order to obtain a robust model.
 
 - To know more on how we prevented overfitting, check this article : https://maelfabien.github.io/deeplearning/regu/
 - To know more on the XCeption model, check this article : https://maelfabien.github.io/deeplearning/xception/
@@ -91,7 +109,7 @@ The XCeption architecture is based on DepthWise Separable convolutions that allo
 
 ## V. How to use it ?
 
-The project currently is under the form of a set of notebooks for each modality. The combination of the video, sound and text analysis can be found in the "Common" section. We will soon be publishing .py files as well as detailed explanations on the requirements. 
+The project currently is under the form of a set of notebooks for each modality. The combination of the video, sound and text analysis can be found in the "Common" section. We will soon be publishing .py files as well as detailed explanations on the requirements.
 
 - Run the file `live_face.py` to run the facial emotion recognition.
 
