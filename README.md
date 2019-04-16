@@ -73,7 +73,7 @@ To limit overfitting, we tuned the model with :
 - Early stopping
 - And kept the best model
 
-![image](/Presentation/Images/Accuracy_Speech.png)
+![image](/Presentation/Images/Accuracy_Speech.png){:height="36px" width="36px"}
 
 
 ### c. Video Processing
