@@ -74,7 +74,7 @@ To limit overfitting, we tuned the model with :
 - And kept the best model
 
 <p align="center">
-    <img src="/Presentation/Images/Accuracy_Speech.png" width="400" height="300" />
+    <img src="/Presentation/Images/Accuracy_Speech.png" width="400" height="400" />
 </p>
 
 ### c. Video Processing
