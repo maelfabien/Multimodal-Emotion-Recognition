@@ -61,7 +61,12 @@ The speech emotion recognition pipeline was built the following way :
 
 #### Model
 
-The model we have chosen is a **Time distributed ConvNet**, it combines convolutional and recurrent neural network. To limit overfitting, we tuned the model with :
+The model we have chosen is a **Time Distributed Convolutional Neural Network**.
+
+The main idea of time distributed convolutional neural network is to apply a rolling window (fixed size and time-step) all along the log-mel-spectrogram.
+Each of these windows will be the entry of a convolutional neural network, composed by four Local Feature Learning Blocks (LFLBs) and the output of each of these convolutional networks will be fed into a recurrent neural network composed by 2 cells LSTM (Long Short Term Memory) to learn the long-term contextual dependencies. Finally, a fully connected layer with *softmax* activation is used to predict the emotion detected in the voice.
+
+To limit overfitting, we tuned the model with :
 - Audio data augmentation
 - Early stopping
 - L2-Regularization
@@ -94,7 +99,7 @@ The model we have chosen is an **XCeption** model, since it outperformed the oth
 As you might have understood, the aim was to limit overfitting as much as possible in order to obtain a robust model.
 
 - To know more on how we prevented overfitting, check this article : https://maelfabien.github.io/deeplearning/regu/
-- To know more on the XCeption model, check this article : https://maelfabien.github.io/deeplearning/xception/
+- To know more on the **XCeption** model, check this article : https://maelfabien.github.io/deeplearning/xception/
 
 ![image](/Presentation/Images/model_fit.png)
 
@@ -102,7 +107,7 @@ The XCeption architecture is based on DepthWise Separable convolutions that allo
 
 ![image](/Presentation/Images/video_pipeline2.png)
 
-When it comes to applying CNNs in real life application, being able to explain the results is a great challenge. We can indeed  plot class activation maps, which display the pixels that have beenactivated by the last convolution layer. We notice how the pixels are being activated differently depending on theemotion being labeled. The happiness seems to depend on the pixels linked tothe eyes and mouth, whereas the sadness or the anger seem for example to bemore related to the eyebrows.
+When it comes to applying CNNs in real life application, being able to explain the results is a great challenge. We can indeed  plot class activation maps, which display the pixels that have been activated by the last convolution layer. We notice how the pixels are being activated differently depending on the emotion being labeled. The happiness seems to depend on the pixels linked to the eyes and mouth, whereas the sadness or the anger seem for example to be more related to the eyebrows.
 
 ![image](/Presentation/Images/light.png)
 
