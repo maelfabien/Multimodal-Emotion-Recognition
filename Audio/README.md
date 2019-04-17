@@ -29,6 +29,7 @@ Librosa : 0.6.3
 Ffmpeg : 4.0.2
 ```
 
+
 ## Files
 
 The different files that can be found in this repo :
@@ -43,6 +44,7 @@ Notebooks provided on this repo:
 - `02 - Train [SVM].ipynb` : Implementation and training of SVM classifier for Speech Emotion Recognition
 - `01 - Preprocessing[CNN-LSTM].ipynb` :  Signal preprocessing and log-mel-spectrogram extraction to train TimeDistributed CNNs
 - `02 - Train [CNN-LSTM].ipynb` : Implementation and training of TimeDistributed CNNs classifier for Speech Emotion Recognition
+
 
 ## Models
 
@@ -75,6 +77,7 @@ TimeDistributed CNNs pipeline:
 - Log-mel-spectrogram extraction
 - Split spectrogram with a rolling window
 - Make a prediction using our pre-trained model
+
 
 ## Performance
 
