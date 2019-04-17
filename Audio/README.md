@@ -73,8 +73,7 @@ TimeDistributed CNNs pipeline:
 
 ## Performance
 
-Both models have been trained on Google Colab using free GPUs.
-To limit overfitting during training phase, we split our data set into train (80%) and test set (20%)
+To limit overfitting during training phase, we split our data set into train (80%) and test set (20%). Following show results obtained on test set:
 
 |       Model                             |   Accuracy    |
 |-----------------------------------------|---------------|
