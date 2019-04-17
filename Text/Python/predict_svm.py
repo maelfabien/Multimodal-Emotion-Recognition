@@ -139,7 +139,7 @@ class predict_svm:
             """
             Returns a vectorized padded version of sequences.
             """
-            save_path = "/Users/raphaellederman/Desktop/Text_clean/Data/padding.pickle"
+            save_path = "Data/padding.pickle"
             with open(save_path, 'rb') as f:
                 tokenizer = pickle.load(f)
             doc_pad = tokenizer.texts_to_sequences(doc)
@@ -238,7 +238,7 @@ class predict_svm:
             ])
             return model
 
-        save_path = "/Users/raphaellederman/Desktop/Text_clean/Models"
+        save_path = "Models"
         with open(save_path + model_name, 'rb') as f:
             model = dill.load(f)
         y_pred = model.predict(X)

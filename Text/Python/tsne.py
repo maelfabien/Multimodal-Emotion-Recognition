@@ -1,3 +1,5 @@
+from Python.load_data import *
+
 from nltk.corpus import movie_reviews as reviews
 from sklearn.datasets import fetch_20newsgroups
 from gensim.models import KeyedVectors

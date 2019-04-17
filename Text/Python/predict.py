@@ -141,7 +141,7 @@ class predict:
             """
             Returns a vectorized padded version of sequences.
             """
-            save_path = "/Users/raphaellederman/Desktop/Text_clean/Data/padding.pickle"
+            save_path = "Data/padding.pickle"
             with open(save_path, 'rb') as f:
                 tokenizer = pickle.load(f)
             doc_pad = tokenizer.texts_to_sequences(doc)
@@ -211,7 +211,7 @@ class predict:
                 ])
             return model
 
-        save_path = '/Users/raphaellederman/Desktop/Text_clean/Models'
+        save_path = 'Models'
         json_file = open(save_path + model_name + '.json', 'r')
         classifier = model_from_json(json_file.read())
         classifier.load_weights(save_path + model_name + '.h5')
@@ -222,3 +222,5 @@ class predict:
         print(self.multiclass_accuracy(y.values.tolist(), y_pred))
 
         return y_pred
+
+

@@ -56,3 +56,7 @@ LSTMs have the property of selectively remembering patterns for long durations o
 
 ## Performance
 
+We tried different baseline models in order to assess the performance of our final architecture. Here are the accuracies of the different models.
+
+![image](/Presentation/Images/perf_text.png)
+

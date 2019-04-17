@@ -9,6 +9,7 @@ from operator import itemgetter
 from random import randint
 import seaborn as sns
 import matplotlib.pyplot as plt
+import wget
 
 import os
 import time
@@ -148,7 +149,7 @@ class train:
             """
             Returns a vectorized padded version of sequences.
             """
-            save_path = "/Users/raphaellederman/Desktop/Text_clean/Data/padding.pickle"
+            save_path = "Data/padding.pickle"
             with open(save_path, 'rb') as f:
                 tokenizer = pickle.load(f)
             doc_pad = tokenizer.texts_to_sequences(doc)
@@ -205,8 +206,10 @@ class train:
 
 
     def load_google_vec(self):
+        url = 'https://drive.google.com/file/d/1uRuqSNo3k3PiUpi2HZygKRCbdYudX_dD/view?usp=sharing'
+        wget.download(url, 'Data/GoogleNews-vectors-negative300.bin')
         return KeyedVectors.load_word2vec_format(
-            '/Users/raphaellederman/Desktop/Text_clean/Data/GoogleNews-vectors-negative300.bin',
+            'Data/GoogleNews-vectors-negative300.bin',
             binary=True)
 
     def lemmatize_token(self, token, tag):
@@ -336,11 +339,13 @@ class train:
 
         # Save the model
         if model_name:
-            outpath = '/Users/raphaellederman/Desktop/Text_clean/Models'
+            outpath = 'Models/'
             classifier.save_weights(outpath + model_name + '.h5')
             with open(outpath + model_name + '.json', 'w') as json_file:
                 json_file.write(classifier.to_json())
             print("Model written out to {}".format(model_name))
 
         return model
+
+
 
