@@ -30,5 +30,29 @@ Nltk : 3.3.0
 Gensim : 3.4.0
 ```
 
+## Pipeline
+
+![image](/Presentation/Images/text_pipeline.png)
+
+The text-based personality recognition pipeline has the following structure :
+- Text data retrieving
+- Custom natural language preprocessing :
+	- Tokenization of the document
+	- Cleaning and standardization of formulations using regular expressions (for instance replacing "can't" by "cannot", "'ve" by "have")
+	- Deletion of the punctuation
+	- Lowercasing the tokens
+	- Removal of predefined stopwords (such as 'a', 'an' etc.)
+	- Application of part-of-speech tags on the remaining tokens
+	- Lemmatization of tokens using part-of-speech tags for more accuracy.
+	- Padding the sequences of tokens of each document to constrain the shape of the input vectors. The input size has been fixed to 300 : all tokens beyond this index are deleted. If the input vector has less than 300 tokens, zeros are added at the beginning of the vector in order to normalize the shape. The dimension of the padded sequence has been determine using the characteristics of our training data. The average number of words in each essay was 652 before any preprocessing. After the standardization of formulations, and the removal of punctuation characters and stopwords, the average number of words dropped to 168 with a standard deviation of 68. In order to make sure we incorporate in our classification the right number of words without discarding too much information, we set the padding dimension to 300, which is roughly equal to the average length plus two times the standard deviation.
+- 300-dimension Word2Vec trainable embedding
+- Prediction using our pre-trained model
+
+## Model
+
+We have chosen a neural network architecture based on both one-dimensional convolutional neural networks and recurrent neural networks.
+The one-dimensional convolution layer plays a role comparable to feature extraction : it allows finding patterns in text data. The Long-Short Term Memory cell is then used in order to leverage on the sequential nature of natural language : unlike regular neural network where inputs are assumed to be independent of each other, these architectures progressively accumulate and capture information through the sequences. 
+LSTMs have the property of selectively remembering patterns for long durations of time. 
+
 ## Performance
 
