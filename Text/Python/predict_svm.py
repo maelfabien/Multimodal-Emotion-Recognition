@@ -46,10 +46,10 @@ from keras.utils.np_utils import to_categorical
 
 class predict_svm:
 
-    def __init__(self):
+    def __init__(self, corpus):
         self.max_sentence_len = 300
-        self.NLTKPreprocessor = self.NLTKPreprocessor()
-        self.MyRNNTransformer = self.MyRNNTransformer()
+        self.NLTKPreprocessor = self.NLTKPreprocessor(corpus)
+        #self.MyRNNTransformer = self.MyRNNTransformer()
 
 
     class NLTKPreprocessor(BaseEstimator, TransformerMixin):
@@ -57,17 +57,17 @@ class predict_svm:
         Transforms input data by using NLTK tokenization, POS tagging, lemmatization and vectorization.
         """
 
-        def __init__(self, corpus, stopwords=None, punct=None, lower=True, strip=True):
+        def __init__(self, corpus, max_sentence_len = 300, stopwords=None, punct=None, lower=True, strip=True):
             """
             Instantiates the preprocessor.
             """
-            self.max_sentence_len = self.max_sentence_len
             self.lower = lower
             self.strip = strip
             self.stopwords = set(stopwords) if stopwords else set(sw.words('english'))
             self.punct = set(punct) if punct else set(string.punctuation)
             self.lemmatizer = WordNetLemmatizer()
             self.corpus = corpus
+            self.max_sentence_len = max_sentence_len
 
         def fit(self, X, y=None):
             """
@@ -229,7 +229,7 @@ class predict_svm:
             Inner build function that builds a pipeline including a preprocessor and a classifier.
             """
             model = Pipeline([
-                ('preprocessor', self.NLTKPreprocessor(corpus)),
+                ('preprocessor', self.NLTKPreprocessor),
                 ('features', FeatureUnion([
                     ('vectorizer', TfidfVectorizer(tokenizer=self.identity, preprocessor=None, lowercase=False)),
                     ('text_length', self.pipelinize_feature(self.get_text_length, active=True))
@@ -238,7 +238,7 @@ class predict_svm:
             ])
             return model
 
-        save_path = "Models"
+        save_path = "Models/"
         with open(save_path + model_name, 'rb') as f:
             model = dill.load(f)
         y_pred = model.predict(X)

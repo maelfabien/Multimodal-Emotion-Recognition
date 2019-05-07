@@ -43,15 +43,14 @@ from keras.layers.embeddings import Embedding
 from keras.layers import Dense, LSTM, SpatialDropout1D, Activation, Conv1D, MaxPooling1D, Input, concatenate
 from keras.utils.np_utils import to_categorical
 
-
 class predict:
 
-    def __init__(self):
+    def __init__(self, corpus):
         self.max_sentence_len = 300
         self.max_features = 300
         self.embed_dim = 300
-        self.NLTKPreprocessor = self.NLTKPreprocessor()
-        self.MyRNNTransformer = self.MyRNNTransformer()
+        self.NLTKPreprocessor = self.NLTKPreprocessor(corpus)
+        #self.MyRNNTransformer = self.MyRNNTransformer()
 
 
     class NLTKPreprocessor(BaseEstimator, TransformerMixin):
@@ -59,17 +58,17 @@ class predict:
         Transforms input data by using NLTK tokenization, POS tagging, lemmatization and vectorization.
         """
 
-        def __init__(self, corpus, stopwords=None, punct=None, lower=True, strip=True):
+        def __init__(self, corpus, max_sentence_len = 300, stopwords=None, punct=None, lower=True, strip=True):
             """
             Instantiates the preprocessor.
             """
-            self.max_sentence_len = self.max_sentence_len
             self.lower = lower
             self.strip = strip
             self.stopwords = set(stopwords) if stopwords else set(sw.words('english'))
             self.punct = set(punct) if punct else set(string.punctuation)
             self.lemmatizer = WordNetLemmatizer()
             self.corpus = corpus
+            self.max_sentence_len = max_sentence_len
 
         def fit(self, X, y=None):
             """
@@ -206,12 +205,12 @@ class predict:
             Inner build function that builds a pipeline including a preprocessor and a classifier.
             """
             model = Pipeline([
-                    ('preprocessor', self.NLTKPreprocessor(corpus)),
-                    ('classifier', classifier())
+                    ('preprocessor', self.NLTKPreprocessor),
+                    ('classifier', classifier)
                 ])
             return model
 
-        save_path = 'Models'
+        save_path = 'Models/'
         json_file = open(save_path + model_name + '.json', 'r')
         classifier = model_from_json(json_file.read())
         classifier.load_weights(save_path + model_name + '.h5')

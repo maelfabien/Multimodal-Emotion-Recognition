@@ -48,19 +48,19 @@ from keras.utils.np_utils import to_categorical
 
 class train:
 
-    def __init__(self):
+    def __init__(self, corpus):
         self.max_sentence_len = 300
         self.max_features = 300
         self.embed_dim = 300
-        self.lstm_out = 196
-        self.dropout_lstm = 0.2
-        self.recurrent_dropout_lstm = 0.2
-        self.dropout = 0.2
-        self.conv_nfilters = 50
+        self.lstm_out = 180
+        self.dropout_lstm = 0.3
+        self.recurrent_dropout_lstm = 0.3
+        self.dropout = 0.3
+        self.conv_nfilters = 128
         self.conv_kernel_size = 8
         self.max_pool_size = 2
-        self.NLTKPreprocessor = self.NLTKPreprocessor()
-        self.MyRNNTransformer = self.MyRNNTransformer()
+        self.NLTKPreprocessor = self.NLTKPreprocessor(corpus)
+        #self.MyRNNTransformer = self.MyRNNTransformer()
 
 
     class NLTKPreprocessor(BaseEstimator, TransformerMixin):
@@ -68,7 +68,7 @@ class train:
         Transforms input data by using NLTK tokenization, POS tagging, lemmatization and vectorization.
         """
 
-        def __init__(self, corpus, stopwords=None, punct=None, lower=True, strip=True):
+        def __init__(self, corpus, max_sentence_len = 300, stopwords=None, punct=None, lower=True, strip=True):
             """
             Instantiates the preprocessor.
             """
@@ -78,6 +78,7 @@ class train:
             self.punct = set(punct) if punct else set(string.punctuation)
             self.lemmatizer = WordNetLemmatizer()
             self.corpus = corpus
+            self.max_sentence_len = max_sentence_len
 
         def fit(self, X, y=None):
             """
@@ -180,7 +181,7 @@ class train:
 
         def fit(self, X, y):
             batch_size = 32
-            num_epochs = 35
+            num_epochs = 135
             batch_size = batch_size
             epochs = num_epochs
             self.classifier.fit(X, y, epochs=epochs, batch_size=batch_size, verbose=2)
@@ -206,10 +207,10 @@ class train:
 
 
     def load_google_vec(self):
-        url = 'https://drive.google.com/file/d/1uRuqSNo3k3PiUpi2HZygKRCbdYudX_dD/view?usp=sharing'
-        wget.download(url, 'Data/GoogleNews-vectors-negative300.bin')
+        url = 'https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz'
+        #wget.download(url, 'Data/GoogleNews-vectors.bin.gz')
         return KeyedVectors.load_word2vec_format(
-            'Data/GoogleNews-vectors-negative300.bin',
+            'Data/GoogleNews-vectors.bin.gz',
             binary=True)
 
     def lemmatize_token(self, token, tag):
@@ -283,18 +284,18 @@ class train:
         return train_embedding_weights, train_word_index, word_vector_dict
 
 
-    def run(self, X, y, model_name=None, verbose=True):
+    def run(self, X, y, model_name=None, pretrained_weights_path = None, pretrained_model_path = None, verbose=True):
         """
         Builds a classifer for the given list of documents and targets
 
         """
 
-        def build(classifier, X, y, corpus):
+        def build(classifier, X, y, embedding_dict, corpus):
             """
             Inner build function that builds a pipeline including a preprocessor and a classifier.
             """
             model = Pipeline([
-                ('preprocessor', self.NLTKPreprocessor(corpus)),
+                ('preprocessor', self.NLTKPreprocessor),
                 ('classifier', classifier)
             ])
             return model.fit(X, y)
@@ -309,9 +310,6 @@ class train:
         if verbose: print("Building for evaluation")
         indices = range(len(y))
 
-        # Train-test split
-        X_train, X_test, y_train, y_test, indices_train, indices_test = tts(X, y_trans, indices, test_size=0.2)
-
         # Keras model definition
         Input_words = Input(shape=(300,), name='input1')
         x = Embedding(len(train_word_index) + 1, self.embed_dim, weights=[train_embedding_weights],
@@ -321,21 +319,36 @@ class train:
         x = MaxPooling1D(pool_size=self.max_pool_size)(x)
         x = SpatialDropout1D(self.dropout)(x)
         x = BatchNormalization()(x)
+        x = Conv1D(filters=(self.conv_nfilters)*2, kernel_size= self.conv_kernel_size, padding='same', activation='relu')(x)
+        x = MaxPooling1D(pool_size=self.max_pool_size)(x)
+        x = SpatialDropout1D(self.dropout)(x)
+        x = BatchNormalization()(x)
+        x = Conv1D(filters=(self.conv_nfilters)*3, kernel_size= self.conv_kernel_size, padding='same', activation='relu')(x)
+        x = MaxPooling1D(pool_size=self.max_pool_size)(x)
+        x = SpatialDropout1D(self.dropout)(x)
+        x = BatchNormalization()(x)
+        x = LSTM(self.lstm_out, return_sequences=True, dropout=self.dropout_lstm, recurrent_dropout=self.recurrent_dropout_lstm)(x)
+        x = LSTM(self.lstm_out, return_sequences=True, dropout=self.dropout_lstm, recurrent_dropout=self.recurrent_dropout_lstm)(x)
         x = LSTM(self.lstm_out, dropout=self.dropout_lstm, recurrent_dropout=self.recurrent_dropout_lstm)(x)
+        x = Dense(128, activation='softmax')(x)
         out = Dense(5, activation='softmax')(x)
         classifier = Model(inputs=Input_words, outputs=[out])
         classifier.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         print(classifier.summary())
 
-        # Build the pipeline, train on training set and print report
-        model = build(self.MyRNNTransformer(classifier), X_train, y_train, wv_dict, corpus=X)
-        if verbose: print("Classification Report:\n")
-        y_pred = model.transform(X_test)
-        print(self.multiclass_accuracy(y_test.values.tolist(), y_pred))
-
-        # Train on the whole set
-        if verbose: print("Building complete model and saving ...")
-        model, secs = build(self.MyRNNTransformer(classifier), X, y_trans, wv_dict, corpus=X)
+        # Loading pretrained model for transfer learning
+        if pretrained_weights_path and pretrained_model_path:
+            json_file = open(pretrained_model_path, 'r')
+            classifier = model_from_json(json_file.read())
+            classifier.load_weights(pretrained_weights_path)
+            classifier.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+            json_file.close()
+            model = build(self.MyRNNTransformer(classifier), X, y_trans, wv_dict, corpus=X)
+            
+        # Train on the whole set from scratch
+        if verbose: 
+            print("Building complete model and saving ...")
+            model= build(self.MyRNNTransformer(classifier), X, y_trans, wv_dict, corpus=X)
 
         # Save the model
         if model_name:
@@ -344,8 +357,8 @@ class train:
             with open(outpath + model_name + '.json', 'w') as json_file:
                 json_file.write(classifier.to_json())
             print("Model written out to {}".format(model_name))
-
+        else:
+            print('Please provide model name for saving')
+        
         return model
-
-
 

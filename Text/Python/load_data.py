@@ -21,25 +21,6 @@ class load_data:
         self.labels = ['cEXT', 'cNEU', 'cAGR', 'cCON', 'cOPN']
         return self.data_essays, self.X_essays, self.y_essays, self.labels
 
-    def visualize(self):
-
-        # Visualization of text length vs. label
-        for label in self.labels:
-            g = sns.FacetGrid(data=self.data_essays, col=label)
-            g.map(plt.hist, 'text length', bins=50)
-        plt.show()
-
-        for i, label in enumerate(self.labels):
-            plt.figure(i)
-            sns.boxplot(x=label, y='text length', data=self.data_essays)
-        plt.show()
-
-        # Visualization of the most frequent words
-        complete_corpus = ' '.join(self.X_essays)
-        words = tokenize.word_tokenize(complete_corpus)
-        fdist = FreqDist(words)
-        fdist.plot(40)
-
 
 
 
