@@ -72,4 +72,4 @@ Following the three blocks, we chose to stack 3 LSTM cells with 180 outputs each
 
 We tried different baseline models in order to assess the performance of our final architecture. Here are the accuracies of the different models.
 
-![image](/Presentation/Images/perf_text.png)
+![image](/Presentation/Images/perf_text_final.png)
