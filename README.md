@@ -71,9 +71,6 @@ Following the three blocks, we chose to stack 3 LSTM cells with 180 outputs each
 
 ![image](/Presentation/Images/text_pipeline.png)
 
->>>>>>> ccf37191beb0c274396cc077e7d198e267416f0b
-
-
 ### b. Audio Processing
 
 #### Pipeline
