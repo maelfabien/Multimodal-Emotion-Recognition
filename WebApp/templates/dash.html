@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+    <title>Tutoriel</title>
+
+  </head>
+  <body>
+
+  <br>
+  <img src = "/static/CSS/logo.png" width="300">
+  <br>
+  <i style="font-family: 'Times New Roman'"> Interview Simulator </i>
+  <br>
+
+  {% block body %}
+
+  <img src='newplot.png'>
+
+  <p style="font-size: 1.5em"> Score History </p>
+    <table align="center">
+    {% for table in tables %}
+        {{titles[loop.index]}}
+        {{ table|safe }}
+    {% endfor %}
+    </table>
+
+  <form>
+    <input type="button" value="Retour" onclick="history.go(-1)">
+  </form>
+
+  {% endblock %}
+
+</body>
+</html>

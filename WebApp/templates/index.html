@@ -22,17 +22,18 @@
 
 
     {% block body %}
-      {# Début du bloc "body", dont vous devez modifier le contenu #}
       <p>{{ message }}</p>
 
       <p style="font-size: 1.5em"> Launch a module </p>
       <form action="/video" method="post">
-        <!-- contenu du formulaire ici --> 
-
-        <br>
-        <input type="submit" name="start" value="Video and Audio Interview"> 
-        <input type="submit" name="start" value="Text Interview"> 
+        <input type="submit" name="video" value="Video and Audio Interview"> 
       </form>
+
+      <form action="/text" method="post">
+        <input type="text" id="text" name="text" required minlength="1" maxlength="12000"><br>
+        <input type="submit" name="text" value="Start Analysis"> 
+      </form>
+
       <br>
 
       {# Fin du bloc "body" #}

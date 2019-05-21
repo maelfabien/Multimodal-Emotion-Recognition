@@ -1,23 +1,54 @@
 ### General imports ###
 from __future__ import division
 
-def show_webcam() :
+import numpy as np
+import pandas as pd
+import cv2
 
+import time
+from time import sleep
+import re
+import os
+
+import argparse
+from collections import OrderedDict
+
+### Image processing ###
+from scipy.ndimage import zoom
+from scipy.spatial import distance
+import imutils
+from scipy import ndimage
+import dlib
+
+from tensorflow.keras.models import load_model
+from imutils import face_utils
+import requests
+
+def gen():
+    
+    start = time.time()
+    end = 0
+    
+    video_capture = cv2.VideoCapture(0)
+    
+    """Video streaming generator function."""
     shape_x = 48
     shape_y = 48
     input_shape = (shape_x, shape_y, 1)
     nClasses = 7
-
+    
     thresh = 0.25
     frame_check = 20
-
+    
     def eye_aspect_ratio(eye):
+        
         A = distance.euclidean(eye[1], eye[5])
         B = distance.euclidean(eye[2], eye[4])
         C = distance.euclidean(eye[0], eye[3])
         ear = (A + B) / (2.0 * C)
+        
         return ear
-
+    
     def detect_face(frame):
         
         #Cascade classifier pre-trained model
@@ -38,9 +69,9 @@ def show_webcam() :
                 sub_img=frame[y:y+h,x:x+w]
                 cv2.rectangle(frame,(x,y),(x+w,y+h),(0, 255,255),1)
                 coord.append([x,y,w,h])
-
+                                                          
         return gray, detected_faces, coord
-
+    
     def extract_face_features(faces, offset_coefficients=(0.075, 0.05)):
         gray = faces[0]
         detected_face = faces[1]
@@ -71,26 +102,24 @@ def show_webcam() :
             new_face.append(new_extracted_face)
         
         return new_face
-
-
+    
+    
     (lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"]
     (rStart, rEnd) = face_utils.FACIAL_LANDMARKS_IDXS["right_eye"]
     
     (nStart, nEnd) = face_utils.FACIAL_LANDMARKS_IDXS["nose"]
     (mStart, mEnd) = face_utils.FACIAL_LANDMARKS_IDXS["mouth"]
     (jStart, jEnd) = face_utils.FACIAL_LANDMARKS_IDXS["jaw"]
-
+    
     (eblStart, eblEnd) = face_utils.FACIAL_LANDMARKS_IDXS["left_eyebrow"]
     (ebrStart, ebrEnd) = face_utils.FACIAL_LANDMARKS_IDXS["right_eyebrow"]
-
+    
     model = load_model('Models/video.h5')
     face_detect = dlib.get_frontal_face_detector()
     predictor_landmarks  = dlib.shape_predictor("Models/face_landmarks.dat")
     
-    #Lancer la capture video
-    video_capture = cv2.VideoCapture(0)
-
-    while True:
+    while end - start < 15 :
+        end = time.time()
         # Capture frame-by-frame
         ret, frame = video_capture.read()
         
@@ -99,9 +128,9 @@ def show_webcam() :
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         rects = face_detect(gray, 1)
         #gray, detected_faces, coord = detect_face(frame)
-
+        
         for (i, rect) in enumerate(rects):
-
+            
             shape = predictor_landmarks(gray, rect)
             shape = face_utils.shape_to_np(shape)
             
@@ -125,9 +154,9 @@ def show_webcam() :
             
             # Rectangle around the face
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-        
+            
             cv2.putText(frame, "Face #{}".format(i + 1), (x - 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-     
+            
             for (j, k) in shape:
                 cv2.circle(frame, (j, k), 1, (0, 0, 255), -1)
             
@@ -177,7 +206,7 @@ def show_webcam() :
             nose = shape[nStart:nEnd]
             noseHull = cv2.convexHull(nose)
             cv2.drawContours(frame, [noseHull], -1, (0, 255, 0), 1)
-
+            
             # 5. Detect Mouth
             mouth = shape[mStart:mEnd]
             mouthHull = cv2.convexHull(mouth)
@@ -197,21 +226,17 @@ def show_webcam() :
             cv2.drawContours(frame, [eblHull], -1, (0, 255, 0), 1)
         
         cv2.putText(frame,'Number of Faces : ' + str(len(rects)),(40, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, 155, 1)
-        cv2.imshow('Video', frame)
+        #cv2.imshow('Video', frame)
         
         cv2.imwrite('t.jpg', frame)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
-               
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+
+        if end-start > 14 :
             break
+#if cv2.waitKey(1) & 0xFF == ord('q'):
+#break
 
-    # When everything is done, release the capture
-    video_capture.release()
-    cv2.destroyAllWindows()
-
-    #def main():
-#show_webcam()
-
-#if __name__ == "__main__":
-#main()
+#video_capture.release()
+#cv2.destroyAllWindows()
+#sys.modules[__name__].__dict__.clear()
