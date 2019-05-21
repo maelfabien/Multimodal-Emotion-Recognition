@@ -26,7 +26,6 @@ import requests
 
 def gen():
     
-    start = time.time()
     end = 0
     
     video_capture = cv2.VideoCapture(0)
@@ -117,8 +116,17 @@ def gen():
     model = load_model('Models/video.h5')
     face_detect = dlib.get_frontal_face_detector()
     predictor_landmarks  = dlib.shape_predictor("Models/face_landmarks.dat")
+    predictions = []
+    
+    start = time.time()
+    
+    global k
+    k = 0
     
     while end - start < 15 :
+        
+        k = k+1
+        
         end = time.time()
         # Capture frame-by-frame
         ret, frame = video_capture.read()
@@ -152,6 +160,8 @@ def gen():
             prediction = model.predict(face)
             prediction_result = np.argmax(prediction)
             
+            predictions.append(str(prediction_result))
+            
             # Rectangle around the face
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
             
@@ -159,7 +169,7 @@ def gen():
             
             for (j, k) in shape:
                 cv2.circle(frame, (j, k), 1, (0, 0, 255), -1)
-            
+        
             # 1. Add prediction probabilities
             cv2.putText(frame, "----------------",(40,100 + 180*i), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 155, 0)
             cv2.putText(frame, "Emotional report : Face #" + str(i+1),(40,120 + 180*i), cv2.FONT_HERSHEY_SIMPLEX, 0.5, 155, 0)
@@ -224,16 +234,19 @@ def gen():
             ebl = shape[eblStart:eblEnd]
             eblHull = cv2.convexHull(ebl)
             cv2.drawContours(frame, [eblHull], -1, (0, 255, 0), 1)
-        
+    
         cv2.putText(frame,'Number of Faces : ' + str(len(rects)),(40, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, 155, 1)
         #cv2.imshow('Video', frame)
         
         cv2.imwrite('t.jpg', frame)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
-
+            
         if end-start > 14 :
-            break
+            with open("histo.txt", "a") as d:
+                d.write(str(','.join(predictions[:32]))+'\n')
+                d.close()
+                break
 #if cv2.waitKey(1) & 0xFF == ord('q'):
 #break
 

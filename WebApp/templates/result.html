@@ -2,38 +2,52 @@
 
  <head>
    <meta charset="utf-8">
-   <link rel="stylesheet" type="text" href="/static/style.css">
+   <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
    <title>Personality traits recognition</title>
  </head>
 
+<body>
+
 {% block body %}
 
-<label>Dominant trait : {{trait}}</label>
+	<br>
+  	<img src = "/static/CSS/logo.png" width="300">
+  	<br>
+ 	<i style="font-family: 'Times New Roman'"> Interview Simulator </i>
+  	<br>
 
-<label>Probabilities</label>
-<ol>
-{% for name, proba in traits%}
-<li>{{name}} : {{proba}}</li>
-{% endfor %}
-</ol>
+<br>
+<br>
 
-<label>Most common words</label>
-<ol>
-{% for el in common_words[:15] %}
- <li>{{el[0]}}</li>
-{% endfor %}
-</ol>
+<h4>Dominant trait : </h4>
+<h3> {{trait}} </h3>
 
+<br>
 <label>Text length : {{num_words}}</label>
+<br>
 
+<div class="row">
+  <div class="column" id="left-col">
+    <label>Probabilities</label>
+		<ol>
+			{% for name, proba in traits%}
+		<li>{{name}} : {{proba}}</li>
+			{% endfor %}
+		</ol>
+  </div>
+  <div class="column" id="left-col">
 
-<form method="POST" action="/text">
-   <input type="text" id="text" name="text" required
-   minlength="1" maxlength="12000" size="500" href="/static/style.css"><br>
-   <input type="submit" value="Restart analysis" href="/static/style.css">
-</form>
+	<label>Most common words</label>
+	<ol>
+		{% for el in common_words[:15] %}
+	<li>{{el[0]}}</li>
+		{% endfor %}
+	</ol>
+  </div>
+</div>
 
 {% endblock %}
 
 </body>
+
 </html>

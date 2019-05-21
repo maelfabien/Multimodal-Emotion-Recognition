@@ -20,21 +20,21 @@
     <br>
     <br>
 
-
-    {% block body %}
-      <p>{{ message }}</p>
-
-      <p style="font-size: 1.5em"> Launch a module </p>
-      <form action="/video" method="post">
-        <input type="submit" name="video" value="Video and Audio Interview"> 
-      </form>
-
-      <form action="/text" method="post">
-        <input type="text" id="text" name="text" required minlength="1" maxlength="12000"><br>
-        <input type="submit" name="text" value="Start Analysis"> 
-      </form>
-
-      <br>
+ {% block body %}
+  <p style="font-size: 1.5em"> Launch a module </p>
+  <div class="row">
+      <div class="column" id="left-col">
+        <form action="/video" method="post">
+          <input type="submit" name="video" value="Video and Audio Interview"> 
+        </form>
+      </div>
+      <div class="column" id="left-col">
+        <form action="/text" method="post">
+          <input type="text" id="text" name="text" required minlength="1" maxlength="12000"><br>
+          <input type="submit" name="text" value="Start Analysis"> 
+        </form>
+      </div>
+  </div>
 
       {# Fin du bloc "body" #}
     {% endblock %}
