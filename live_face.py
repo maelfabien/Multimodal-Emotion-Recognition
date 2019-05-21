@@ -31,76 +31,77 @@ global shape_y
 global input_shape
 global nClasses
 
-shape_x = 48
-shape_y = 48
-input_shape = (shape_x, shape_y, 1)
-nClasses = 7
-
-thresh = 0.25
-frame_check = 20
-
-def eye_aspect_ratio(eye):
-    A = distance.euclidean(eye[1], eye[5])
-    B = distance.euclidean(eye[2], eye[4])
-    C = distance.euclidean(eye[0], eye[3])
-    ear = (A + B) / (2.0 * C)
-    return ear
-
-def detect_face(frame):
-    
-    #Cascade classifier pre-trained model
-    cascPath = 'Models/face_landmarks.dat'
-    faceCascade = cv2.CascadeClassifier(cascPath)
-    
-    #BGR -> Gray conversion
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    
-    #Cascade MultiScale classifier
-    detected_faces = faceCascade.detectMultiScale(gray,scaleFactor=1.1,minNeighbors=6,
-                                                  minSize=(shape_x, shape_y),
-                                                  flags=cv2.CASCADE_SCALE_IMAGE)
-    coord = []
-                                                  
-    for x, y, w, h in detected_faces :
-        if w > 100 :
-            sub_img=frame[y:y+h,x:x+w]
-            cv2.rectangle(frame,(x,y),(x+w,y+h),(0, 255,255),1)
-            coord.append([x,y,w,h])
-
-    return gray, detected_faces, coord
-
-def extract_face_features(faces, offset_coefficients=(0.075, 0.05)):
-    gray = faces[0]
-    detected_face = faces[1]
-    
-    new_face = []
-        
-    for det in detected_face :
-        #Region dans laquelle la face est détectée
-        x, y, w, h = det
-        #X et y correspondent à la conversion en gris par gray, et w, h correspondent à la hauteur/largeur
-        
-        #Offset coefficient, np.floor takes the lowest integer (delete border of the image)
-        horizontal_offset = np.int(np.floor(offset_coefficients[0] * w))
-        vertical_offset = np.int(np.floor(offset_coefficients[1] * h))
-        
-        #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        #gray transforme l'image
-        extracted_face = gray[y+vertical_offset:y+h, x+horizontal_offset:x-horizontal_offset+w]
-        
-        #Zoom sur la face extraite
-        new_extracted_face = zoom(extracted_face, (shape_x / extracted_face.shape[0],shape_y / extracted_face.shape[1]))
-        #cast type float
-        new_extracted_face = new_extracted_face.astype(np.float32)
-        #scale
-        new_extracted_face /= float(new_extracted_face.max())
-        #print(new_extracted_face)
-        
-        new_face.append(new_extracted_face)
-        
-    return new_face
-
 def show_webcam() :
+
+    shape_x = 48
+    shape_y = 48
+    input_shape = (shape_x, shape_y, 1)
+    nClasses = 7
+
+    thresh = 0.25
+    frame_check = 20
+
+    def eye_aspect_ratio(eye):
+        A = distance.euclidean(eye[1], eye[5])
+        B = distance.euclidean(eye[2], eye[4])
+        C = distance.euclidean(eye[0], eye[3])
+        ear = (A + B) / (2.0 * C)
+        return ear
+
+    def detect_face(frame):
+        
+        #Cascade classifier pre-trained model
+        cascPath = 'Models/face_landmarks.dat'
+        faceCascade = cv2.CascadeClassifier(cascPath)
+        
+        #BGR -> Gray conversion
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        
+        #Cascade MultiScale classifier
+        detected_faces = faceCascade.detectMultiScale(gray,scaleFactor=1.1,minNeighbors=6,
+                                                      minSize=(shape_x, shape_y),
+                                                      flags=cv2.CASCADE_SCALE_IMAGE)
+        coord = []
+                                                      
+        for x, y, w, h in detected_faces :
+            if w > 100 :
+                sub_img=frame[y:y+h,x:x+w]
+                cv2.rectangle(frame,(x,y),(x+w,y+h),(0, 255,255),1)
+                coord.append([x,y,w,h])
+
+        return gray, detected_faces, coord
+
+    def extract_face_features(faces, offset_coefficients=(0.075, 0.05)):
+        gray = faces[0]
+        detected_face = faces[1]
+        
+        new_face = []
+        
+        for det in detected_face :
+            #Region dans laquelle la face est détectée
+            x, y, w, h = det
+            #X et y correspondent à la conversion en gris par gray, et w, h correspondent à la hauteur/largeur
+            
+            #Offset coefficient, np.floor takes the lowest integer (delete border of the image)
+            horizontal_offset = np.int(np.floor(offset_coefficients[0] * w))
+            vertical_offset = np.int(np.floor(offset_coefficients[1] * h))
+            
+            #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            #gray transforme l'image
+            extracted_face = gray[y+vertical_offset:y+h, x+horizontal_offset:x-horizontal_offset+w]
+            
+            #Zoom sur la face extraite
+            new_extracted_face = zoom(extracted_face, (shape_x / extracted_face.shape[0],shape_y / extracted_face.shape[1]))
+            #cast type float
+            new_extracted_face = new_extracted_face.astype(np.float32)
+            #scale
+            new_extracted_face /= float(new_extracted_face.max())
+            #print(new_extracted_face)
+            
+            new_face.append(new_extracted_face)
+        
+        return new_face
+
 
     (lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"]
     (rStart, rEnd) = face_utils.FACIAL_LANDMARKS_IDXS["right_eye"]

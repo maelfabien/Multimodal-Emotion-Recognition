@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+    <title>Tutorial</title>
+
+  </head>
+  <body>
+
+  <br>
+   <a href="/">
+      <img src = "/static/CSS/logo.png" width="300">
+  </a>
+  <br>
+  <i style="font-family: 'Times New Roman'"> Interview Simulator </i>
+  <br>
+
+  {% block body %}
+
+  <h2 style="font-size: 5em"> How does it work ? </h2>
+  <p> In this interview simulator, you have two options : either a Voice + Video simulator, either a Text simulator.</p>
+
+  <p> In the Voice + Video simulator, the algorithm uses Deep Learning to analyze your emotions. In the end, an "emotional report" is displayed.</p>
+
+  <p> In the Text simulator, your personality traits (Big Five Model) are extracted using Natural Language Processing on the replies you write.</p>
+
+
+  <form>
+    <input type="button" value="Back" onclick="history.go(-1)">
+  </form>
+
+</body>
+
+
+{% endblock %}

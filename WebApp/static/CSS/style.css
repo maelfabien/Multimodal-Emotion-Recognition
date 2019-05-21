@@ -1,0 +1,152 @@
+/* Le CSS va ici */
+html * {
+   font-family: Arial;
+}
+
+body {
+	text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+input#bar{
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    height: 50px;
+    width: 500px;
+    border:1px solid #eaeaea;
+    outline:none;
+}
+input:hover{
+    border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+}
+input:focus{
+    border-color:#4d90fe;
+}
+
+input[type="submit"] {
+    border-radius: 2px;
+    background: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    color: #757575;
+    cursor: default;
+    font-size: 14px;
+    font-weight: bold;
+    width: 200px;
+    padding: 0 16px;
+    height:50px;
+}
+
+input[type="submit"]:hover {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background: #f8f8f8;
+    border: 1px solid #c6c6c6;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    color: #222;
+}
+
+input[type="text"] {
+	font-size:1em;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+#left-col {
+	vertical-align: middle
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#right-col {
+	text-align: left;
+}
+
+/* The alert message box */
+.Won {
+  padding: 20px;
+  background-color: #7cc958; /* Green */
+  color: white;
+  width: 500px;
+  margin: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.Lost {
+  padding: 20px;
+  background-color: #db6d6d; /* Green */
+  color: white;
+  width: 500px;
+  margin: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+ul {
+  list-style-position: inside;
+  text-align: center;
+}
+
+/*
+input[type="submit"].but {
+  background-color: #AABFF2;
+}
+*/
+
+input[type="button"] {
+    border-radius: 2px;
+    background: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    color: #757575;
+    cursor: default;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100px;
+    padding: 0 16px;
+    height:50px;
+}
+
+input[type="button"]:hover {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background: #f8f8f8;
+    border: 1px solid #c6c6c6;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    color: #222;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+    <title>Interview Simulator</title>
+
+  </head>
+  <body>
+    <br>
+    <a href="/">
+      <img src = "/static/CSS/logo.png" width="300">
+    </a>
+    <br>
+    <i style="font-family: 'Times New Roman'"> Interview Simulator </i>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    {% block body %}
+      {# Début du bloc "body", dont vous devez modifier le contenu #}
+      <p>{{ message }}</p>
+
+      <p style="font-size: 1.5em"> Launch a module </p>
+      <form action="/video" method="post">
+        <!-- contenu du formulaire ici --> 
+
+        <br>
+        <input type="submit" name="start" value="Video and Audio Interview"> 
+        <input type="submit" name="start" value="Text Interview"> 
+      </form>
+      <br>
+
+      {# Fin du bloc "body" #}
+    {% endblock %}
+
+    <br>
+
+    <br>
+    <form action="/rules">
+      <input class="but" type="submit" value="How does it work ?">
+    </form>
+
+  </body>
+</html>
