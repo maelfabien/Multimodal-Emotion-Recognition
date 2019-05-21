@@ -1,0 +1,12 @@
+numpy
+pandas
+cv2
+time
+re
+os
+argparse
+collections
+scipy
+dlib
+tensorflow
+imutils
