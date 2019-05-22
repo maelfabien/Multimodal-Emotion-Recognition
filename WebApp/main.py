@@ -16,6 +16,9 @@ import os
 import argparse
 from collections import OrderedDict
 
+### Audio Library ###
+from speechEmotionRecognition import *
+
 ### Image processing ###
 from scipy.ndimage import zoom
 from scipy.spatial import distance
@@ -57,12 +60,12 @@ def index():
 
 @app.route('/dash', methods=("POST", "GET"))
 def html_table():
-    
+
     return render_template('dash.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
 
 @app.route('/video', methods=['POST'])
 def video() :
-    
+
     try :
         return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')
     except :
@@ -77,19 +80,19 @@ def get_personality(text):
         return None
 
 def get_text_info(text):
-    
+
     words = tokenize.word_tokenize(text)
     common_words = FreqDist(words).most_common(100)
-    
+
     # Retrieve some info on the text data
     print(common_words)
     print(str(' '.join([e[0] for e in common_words])))
-    
+
     wordcloud = WordCloud().generate(str(' '.join([e[0] for e in common_words])))
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
     plt.savefig('static/CSS/wordcloud.png')
-    
+
     num_words = len(text.split())
     return common_words, num_words
 
@@ -100,21 +103,21 @@ def text():
     traits = ['Extraversion', 'Neuroticism', 'Agreeableness', 'Conscientiousness', 'Openness']
     probas = get_personality(text)[0].tolist()
     probas = [np.round(e,2) for e in probas]
-    
+
     data_traits = zip(traits, probas)
-    
+
     session['probas'] = probas
     session['text_info'] = {}
     session['text_info']["common_words"] = []
     session['text_info']["num_words"] = []
-    
+
     common_words, num_words = get_text_info(text)
-    
+
     session['text_info']["common_words"].append(common_words)
     session['text_info']["num_words"].append(num_words)
-    
+
     trait = traits[probas.index(max(probas))]
-    
+
     plt.figure()
     # Example data
     y_pos = np.arange(len(traits))
@@ -126,15 +129,30 @@ def text():
     plt.title('Sentiment')
 
     plt.savefig('static/CSS/sentiment.png')
-    
+
     #flash('Your dominant personality trait is : {}'.format(str(trait)))
     return render_template('result.html', traits = data_traits, trait = trait, num_words = num_words, common_words = common_words)
 
 
 @app.route('/audio', methods=['POST'])
 def audio() :
-    
-    return
+
+    # Sub dir to speech emotion recognition model
+    model_sub_dir = os.path.join('Models', 'audio.hdf5')
+
+    # Instanciate new SpeechEmotionRecognition object
+    SER = speechEmotionRecognition(model_sub_dir)
+
+    # Voice Recording
+    recording_sub_dir = os.path.join('audio', 'voice_recording.wav')
+    SER.voice_recording(recording_sub_dir)
+
+    # Predict emotion in voice
+    emotions = SER.predict_emotion_from_file(recording_sub_dir)
+    print('Predicted emotions:')
+    print(emotions)
+
+    return redirect('/')
 
 
 @app.route('/rules')
