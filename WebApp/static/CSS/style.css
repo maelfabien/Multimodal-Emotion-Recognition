@@ -60,10 +60,12 @@ input[type="text"] {
   float: left;
   width: 50%;
   height: 100%;
+  text-align: left;
 }
 
 #left-col {
-	vertical-align: middle
+	vertical-align: middle;
+  text-align: left;
 }
 
 /* Clear floats after the columns */
@@ -120,8 +122,8 @@ input[type="text"] {
 }
 
 ul {
-  list-style-position: inside;
-  text-align: center;
+  /*list-style-position: inside;*/
+  list-style-type: none;
 }
 
 /*

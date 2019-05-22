@@ -12,7 +12,7 @@ The data set used for training is the **Ryerson Audio-Visual Database of Emotion
 
 | Data | Processed Data for training | Processed Data for training | Pre-trained TimeDistributed CNNs model|
 |:----:|:---------------------------:|:---------------------------:|:-------------------------------------:|
-| [RAVDESS](https://drive.google.com/file/d/1OL2Kx9dPdeZWoue6ofHcUNs5jwpfh4Fc/view?usp=sharing) | [X-train](https://drive.google.com/file/d/1oCY8NpLfHsyCvqCDnRmTdsrDJDWg72Rj/view?usp=sharing) [y-train](https://drive.google.com/file/d/1y5j43I09Xe6RHK8BsHP8_ZNkUuTehhgY/view?usp=sharing) | [X-test](https://drive.google.com/file/d/1MN1Fxc_sDR1ZDQmPdFMwlnhP4qn9d8bT/view?usp=sharing) [y-test](https://drive.google.com/file/d/1ovvCXumkEP1oLxErgMgyIg1Z1Eih430W/view?usp=sharing)| [Weights](https://drive.google.com/file/d/1pQ5QahXJ3dPDXhyPkQ7rS1fOHWKHcIdX/view?usp=sharing) [Model](https://drive.google.com/file/d/1TuKN2PbFvoClaobL3aOW1KmA0e2eEc-O/view?usp=sharing) | [Colab Notebook](https://colab.research.google.com/drive/1EY8m7uj3BzU-OsjAPGBqoapw1OSUHhum)|
+| [RAVDESS](https://drive.google.com/file/d/1OL2Kx9dPdeZWoue6ofHcUNs5jwpfh4Fc/view?usp=sharing) | [X-train](https://drive.google.com/file/d/1qv-y0FhaRy5Np8DF3a8Xty8xLvvv4QH4/view?usp=sharing) [y-train](https://drive.google.com/file/d/1y5j43I09Xe6RHK8BsHP8_ZNkUuTehhgY/view?usp=sharing) | [X-test](https://drive.google.com/file/d/1MN1Fxc_sDR1ZDQmPdFMwlnhP4qn9d8bT/view?usp=sharing) [y-test](https://drive.google.com/file/d/1ovvCXumkEP1oLxErgMgyIg1Z1Eih430W/view?usp=sharing)| [Weights](https://drive.google.com/file/d/1pQ5QahXJ3dPDXhyPkQ7rS1fOHWKHcIdX/view?usp=sharing) [Model](https://drive.google.com/file/d/1TuKN2PbFvoClaobL3aOW1KmA0e2eEc-O/view?usp=sharing) | [Colab Notebook](https://colab.research.google.com/drive/1EY8m7uj3BzU-OsjAPGBqoapw1OSUHhum)|
 
 
 ## Requirements
@@ -24,8 +24,8 @@ Scikit-learn : 0.20.1
 Tensorflow : 1.12.0
 Keras : 2.2.4
 Numpy : 1.15.4
-Pydub : 0.23.0
 Librosa : 0.6.3
+Pyaudio : 0.2.11
 Ffmpeg : 4.0.2
 ```
 
@@ -86,4 +86,4 @@ To limit overfitting during training phase, we split our data set into train (80
 |       Model                             |   Accuracy    |
 |-----------------------------------------|---------------|
 | SVM on global statistic features        |     68,3%     |
-| Time distributed CNNs                   |     73,3%     |
+| Time distributed CNNs                   |     76,6%     |

@@ -36,6 +36,7 @@ from live_face import gen
 from predict import *
 from nltk import *
 
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import matplotlib.pyplot as plt
 
 app = Flask(__name__)
@@ -76,9 +77,19 @@ def get_personality(text):
         return None
 
 def get_text_info(text):
-    # Retrieve some info on the text data
+    
     words = tokenize.word_tokenize(text)
     common_words = FreqDist(words).most_common(100)
+    
+    # Retrieve some info on the text data
+    print(common_words)
+    print(str(' '.join([e[0] for e in common_words])))
+    
+    wordcloud = WordCloud().generate(str(' '.join([e[0] for e in common_words])))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    plt.savefig('static/CSS/wordcloud.png')
+    
     num_words = len(text.split())
     return common_words, num_words
 
@@ -88,15 +99,34 @@ def text():
     text = request.form.get('text')
     traits = ['Extraversion', 'Neuroticism', 'Agreeableness', 'Conscientiousness', 'Openness']
     probas = get_personality(text)[0].tolist()
+    probas = [np.round(e,2) for e in probas]
+    
     data_traits = zip(traits, probas)
+    
     session['probas'] = probas
     session['text_info'] = {}
     session['text_info']["common_words"] = []
     session['text_info']["num_words"] = []
+    
     common_words, num_words = get_text_info(text)
+    
     session['text_info']["common_words"].append(common_words)
     session['text_info']["num_words"].append(num_words)
+    
     trait = traits[probas.index(max(probas))]
+    
+    plt.figure()
+    # Example data
+    y_pos = np.arange(len(traits))
+    plt.bar(y_pos, probas, align='center')
+    #plt.gca().set_yticks(y_pos)
+    plt.gca().set_xticklabels(traits)
+    #plt.gca().invert_yaxis()  # labels read top-to-bottom
+    plt.xlabel('Probability')
+    plt.title('Sentiment')
+
+    plt.savefig('static/CSS/sentiment.png')
+    
     #flash('Your dominant personality trait is : {}'.format(str(trait)))
     return render_template('result.html', traits = data_traits, trait = trait, num_words = num_words, common_words = common_words)
 

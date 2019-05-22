@@ -8,10 +8,10 @@
 
 <body>
 
-{% block body %}
-
 	<br>
-  	<img src = "/static/CSS/logo.png" width="300">
+  	<a href="/">
+      <img src = "/static/CSS/logo.png" width="300">
+    </a>
   	<br>
  	<i style="font-family: 'Times New Roman'"> Interview Simulator </i>
   	<br>
@@ -19,30 +19,34 @@
 <br>
 <br>
 
+{% block body %}
+
 <h4>Dominant trait : </h4>
-<h3> {{trait}} </h3>
+<h2> {{trait}} </h2>
 
 <br>
 <label>Text length : {{num_words}}</label>
 <br>
+<br>
+<br>
 
 <div class="row">
   <div class="column" id="left-col">
-    <label>Probabilities</label>
-		<ol>
+    <i>Probabilities : </i>
+		<ul>
 			{% for name, proba in traits%}
-		<li>{{name}} : {{proba}}</li>
+				{{name}} : {{proba}}<br>
 			{% endfor %}
-		</ol>
+		</ul>
   </div>
   <div class="column" id="left-col">
 
-	<label>Most common words</label>
-	<ol>
+	<i>Most common words : </i>
+	<ul>
 		{% for el in common_words[:15] %}
-	<li>{{el[0]}}</li>
+		{{el[0]}}<br>
 		{% endfor %}
-	</ol>
+	</ul>
   </div>
 </div>
 
