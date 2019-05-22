@@ -173,5 +173,12 @@ The app will soon be available based on this template : https://github.com/rende
 	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=Anatoli-deBRADKE" title="Code">💻</a></td>
 	<td align="center"><a href="https://github.com/maelfabien"><img src="https://avatars0.githubusercontent.com/u/24256555?v=4" width="100px;" alt="mfix22"/>
 	<br /><sub><b>maelfabien</b></sub>
-	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=maelfabien" title="Code">💻</a>
-</td></tr></table>
+	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=maelfabien" title="Code">💻</a></td>
+	<td align="center"><a href="https://github.com/RaphaelLederman"><img src="https://avatars2.githubusercontent.com/u/38351531?v=4" width="100px;" alt="mfix22"/>
+	<br /><sub><b>RaphaelLederman</b></sub>
+	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=RaphaelLederman" title="Code">💻</a></td>
+	<td align="center"><a href="https://github.com/STF-R"><img src="https://avatars0.githubusercontent.com/u/43505879?v=4" width="100px;" alt="mfix22"/>
+	<br /><sub><b>STF-R</b></sub>
+	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=STF-R" title="Code">💻</a></td>
+	
+</tr></table>
