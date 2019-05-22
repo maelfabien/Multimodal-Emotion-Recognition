@@ -144,13 +144,20 @@ def audio() :
     SER = speechEmotionRecognition(model_sub_dir)
 
     # Voice Recording
-    recording_sub_dir = os.path.join('audio', 'voice_recording.wav')
-    SER.voice_recording(recording_sub_dir)
+    rec_duration = 10 # in sec
+    rec_sub_dir = os.path.join('tmp', 'voice_recording.wav')
+    SER.voice_recording(rec_sub_dir, duration=rec_duration)
 
-    # Predict emotion in voice
-    emotions = SER.predict_emotion_from_file(recording_sub_dir)
-    print('Predicted emotions:')
+    # Predict emotion in voice at each time step
+    step = 1 # in sec
+    sample_rate = 16000 # in kHz
+    emotions, timestamp= SER.predict_emotion_from_file(rec_sub_dir, chunk_step=step*sample_rate)
+
+    # Print results
+    print('\nPredicted emotions:')
     print(emotions)
+    print('\nPrediction time stamp:')
+    print(timestamp)
 
     return redirect('/')
 
