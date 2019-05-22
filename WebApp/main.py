@@ -151,8 +151,12 @@ def audio() :
     # Predict emotion in voice at each time step
     step = 1 # in sec
     sample_rate = 16000 # in kHz
-    emotions, timestamp= SER.predict_emotion_from_file(rec_sub_dir, chunk_step=step*sample_rate)
+    emotions, timestamp = SER.predict_emotion_from_file(rec_sub_dir, chunk_step=step*sample_rate)
 
+    # Add results to flask session
+    session['speech_emotions'] = emotions
+    session['speech_timestamp'] = timestamp
+    
     # Print results
     print('\nPredicted emotions:')
     print(emotions)
