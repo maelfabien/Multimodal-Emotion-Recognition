@@ -170,8 +170,8 @@ The app will soon be available based on this template : https://github.com/rende
 	<img src="https://avatars0.githubusercontent.com/u/10078572?v=4" width="100px;" alt="Anatoli-deBRADKE"/>
 	<br />
 	<sub><b>Anatoli-deBRADKE</b></sub>
-	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=Anatoli-deBRADKE" title="Code">💻</a>
-	<a href="https://github.com/maelfabien"><img src="https://avatars0.githubusercontent.com/u/8397708?v=4" width="100px;" alt="mfix22"/>
+	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=Anatoli-deBRADKE" title="Code">💻</a></td>
+	<td><a href="https://github.com/maelfabien"><img src="https://avatars0.githubusercontent.com/u/8397708?v=4" width="100px;" alt="mfix22"/>
 	<br /><sub><b>maelfabien</b></sub>
 	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=maelfabien" title="Code">💻</a>
 </td></tr></table>
