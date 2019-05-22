@@ -14,7 +14,8 @@ Table of Content :
 - [V. How to use it ?](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#v-how-to-use-it-)
 - [VI. Demonstration](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vi-demonstration)
 - [VII. Research Paper](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vii-research-paper)
-- [VIII. Deployment](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
+- [VIII. Deployment and WebApp](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
+- [IX. Deployment](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
 
 In this project, we are exploring state of the art models in multimodal sentiment analysis. We have chosen to explore text, sound and video inputs and develop an ensemble model that gathers the information from all these sources and displays it in a clear and interpretable way.
 
@@ -158,8 +159,19 @@ Here is a quick demo of the facial emotion recognition algorithm from a webcam s
 If you are interested in the research paper we are working on currently, feel free to check out this link :
 https://www.overleaf.com/read/xvtrrfpvzwhf
 
-## VIII. Deployment
+## VIII. Deployment and WebApp
 
 The app will soon be available based on this template : https://github.com/render-examples/fastai-v3
 
-<table><tr><td align="center"><a href="https://github.com/briandennis"><img src="https://avatars0.githubusercontent.com/u/10078572?v=4" width="100px;" alt="briandennis"/><br /><sub><b>briandennis</b></sub></a><br /><a href="https://github.com/dawnlabs/carbon/commits?author=briandennis" title="Code">💻</a> <a href="https://github.com/dawnlabs/carbon/commits?author=briandennis" title="Documentation">📖</a> <a href="#infra-briandennis" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#review-briandennis" title="Reviewed Pull Requests">👀</a></td><td align="center"><a href="https://github.com/mfix22"><img src="https://avatars0.githubusercontent.com/u/8397708?v=4" width="100px;" alt="mfix22"/><br /><sub><b>mfix22</b></sub></a><br /><a href="#question-mfix22" title="Answering Questions">💬</a> <a href="https://github.com/dawnlabs/carbon/commits?author=mfix22" title="Code">💻</a> <a href="https://github.com/dawnlabs/carbon/commits?author=megsachdev" title="Tests">⚠️</a></td></tr></table>
+## IX. Contributors
+
+<table><tr><td align="center">
+	<a href="https://github.com/Anatoli-deBRADKE">
+	<img src="https://avatars0.githubusercontent.com/u/10078572?v=4" width="100px;" alt="Anatoli-deBRADKE"/>
+	<br />
+	<sub><b>Anatoli-deBRADKE</b></sub>
+	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=Anatoli-deBRADKE" title="Code">💻</a>
+	<a href="https://github.com/maelfabien"><img src="https://avatars0.githubusercontent.com/u/8397708?v=4" width="100px;" alt="mfix22"/>
+	<br /><sub><b>maelfabien</b></sub>
+	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=maelfabien" title="Code">💻</a>
+</td></tr></table>
