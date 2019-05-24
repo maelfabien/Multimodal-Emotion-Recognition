@@ -14,7 +14,8 @@ Table of Content :
 - [V. How to use it ?](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#v-how-to-use-it-)
 - [VI. Demonstration](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vi-demonstration)
 - [VII. Research Paper](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vii-research-paper)
-- [VIII. Deployment](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
+- [VIII. Deployment and WebApp](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
+- [IX. Deployment](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
 
 In this project, we are exploring state of the art models in multimodal sentiment analysis. We have chosen to explore text, sound and video inputs and develop an ensemble model that gathers the information from all these sources and displays it in a clear and interpretable way.
 
@@ -158,6 +159,26 @@ Here is a quick demo of the facial emotion recognition algorithm from a webcam s
 If you are interested in the research paper we are working on currently, feel free to check out this link :
 https://www.overleaf.com/read/xvtrrfpvzwhf
 
-## VIII. Deployment
+## VIII. Deployment and WebApp
 
 The app will soon be available based on this template : https://github.com/render-examples/fastai-v3
+
+## IX. Contributors
+
+<table><tr><td align="center">
+	<a href="https://github.com/Anatoli-deBRADKE">
+	<img src="https://avatars1.githubusercontent.com/u/43547776?v=4" width="100px;" alt="Anatoli-deBRADKE"/>
+	<br />
+	<sub><b>Anatoli-deBRADKE</b></sub>
+	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=Anatoli-deBRADKE" title="Code">💻</a></td>
+	<td align="center"><a href="https://github.com/maelfabien"><img src="https://avatars0.githubusercontent.com/u/24256555?v=4" width="100px;" alt="mfix22"/>
+	<br /><sub><b>maelfabien</b></sub>
+	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=maelfabien" title="Code">💻</a></td>
+	<td align="center"><a href="https://github.com/RaphaelLederman"><img src="https://avatars2.githubusercontent.com/u/38351531?v=4" width="100px;" alt="mfix22"/>
+	<br /><sub><b>RaphaelLederman</b></sub>
+	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=RaphaelLederman" title="Code">💻</a></td>
+	<td align="center"><a href="https://github.com/STF-R"><img src="https://avatars0.githubusercontent.com/u/43505879?v=4" width="100px;" alt="mfix22"/>
+	<br /><sub><b>STF-R</b></sub>
+	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=STF-R" title="Code">💻</a></td>
+	
+</tr></table>
