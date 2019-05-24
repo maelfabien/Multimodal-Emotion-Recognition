@@ -243,8 +243,9 @@ def gen():
                b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
             
         if end-start > 14 :
-            with open("histo.txt", "a") as d:
-                d.write(str(','.join(predictions[:32]))+'\n')
+            with open("static/js/histo.txt", "a") as d:
+                for val in predictions :
+                    d.write(str(val)+'\n')
                 d.close()
                 break
 #if cv2.waitKey(1) & 0xFF == ord('q'):

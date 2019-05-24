@@ -5,14 +5,30 @@ html * {
 
 body {
 	text-align: center;
+  margin: 0;
+  padding: 0;
+
 }
+
+a {
+    text-decoration: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+} 
 
 table {
   border-collapse: collapse;
+  align-content: center;
+  width: 50%;
 }
 
-table, th, td {
-  border: 1px solid black;
+
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: center;
 }
 
 input#bar{
@@ -33,9 +49,9 @@ input:focus{
 
 input[type="submit"] {
     border-radius: 2px;
-    background: #f2f2f2;
+    background: #394080;
     border: 1px solid #f2f2f2;
-    color: #757575;
+    color: #ffffff;
     cursor: default;
     font-size: 14px;
     font-weight: bold;
@@ -57,15 +73,23 @@ input[type="text"] {
 }
 
 .column {
+  align-content:center;
   float: left;
   width: 50%;
   height: 100%;
-  text-align: left;
+}
+
+.center_text {
+  align-content:center;
+  width: 50%;
+  vertical-align: middle;
+  text-align:justify;
+  text-align-last: center;
 }
 
 #left-col {
-	vertical-align: middle;
-  text-align: left;
+  align-content:center;
+  text-align: center;
 }
 
 /* Clear floats after the columns */
@@ -80,7 +104,8 @@ input[type="text"] {
 }
 
 #right-col {
-	text-align: left;
+  align-content:center;
+	text-align: center;
 }
 
 /* The alert message box */
@@ -122,8 +147,9 @@ input[type="text"] {
 }
 
 ul {
+  padding: 20px; 
   /*list-style-position: inside;*/
-  list-style-type: none;
+  /*list-style-type: none;*/
 }
 
 /*
@@ -151,4 +177,40 @@ input[type="button"]:hover {
     border: 1px solid #c6c6c6;
     box-shadow: 0 1px 1px rgba(0,0,0,0.1);
     color: #222;
+}
+
+blockquote{
+  font-size: 20px;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: .5em 10px;
+  padding: 0 10px;
+  padding: 10px 20px;
+  line-height: 1.4;
+}
+
+blockquote:before {
+  display: inline;
+  height: 0;
+  line-height: 0;
+  left: -10px;
+  position: relative;
+  top: 30px;
+  color: #ccc;
+  font-size: 3em;
+}
+
+p{
+  margin: 0;
+}
+
+footer{
+  margin:0;
+  text-align: right;
+  font-size: 1em;
+  font-style: italic;
+}
+
+textarea { 
+  font-size: 15px; 
 }

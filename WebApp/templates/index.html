@@ -7,31 +7,52 @@
 
   </head>
   <body>
-    <br>
     <a href="/">
-      <img src = "/static/CSS/logo.png" width="300">
+      <img src = "/static/CSS/head.png" width="100%">
     </a>
-    <br>
-    <i style="font-family: 'Times New Roman'"> Interview Simulator </i>
-
-    <br>
-    <br>
-    <br>
-    <br>
     <br>
 
  {% block body %}
-  <p style="font-size: 1.5em"> Launch a module </p>
+
   <div class="row">
-      <div class="column" id="left-col">
-        <form action="/video" method="post">
-          <input type="submit" name="video" value="Video and Audio Interview"> 
+      <div class="column" id="left-col" align="center">
+        <img src = "/static/CSS/video.png" width="100%">
+        <div style="width:70%; text-align:justify; align-content:center; display:inline-block;">
+          <p> Use the video interview simulator and get a feedback on how our algorithm interprets your facial and vocal emotions compared to other candidates.</p>
+          <br>
+          <p> You will be provided a feedback on your facial and vocal emotions such as :
+          <ul>
+            <li>Happiness</li>
+            <li>Fear</li>
+            <li>Sadness</li>
+            <li>Surprise</li>
+            <li>Disgust</li>
+          </ul>
+
+          <br>
+          <br>
+        </div>
+        <form action="/video" method="post" align="center">
+          <input type="submit" name="video" value="Video Interview" align="center"> 
         </form>
       </div>
-      <div class="column" id="left-col">
-        <form action="/text" method="post">
-          <textarea name="text" rows="10" cols="60">Tell us about the last time you showed leadership.</textarea><br><br>
-          <input type="submit" name="text" value="Start Analysis"> 
+      <div class="column" id="left-col" align="center">
+        <img src = "/static/CSS/text.png" width="100%">
+          <div style="width:70%; text-align:justify; align-content:center; display:inline-block;">
+            <p> Use the text interview simulator and get a feedback on how our algorithm interprets your psychological traits through compared to other candidates.</p>
+            <br>
+            <p> You will be provided a feedback on your Big Five Psychological traits, which include :
+            <ul>
+              <li>Openness</li>
+              <li>Conscientiousness</li>
+              <li>Extraversion</li>
+              <li>Agreeableness</li>
+              <li>Neuroticism</li>
+          </ul>
+          <br>
+          </div>
+        <form action="/text" method="post" align="center">
+          <input type="submit" name="text" value="Text Interview" align="center"> 
         </form>
       </div>
   </div>
@@ -42,9 +63,7 @@
     <br>
 
     <br>
-    <form action="/rules">
-      <input class="but" type="submit" value="How does it work ?">
-    </form>
+    <a href="/rules">How does it work ?</a>
 
   </body>
 </html>

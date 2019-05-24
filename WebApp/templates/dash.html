@@ -3,28 +3,27 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+      <script type="text/javascript" src="/static/js/d3/d3.js"></script>
+      <script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
     <title>Dashboard</title>
 
   </head>
   <body>
 
+  <a href="/">
+    <img src = "/static/CSS/head.png" width="100%">
+  </a>
+
   <br>
-  <img src = "/static/CSS/logo.png" width="300">
-  <br>
-  <i style="font-family: 'Times New Roman'"> Interview Simulator </i>
   <br>
 
   {% block body %}
 
-  <img src='newplot.png'>
+  <div id="hist_density"></div>
+  <script type="text/javascript" src="static/js/hist_vid.js"></script>
 
-  <p style="font-size: 1.5em"> Score History </p>
-    <table align="center">
-    {% for table in tables %}
-        {{titles[loop.index]}}
-        {{ table|safe }}
-    {% endfor %}
-    </table>
+  <!--<img src='newplot.png'>-->
 
   <form>
     <input type="button" value="Retour" onclick="history.go(-1)">

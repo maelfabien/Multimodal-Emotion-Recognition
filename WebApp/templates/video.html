@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+    <title>Interview Simulator</title>
+
+  </head>
+  <body>
+    <a href="/">
+      <img src = "/static/CSS/video_head.png" width="100%">
+    </a>
+
+ {% block body %}
+
+<br>
+<blockquote><p class="quotation"> 
+  Tell us about the last time you showed leadership.</p>
+</blockquote> 
+
+<br>
+<form action="/video_1" method="post">
+  <input type="submit" name="video_1" value="Start Recording"> 
+</form>
+
+<br>
+
+{% endblock %}
+
+<br>
+
+<br>
+ <a href="/rules">How does it work ?</a>
+
+  </body>
+</html>

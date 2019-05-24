@@ -45,11 +45,7 @@ app.secret_key = b'(\xee\x00\xd4\xce"\xcf\xe8@\r\xde\xfc\xbdJ\x08W'
 
 global val
 
-df = pd.read_csv('histo.txt', sep=",")
-
-plt.figure(figsize=(12,8))
-plt.hist(df.values.flatten(), bins=20, density=True)
-plt.savefig('static/CSS/new_plot.png')
+df = pd.read_csv('static/js/histo.txt', sep=",")
 
 @app.route('/', methods=['GET'])
 def index():
@@ -58,10 +54,18 @@ def index():
 @app.route('/dash', methods=("POST", "GET"))
 def html_table():
     
-    return render_template('dash.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
+    return render_template('dash.html')
 
 @app.route('/video', methods=['POST'])
 def video() :
+    return render_template('video.html')
+
+@app.route('/text', methods=['POST'])
+def text() :
+    return render_template('text.html')
+
+@app.route('/video_1', methods=['POST'])
+def video_1() :
     
     try :
         return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')
@@ -94,8 +98,8 @@ def get_text_info(text):
     return common_words, num_words
 
 
-@app.route('/text', methods=['POST'])
-def text():
+@app.route('/text_1', methods=['POST'])
+def text_1():
     text = request.form.get('text')
     traits = ['Extraversion', 'Neuroticism', 'Agreeableness', 'Conscientiousness', 'Openness']
     probas = get_personality(text)[0].tolist()
