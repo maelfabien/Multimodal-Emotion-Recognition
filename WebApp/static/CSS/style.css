@@ -214,3 +214,40 @@ footer{
 textarea { 
   font-size: 15px; 
 }
+
+.country-name {
+    margin: 0 !important;
+}
+
+.key-dot {
+    display: inline-block;
+    height: 10px;
+    margin-right: .5em;
+    width: 10px;
+}
+
+.legend {
+    margin-right:20px;
+}
+
+.you { background: #ff0000;}
+.others { background: #69b3a2;}
+}
+
+/*HTML Horizonal Legend*/
+.country-name {
+    margin: 0 !important;
+}
+.key-dot {
+    display: inline-block;
+    height: 10px;
+    margin-right: .5em;
+    width: 10px;
+}
+
+.parent {
+  text-align: center;
+}
+.parent > ul {
+  display: inline-block;
+}

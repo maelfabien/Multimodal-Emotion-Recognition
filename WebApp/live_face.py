@@ -243,6 +243,10 @@ def gen():
                b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
             
         if end-start > 14 :
+            with open("static/js/histo_perso.txt", "w") as d:
+                for val in predictions :
+                    d.write(str(val)+'\n')
+                d.close()
             with open("static/js/histo.txt", "a") as d:
                 for val in predictions :
                     d.write(str(val)+'\n')

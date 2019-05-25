@@ -55,14 +55,33 @@ function draw_hist_density() {
     .append("rect")
       .attr("x", 1)
       .attr("transform", function(d) { return "translate(" + x_hist(d.x0) + "," + y_hist(d.length) + ")"; })
-      .attr("width", 30)
+      .attr("width", 20)
       .attr("height", function(d) { return h/2 - y_hist(d.length); })
+      .attr("data-legend","Other Candidates")
       .style("fill", "#69b3a2")
+
+  svg_hist_dens.selectAll("new_rect")
+    .data(bins)
+    .enter()
+    .append("rect")
+      .attr("x", 1)
+      .attr("transform", function(d) { return "translate(" + x_hist(d.x0) + "," + y_hist(d.length) + ")"; })
+      .attr("width", 10)
+      .attr("height", function(d) { return h/2 - y_hist(d.length); })
+      .attr("data-legend","You")
+      .style("fill", "#ff0000")
+
+  legend = svg_hist_dens.append("g")
+    .attr("class","legend")
+    .attr("transform","translate(50,30)")
+    .style("font-size","12px")
+    .call(d3.legend)
+
 };
 
 
 // Load and cast data
-d3.csv("static/CSS/histo.txt")
+d3.csv("static/js/histo.txt")
   .row( (d, i) => {
     return {
       density: +d.density

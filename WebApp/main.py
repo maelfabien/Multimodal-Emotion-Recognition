@@ -49,6 +49,29 @@ app.secret_key = b'(\xee\x00\xd4\xce"\xcf\xe8@\r\xde\xfc\xbdJ\x08W'
 global val
 
 df = pd.read_csv('static/js/histo.txt', sep=",")
+df_2 = pd.read_csv('static/js/histo_perso.txt')
+
+emotion = df_2.density.mode()[0]
+
+def emo_prop(df_2) :
+    return [int(100*len(df_2[df_2.density==0])/len(df_2)), int(100*len(df_2[df_2.density==1])/len(df_2)), int(100*len(df_2[df_2.density==2])/len(df_2)), int(100*len(df_2[df_2.density==3])/len(df_2)), int(100*len(df_2[df_2.density==4])/len(df_2)), int(100*len(df_2[df_2.density==5])/len(df_2)), int(100*len(df_2[df_2.density==6])/len(df_2))]
+
+def emotion_label(emotion) :
+    if emotion == 0 :
+        return "Angry"
+    elif emotion == 1 :
+        return "Disgust"
+    elif emotion == 2 :
+        return "Fear"
+    elif emotion == 3 :
+        return "Happy"
+    elif emotion == 4 :
+        return "Sad"
+    elif emotion == 5 :
+        return "Surprise"
+    else :
+        return "Neutral"
+
 
 @app.route('/', methods=['GET'])
 def index():
@@ -56,9 +79,7 @@ def index():
 
 @app.route('/dash', methods=("POST", "GET"))
 def html_table():
-<<<<<<< HEAD
-    
-    return render_template('dash.html')
+    return render_template('dash.html', emo=emotion_label(emotion), prob=emo_prop(df_2))
 
 @app.route('/video', methods=['POST'])
 def video() :
@@ -70,19 +91,7 @@ def text() :
 
 @app.route('/video_1', methods=['POST'])
 def video_1() :
-    
-=======
-
     return render_template('dash.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
-
-@app.route('/video', methods=['POST'])
-def video() :
-
->>>>>>> 3435ac70574a5f306084a10e08388297abfa8efc
-    try :
-        return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')
-    except :
-        return redirect('/')
 
 
 def get_personality(text):
