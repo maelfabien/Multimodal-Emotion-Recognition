@@ -153,8 +153,13 @@ When it comes to applying CNNs in real life application, being able to explain t
 
 ## V. How to use it ?
 
-The project currently is under the form of a set of notebooks for each modality. The combination of the video, sound and text analysis can be found in the "Common" section. We will soon be publishing *.py* files as well as detailed explanations on the requirements.
+There are several resources available :
+- the working notebooks can be found in the Text/Video/Sound sections
+- the final notebooks can be accessed through the Google Colab link in the table at the beginning
+- the web app can be either started locally : clone the project, and in the WebApp repository, launch `python app.py`
+- or through the web app link that we provide : https://emotion.onrender.com/
 
+To run individual algorithms, you can :
 - Run the file `live_face.py` to run the facial emotion recognition.
 
 ![image](/Presentation/Images/Mon-film-7_1.gif)
