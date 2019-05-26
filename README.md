@@ -22,10 +22,9 @@ We have also written a paper on our work : https://www.overleaf.com/read/xvtrrfp
   - [c. Video Processing](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#c-video-processing)
   - [d. Ensemble Model](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#d-ensemble-model)
 - [V. How to use it ?](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#v-how-to-use-it-)
-- [VI. Demonstration](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vi-demonstration)
-- [VII. Research Paper](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vii-research-paper)
-- [VIII. Deployment and WebApp](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
-- [IX. Deployment](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
+- [VI. Research Paper](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vii-research-paper)
+- [VII. Deployment and WebApp](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
+- [VIII. Deployment](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
 
 In this project, we are exploring state of the art models in multimodal sentiment analysis. We have chosen to explore text, sound and video inputs and develop an ensemble model that gathers the information from all these sources and displays it in a clear and interpretable way.
 
@@ -158,18 +157,16 @@ The project currently is under the form of a set of notebooks for each modality.
 
 - Run the file `live_face.py` to run the facial emotion recognition.
 
-## VI. Demonstration
-
-Here is a quick demo of the facial emotion recognition algorithm from a webcam stream :
-
 ![image](/Presentation/Images/Mon-film-7_1.gif)
 
-## VII. Research Paper
+- The other algorithms are packaged to be ran into the WebApp directly, and take text and audio files as inputs.
+
+## VI. Research Paper
 
 If you are interested in the research paper we are working on currently, feel free to check out this link :
 https://www.overleaf.com/read/xvtrrfpvzwhf
 
-## VIII. Deployment and WebApp
+## VII. Deployment and WebApp
 
 The WebApp folder is a Flask WebApp that deploys our algorithms online. Our work can be accessed here : https://emotion.onrender.com/
 
@@ -179,7 +176,7 @@ We created a web interface in which the user can :
 
 ![image](/Presentation/Images/webapp.png)
 
-## IX. Contributors
+## VIII. Contributors
 
 <table><tr><td align="center">
 	<a href="https://github.com/Anatoli-deBRADKE">
