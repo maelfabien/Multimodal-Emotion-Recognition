@@ -2,7 +2,7 @@ Flask
 Werkzeug
 numpy
 pandas
-cv2
+opencv-python
 time
 re
 os
