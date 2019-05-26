@@ -2,7 +2,17 @@
 
 <img alt="GitHub followers" src="https://img.shields.io/github/followers/maelfabien.svg?style=social"> <img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/maelfabien/Multimodal-Emotion-Recognition.svg"> <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/maelfabien/Multimodal-Emotion-Recognition.svg"> <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/3.svg">
 
-Table of Content :
+## In a nutshell
+
+We developped a multimodal emotion recognition platform to analyze the emotions of job candidates, in partnership with the French Employment Agency. We analye facial, vocal and textual emotions, using mostly deep learning based approaches. We deployed a web app using Flask :
+
+![image](/Presentation/Images/webapp.png)
+
+The tool can be accessed here : https://emotion.onrender.com/
+
+We have also written a paper on our work : https://www.overleaf.com/read/xvtrrfpvzwhf
+
+## Table of Content :
 - [I. Context](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#i-context)
 - [II. Data Sources](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#ii-data-sources)
 - [III. Downloads](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#iii-download)
@@ -161,7 +171,13 @@ https://www.overleaf.com/read/xvtrrfpvzwhf
 
 ## VIII. Deployment and WebApp
 
-The app will soon be available based on this template : https://github.com/render-examples/fastai-v3
+The WebApp folder is a Flask WebApp that deploys our algorithms online. Our work can be accessed here : https://emotion.onrender.com/
+
+We created a web interface in which the user can :
+- try a facial emotion recognition interview, and get a feedback on the perceived facial and vocal emotions
+- or try a text psychological traits recognition, either by typing an answer to a question asked, or by uploading a PDF cover letter for example
+
+![image](/Presentation/Images/webapp.png)
 
 ## IX. Contributors
 
