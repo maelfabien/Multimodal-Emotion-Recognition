@@ -2,6 +2,8 @@
 
 <img alt="GitHub followers" src="https://img.shields.io/github/followers/maelfabien.svg?style=social"> <img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/maelfabien/Multimodal-Emotion-Recognition.svg"> <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/maelfabien/Multimodal-Emotion-Recognition.svg"> <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/3.svg">
 
+Don't hesitate to ⭐ the repo if you enjoy our work !
+
 ## In a nutshell
 
 We developped a multimodal emotion recognition platform to analyze the emotions of job candidates, in partnership with the French Employment Agency. We analye facial, vocal and textual emotions, using mostly deep learning based approaches. We deployed a web app using Flask :
