@@ -48,6 +48,8 @@ from keras import backend as K
 
 class predict:
 
+    nltk.download()
+    
     def __init__(self):
         self.max_sentence_len = 300
         self.max_features = 300

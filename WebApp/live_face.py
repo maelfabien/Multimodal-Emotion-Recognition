@@ -29,7 +29,7 @@ def gen():
     
     end = 0
     
-    video_capture = cv2.VideoCapture(0)
+    video_capture = cv2.VideoCapture(-1)
     
     """Video streaming generator function."""
     shape_x = 48
