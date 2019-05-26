@@ -42,6 +42,9 @@ from keras.layers.normalization import BatchNormalization
 from keras.layers.embeddings import Embedding
 from keras.layers import Dense, LSTM, SpatialDropout1D, Activation, Conv1D, MaxPooling1D, Input, concatenate
 from keras.utils.np_utils import to_categorical
+from keras import backend as K
+
+# Do some code, e.g. train and save model
 
 class predict:
 
@@ -84,6 +87,9 @@ class predict:
             """
             Actually runs the preprocessing on each document.
             """
+            
+            print(str(X))
+            
             output = np.array([(self.tokenize(doc)) for doc in X])
             return output
 
@@ -203,5 +209,6 @@ class predict:
         json_file.close()
         model = build(self.MyRNNTransformer(classifier))
         y_pred = model.transform(X)
-
+        
+        K.clear_session()
         return y_pred

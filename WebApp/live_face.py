@@ -23,6 +23,7 @@ import dlib
 from tensorflow.keras.models import load_model
 from imutils import face_utils
 import requests
+from tensorflow.keras import backend as K
 
 def gen():
     
@@ -244,6 +245,7 @@ def gen():
             
         if end-start > 14 :
             with open("static/js/histo_perso.txt", "w") as d:
+                d.write("density"+'\n')
                 for val in predictions :
                     d.write(str(val)+'\n')
                 d.close()
@@ -251,6 +253,8 @@ def gen():
                 for val in predictions :
                     d.write(str(val)+'\n')
                 d.close()
+                
+                K.clear_session()
                 break
 #if cv2.waitKey(1) & 0xFF == ord('q'):
 #break

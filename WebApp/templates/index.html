@@ -32,9 +32,6 @@
           <br>
           <br>
         </div>
-        <form action="/video" method="post" align="center">
-          <input type="submit" name="video" value="Video Interview" align="center"> 
-        </form>
       </div>
       <div class="column" id="left-col" align="center">
         <img src = "/static/CSS/text.png" width="100%">
@@ -51,11 +48,21 @@
           </ul>
           <br>
           </div>
+      </div>
+  </div>
+   <div class="row">
+      <div class="column" id="left-col" align="center">
+          <form action="/video" method="post" align="center">
+          <input type="submit" name="video" value="Video Interview" align="center"> 
+        </form>
+      </div>
+      <div class="column" id="left-col" align="center">
         <form action="/text" method="post" align="center">
           <input type="submit" name="text" value="Text Interview" align="center"> 
         </form>
       </div>
-  </div>
+    </div>
+
 
       {# Fin du bloc "body" #}
     {% endblock %}

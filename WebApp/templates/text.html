@@ -11,23 +11,41 @@
       <img src = "/static/CSS/text_head.png" width="100%">
     </a>
 
- {% block body %}
+{% block body %}
 
 <br>
 
-<blockquote><p class="quotation"> 
-  Tell us about the last time you showed leadership.</p>
-</blockquote> 
-
 <br>
-<form action="/text_1" method="post">
-  <textarea name="text_1" rows="40" cols="100" placeholder="Your answer"></textarea><br><br>
-  <input type="submit" name="text_1" value="Start Analysis"> 
+
+<div class="row">
+  <div class="column" id="left-col" align="center">
+
+
+  <blockquote>
+    <p class="quotation"> Tell us about the last time you showed leadership.</p>
+  </blockquote> 
+
+  <form action="/text_1" method="post">
+      <textarea cols="70" rows ="20" name="text"></textarea><br><br>
+    <input type="submit" value="Start Analysis">
+  </form>
+  <br>
+</div>
+ <div class="column" id="left-col" align="center">
+<form action="text_pdf" method="post" enctype="multipart/form-data">
+    <blockquote>
+    <p class="quotation"> Or upload your Cover Letter : </p>
+  </blockquote> 
+  <br><br>
+    <input type="file" name="file"><br><br>
+    <input type="submit" value="Start Analysis">
+    <!--accept="application/pdf"-->
 </form>
+</div>
+</div>
 
 {% endblock %}
 
-<br>
 
 <br>
   <a href="/rules">How does it work ?</a>
