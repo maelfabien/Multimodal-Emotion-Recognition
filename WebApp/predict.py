@@ -16,6 +16,7 @@ import dill
 import pickle
 
 from nltk import *
+
 from nltk import wordpunct_tokenize, WordNetLemmatizer, sent_tokenize, pos_tag
 from nltk.corpus import stopwords as sw, wordnet as wn
 from nltk.stem.snowball import SnowballStemmer
@@ -47,8 +48,6 @@ from keras import backend as K
 # Do some code, e.g. train and save model
 
 class predict:
-
-    nltk.download()
     
     def __init__(self):
         self.max_sentence_len = 300
