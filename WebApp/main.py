@@ -155,7 +155,8 @@ def audio_analysis():
     most_common_emotion = df.EMOTIONS.mode()[0]
 
     # Calculate emotion distribution
-    emotion_distribution = df.EMOTIONS.value_counts() / len(df)
+    emotion_distribution = int(100 * df.EMOTIONS.value_counts() / len(df))
+    print (emotion_distribution)
 
     return render_template('audio_analysis.html', emo=most_common_emotion, prob=emotion_distribution)
 

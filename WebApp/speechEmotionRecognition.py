@@ -33,7 +33,7 @@ class speechEmotionRecognition:
         self._model.load_weights(subdir_model)
 
         # Emotion encoding
-        self._emotion = {0:'ANG', 1:'DIS', 2:'FEA', 3:'HAP', 4:'NEU', 5:'SAD', 6:'SUR'}
+        self._emotion = {0:'Angry', 1:'Disgust', 2:'Fear', 3:'Happy', 4:'Neutral', 5:'Sad', 6:'Surprise'}
 
 
     '''
