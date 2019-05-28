@@ -207,7 +207,7 @@ class speechEmotionRecognition:
             predict = self._model.predict(X)
         else:
             predict = np.argmax(self._model.predict(X), axis=1)
-            predict = [self._emotion.get(emotion) for emotion in predict]
+            #predict = [self._emotion.get(emotion) for emotion in predict]
 
         # Predict timestamp
         timestamp = np.concatenate([[chunk_size], np.ones((len(predict) - 1)) * chunk_step]).cumsum()
