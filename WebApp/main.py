@@ -103,7 +103,7 @@ def dash():
 ################################################################################
 
  # Audio Global Variable
- df_audio_hist = pd.read_csv(os.path.join("static","js", "audio_emotions_hist.txt"), sep=",")
+df_audio_hist = pd.read_csv(os.path.join("static","js", "audio_emotions_hist.txt"), sep=",")
 
 # Audio Index
 @app.route('/audio_index', methods=['POST'])
@@ -121,7 +121,7 @@ def audio_recording():
     SER = speechEmotionRecognition(model_sub_dir)
 
     # Voice Recording
-    rec_duration = 10 # in sec
+    rec_duration = 5 # in sec
     rec_sub_dir = os.path.join('voice_recording.wav')
     SER.voice_recording(rec_sub_dir, duration=rec_duration)
 
@@ -130,19 +130,14 @@ def audio_recording():
     sample_rate = 16000 # in kHz
     emotions, timestamp = SER.predict_emotion_from_file(rec_sub_dir, chunk_step=step*sample_rate)
 
-    # Add results to flask session
-    session['speech_emotions'] = emotions
-    session['speech_timestamp'] = timestamp
-
     # Export results to txt format
-    SER.prediction_to_csv(self, emotions, os.path.join("static","js", "audio_emotions.txt"), mode='w')
-    SER.prediction_to_csv(self, emotions, os.path.join("static","js", "audio_emotions_hist.txt"), mode='a')
+    SER.prediction_to_csv(emotions, os.path.join("static","js", "audio_emotions.txt"), mode='w')
+    SER.prediction_to_csv(emotions, os.path.join("static","js", "audio_emotions_hist.txt"), mode='a')
 
     # Send Flash message
-    flash('The recording is over. You now have the opportunity to do an analysis of your emotions. If you wish, you can also choose to record yourself again.')
+    flash("The recording is over. You now have the opportunity to do an analysis of your emotions. If you wish, you can also choose to record yourself again.")
 
     return render_template('audio.html', display_button=True)
-
 
 # Audio Emotion Analysis
 @app.route('/audio_analysis', methods=("POST", "GET"))
@@ -155,7 +150,9 @@ def audio_analysis():
     most_common_emotion = df.EMOTIONS.mode()[0]
 
     # Calculate emotion distribution
-    emotion_distribution = int(100 * df.EMOTIONS.value_counts() / len(df))
+    emotions_list = ['Angry', 'Disgust','Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
+    emotion_distribution = [int(100 * len(df[df.EMOTIONS == emotion])/len(df)) for emotion in emotions_list]
+
     print (emotion_distribution)
 
     return render_template('audio_analysis.html', emo=most_common_emotion, prob=emotion_distribution)

@@ -222,7 +222,8 @@ class speechEmotionRecognition:
 
         # Write emotion in filename
         with open(filename, mode) as f:
-            f.write("EMOTIONS"+'\n')
+            if mode == 'w':
+                f.write("EMOTIONS"+'\n')
             for emotion in predictions:
                 f.write(str(emotion)+'\n')
             f.close()
