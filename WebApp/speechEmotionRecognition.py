@@ -214,3 +214,15 @@ class speechEmotionRecognition:
         timestamp = np.round(timestamp / sample_rate)
 
         return [predict, timestamp]
+
+    '''
+    Export emotions predicted to csv format
+    '''
+    def prediction_to_csv(self, predictions, filename, mode='w'):
+
+        # Write emotion in filename
+        with open(filename, mode) as f:
+            f.write("EMOTIONS"+'\n')
+            for emotion in predictions:
+                f.write(str(emotion)+'\n')
+            f.close()
