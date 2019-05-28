@@ -202,7 +202,7 @@ class predict:
         classifier.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         json_file.close()
         model = build(self.MyRNNTransformer(classifier))
-        y_pred = model.transform(X)
+        y_pred = model.transform([X])
 
         return y_pred
 
