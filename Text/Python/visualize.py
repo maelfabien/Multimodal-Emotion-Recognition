@@ -1,5 +1,5 @@
-from Python.load_data import *
-from Python.train import * 
+from Text.Python.load_data import *
+from Text.Python.train import *
 
 from nltk.corpus import movie_reviews as reviews
 from sklearn.datasets import fetch_20newsgroups

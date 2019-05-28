@@ -45,12 +45,11 @@ from keras.utils.np_utils import to_categorical
 
 class predict:
 
-    def __init__(self, corpus):
+    def __init__(self):
         self.max_sentence_len = 300
         self.max_features = 300
         self.embed_dim = 300
-        self.NLTKPreprocessor = self.NLTKPreprocessor(corpus)
-        #self.MyRNNTransformer = self.MyRNNTransformer()
+        self.NLTKPreprocessor = self.NLTKPreprocessor()
 
 
     class NLTKPreprocessor(BaseEstimator, TransformerMixin):
@@ -58,7 +57,7 @@ class predict:
         Transforms input data by using NLTK tokenization, POS tagging, lemmatization and vectorization.
         """
 
-        def __init__(self, corpus, max_sentence_len = 300, stopwords=None, punct=None, lower=True, strip=True):
+        def __init__(self, max_sentence_len = 300, stopwords=None, punct=None, lower=True, strip=True):
             """
             Instantiates the preprocessor.
             """
@@ -67,7 +66,6 @@ class predict:
             self.stopwords = set(stopwords) if stopwords else set(sw.words('english'))
             self.punct = set(punct) if punct else set(string.punctuation)
             self.lemmatizer = WordNetLemmatizer()
-            self.corpus = corpus
             self.max_sentence_len = max_sentence_len
 
         def fit(self, X, y=None):
@@ -140,7 +138,7 @@ class predict:
             """
             Returns a vectorized padded version of sequences.
             """
-            save_path = "Data/padding.pickle"
+            save_path = "/Users/raphaellederman/Desktop/Fil_Rouge/Text/Data/padding.pickle"
             with open(save_path, 'rb') as f:
                 tokenizer = pickle.load(f)
             doc_pad = tokenizer.texts_to_sequences(doc)
@@ -177,30 +175,17 @@ class predict:
             self.classifier.fit(X, y, epochs=epochs, batch_size=batch_size, verbose=2)
             return self
 
-
         def transform(self, X):
             self.pred = self.classifier.predict(X)
             self.classes = [[0 if el < 0.2 else 1 for el in item] for item in self.pred]
-            return self.classes
+            return self.pred
 
 
-    def multiclass_accuracy(self,predictions, target):
-        "Returns the multiclass accuracy of the classifier's predictions"
-        score = []
-        for j in range(0, 5):
-            count = 0
-            for i in range(len(predictions)):
-                if predictions[i][j] == target[i][j]:
-                    count += 1
-            score.append(count / len(predictions))
-        return score
-
-
-    def run(self, X, y, model_name, corpus):
+    def run(self, X, model_name):
         """
         Returns the predictions from the pipeline including our NLTKPreprocessor and Keras classifier.
         """
-        def build(classifier, corpus):
+        def build(classifier):
             """
             Inner build function that builds a pipeline including a preprocessor and a classifier.
             """
@@ -210,15 +195,14 @@ class predict:
                 ])
             return model
 
-        save_path = 'Models/'
+        save_path = '/Users/raphaellederman/Desktop/Fil_Rouge/Text/Models/'
         json_file = open(save_path + model_name + '.json', 'r')
         classifier = model_from_json(json_file.read())
         classifier.load_weights(save_path + model_name + '.h5')
         classifier.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         json_file.close()
-        model = build(self.MyRNNTransformer(classifier), corpus)
+        model = build(self.MyRNNTransformer(classifier))
         y_pred = model.transform(X)
-        print(self.multiclass_accuracy(y.values.tolist(), y_pred))
 
         return y_pred
 

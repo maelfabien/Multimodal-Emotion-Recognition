@@ -178,11 +178,11 @@ class train_svm:
             self.classifier.fit(X, y, epochs=epochs, batch_size=batch_size, verbose=2)
             return self
 
-
         def transform(self, X):
             self.pred = self.classifier.predict_proba(X)
             self.classes = [[0 if el < 0.2 else 1 for el in item] for item in self.pred]
             return self.classes
+
 
     class TfidfEmbeddingVectorizer(object):
         def __init__(self, word2vec):
