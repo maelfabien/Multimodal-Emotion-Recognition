@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+      <script type="text/javascript" src="/static/js/d3/d3.js"></script>
+      <script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    <title>Dashboard</title>
+
+  </head>
+  <body>
+
+  <a href="/">
+    <img src = "/static/CSS/text_head.png" width="100%">
+  </a>
+
+  <br>
+  <br>
+
+  {% block body %}
+
+<h4>Dominant trait : </h4>
+<h1> {{trait}} </h1>
+
+<br>
+<label>Text length : {{num_words}}</label>
+<br>
+<br>
+<br>
+
+<div class="row">
+  <div class="column" id="left-col" align="center">
+
+    <div class="legend1">
+        <h3s>Psychological traits perceived</h3>
+        <br>
+         <div class="legend1"> <p class="country-name"><span class="key-dot you"></span>You</p> </div>
+         <div class="legend1"> <p class="country-name"><span class="key-dot others"></span>Other candidates</p> </div>
+      </div>
+      <div id="hist_density"></div>
+  </div>
+  <div class="column" id="left-col" align="center">
+
+    <div class="parent">
+      <p>Probabilities of each trait: </p>
+        <ul align="left">
+          {% for name, proba in traits%}
+            <li>{{name}} : {{proba}}%</li>
+          {% endfor %}
+        </ul>
+    </div>
+    <br>
+      <hr width="50%" style="margin-left: 25%">
+    <br>
+    <div class="parent">
+      <p>Most common words : </p>
+        <ul align="left">
+           {% for el in common_words[:15] %}
+              <li>{{el[0]}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+  </div>
+</div>
+
+ <script type="text/javascript" src="static/js/hist_txt.js"></script>
+  <!--<img src='newplot.png'>-->
+
+  <form>
+    <input type="button" value="Retour" onclick="history.go(-1)">
+  </form>
+
+  {% endblock %}
+
+</body>
+</html>
