@@ -44,7 +44,7 @@ from keras.layers import Dense, LSTM, SpatialDropout1D, Activation, Conv1D, MaxP
 from keras.utils.np_utils import to_categorical
 
 
-class test_svm:
+class predict_svm:
 
     def __init__(self):
         self.max_sentence_len = 300

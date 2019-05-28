@@ -202,14 +202,14 @@ class predict:
                 ])
             return model
 
-        save_path = 'Models/'
+        save_path = '/Models/'
         json_file = open(save_path + model_name + '.json', 'r')
         classifier = model_from_json(json_file.read())
         classifier.load_weights(save_path + model_name + '.h5')
         classifier.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         json_file.close()
         model = build(self.MyRNNTransformer(classifier))
-        y_pred = model.transform(X)
+        y_pred = model.transform([X])
         
         K.clear_session()
         return y_pred
