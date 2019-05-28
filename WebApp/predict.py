@@ -202,7 +202,7 @@ class predict:
                 ])
             return model
 
-        save_path = '/Models/'
+        save_path = 'Models/'
         json_file = open(save_path + model_name + '.json', 'r')
         classifier = model_from_json(json_file.read())
         classifier.load_weights(save_path + model_name + '.h5')
