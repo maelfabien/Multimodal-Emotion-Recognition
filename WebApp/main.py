@@ -102,6 +102,9 @@ def dash():
 ############################### AUDIO INTERVIEW ################################
 ################################################################################
 
+ # Audio Global Variable
+ df_audio_hist = pd.read_csv(os.path.join("static","js", "audio_emotions_hist.txt"), sep=",")
+
 # Audio Index
 @app.route('/audio_index', methods=['POST'])
 def audio_index():
@@ -119,7 +122,7 @@ def audio_recording():
 
     # Voice Recording
     rec_duration = 10 # in sec
-    rec_sub_dir = os.path.join('tmp', 'voice_recording.wav')
+    rec_sub_dir = os.path.join('voice_recording.wav')
     SER.voice_recording(rec_sub_dir, duration=rec_duration)
 
     # Predict emotion in voice at each time step
@@ -140,12 +143,21 @@ def audio_recording():
 
     return render_template('audio.html', display_button=True)
 
+
 # Audio Emotion Analysis
 @app.route('/audio_analysis', methods=("POST", "GET"))
 def audio_analysis():
 
-    # Do analysis
-    return render_template('audio_analysis.html', emo=True, prob=False)
+    # Get all audio emotions during the interview
+    df = pd.read_csv(os.path.join("static", "js", "audio_emotions.txt"))
+
+    # Get most common emotion during the interview
+    most_common_emotion = df.EMOTIONS.mode()[0]
+
+    # Calculate emotion distribution
+    emotion_distribution = df.EMOTIONS.value_counts() / len(df)
+
+    return render_template('audio_analysis.html', emo=most_common_emotion, prob=emotion_distribution)
 
 
 ################################################################################
