@@ -26,11 +26,12 @@ class speechEmotionRecognition:
     '''
     Voice recording function
     '''
-    def __init__(self, subdir_model):
+    def __init__(self, subdir_model=None):
 
         # Load prediction model
-        self._model = self.build_model()
-        self._model.load_weights(subdir_model)
+        if subdir_model is not None:
+            self._model = self.build_model()
+            self._model.load_weights(subdir_model)
 
         # Emotion encoding
         self._emotion = {0:'Angry', 1:'Disgust', 2:'Fear', 3:'Happy', 4:'Neutral', 5:'Sad', 6:'Surprise'}
@@ -207,7 +208,7 @@ class speechEmotionRecognition:
             predict = self._model.predict(X)
         else:
             predict = np.argmax(self._model.predict(X), axis=1)
-            #predict = [self._emotion.get(emotion) for emotion in predict]
+            predict = [self._emotion.get(emotion) for emotion in predict]
 
         # Predict timestamp
         timestamp = np.concatenate([[chunk_size], np.ones((len(predict) - 1)) * chunk_step]).cumsum()
