@@ -102,9 +102,6 @@ def dash():
 ############################### AUDIO INTERVIEW ################################
 ################################################################################
 
- # Audio Global Variable
-df_audio_hist = pd.read_csv(os.path.join("static","js", "audio_emotions_hist.txt"), sep=",")
-
 # Audio Index
 @app.route('/audio_index', methods=['POST'])
 def audio_index():
@@ -118,7 +115,7 @@ def audio_recording():
     SER = speechEmotionRecognition()
 
     # Voice Recording
-    rec_duration = 10 # in sec
+    rec_duration = 5 # in sec
     rec_sub_dir = os.path.join('voice_recording.wav')
     SER.voice_recording(rec_sub_dir, duration=rec_duration)
 
@@ -146,9 +143,9 @@ def audio_analysis():
     sample_rate = 16000 # in kHz
     emotions, timestamp = SER.predict_emotion_from_file(rec_sub_dir, chunk_step=step*sample_rate)
 
-    # Export results to txt format
+    # Export predicted emotions to .txt format
     SER.prediction_to_csv(emotions, os.path.join("static","js", "audio_emotions.txt"), mode='w')
-    SER.prediction_to_csv(emotions, os.path.join("static","js", "audio_emotions_hist.txt"), mode='a')
+    SER.prediction_to_csv(emotions, os.path.join("static","js", "audio_emotions_other.txt"), mode='a')
 
     # Get most common emotion during the interview
     major_emotion = max(set(emotions), key=emotions.count)
@@ -156,7 +153,24 @@ def audio_analysis():
     # Calculate emotion distribution
     emotion_dist = [int(100 * emotions.count(emotion) / len(emotions)) for emotion in SER._emotion.values()]
 
-    return render_template('audio_analysis.html', emo=major_emotion, prob=emotion_dist)
+    # Export emotion distribution to .csv format for D3JS
+    df = pd.DataFrame(emotion_dist, index=SER._emotion.values(), columns=['VALUE']).rename_axis('EMOTION')
+    df.to_csv(os.path.join('static', 'js','audio_emotions_dist.txt'), sep=',')
+
+    # Get most common emotion of other candidates
+    df_other = pd.read_csv(os.path.join("static","js", "audio_emotions_other.txt"), sep=",")
+
+    # Get most common emotion during the interview for other candidates
+    major_emotion_other = df_other.EMOTION.mode()[0]
+
+    # Calculate emotion distribution for other candidates
+    emotion_dist_other = [int(100 * len(df_other[df_other.EMOTION==emotion]) / len(df_other)) for emotion in SER._emotion.values()]
+
+    # Export emotion distribution to .csv format for D3JS
+    df_other = pd.DataFrame(emotion_dist_other, index=SER._emotion.values(), columns=['VALUE']).rename_axis('EMOTION')
+    df_other.to_csv(os.path.join('static', 'js','audio_emotions_dist_other.txt'), sep=',')
+
+    return render_template('audio_analysis.html', emo=major_emotion, emo_other=major_emotion_other, prob=emotion_dist, prob_other=emotion_dist_other)
 
 
 ################################################################################
