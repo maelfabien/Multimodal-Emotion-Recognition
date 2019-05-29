@@ -202,3 +202,11 @@ Disgust
 Disgust
 Disgust
 Disgust
+Fear
+Fear
+Fear
+Fear
+Angry
+Angry
+Angry
+Angry
