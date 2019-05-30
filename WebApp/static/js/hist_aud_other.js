@@ -42,7 +42,7 @@ d3.csv("static/js/audio_emotions_dist_other.txt", function(error, data) {
       .attr("width", x_other.bandwidth())
       .attr("y", function(d) { return y_other(d.VALUE); })
       .attr("height", function(d) { return height - y_other(d.VALUE); })
-      .style("fill", "#b71b1b");
+      .style("fill", "#69b3a2");
 
   // add the x Axis
   svg_other.append("g")

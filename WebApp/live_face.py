@@ -242,7 +242,9 @@ def gen():
         cv2.imwrite('t.jpg', frame)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
-            
+        
+        emotion = {0:'Angry', 1:'Disgust', 2:'Fear', 3:'Happy', 4:'Neutral', 5:'Sad', 6:'Surprise'}
+        
         if end-start > 14 :
             with open("static/js/histo_perso.txt", "w") as d:
                 d.write("density"+'\n')
@@ -254,8 +256,9 @@ def gen():
                     d.write(str(val)+'\n')
                 d.close()
                 
-                K.clear_session()
-                break
+            break
+
+K.clear_session()
 #if cv2.waitKey(1) & 0xFF == ord('q'):
 #break
 

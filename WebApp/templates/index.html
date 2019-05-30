@@ -18,7 +18,7 @@
   Video Interview presentation
   -->
   <div class="row">
-      <div class="column" id="left-col" align="center">
+      <div class="column_home" id="left-col" align="center">
         <img src = "/static/CSS/video.png" width="100%">
         <div style="width:70%; text-align:justify; align-content:center; display:inline-block;">
           <p> Use the video interview simulator and get a feedback on how our algorithm interprets your facial emotions compared to other candidates.</p>
@@ -40,7 +40,7 @@
       <!--
       Audio Interview presentation
       -->
-      <div class="column" id="left-col" align="center">
+      <div class="column_home" id="left-col" align="center">
         <img src = "/static/CSS/audio.png" width="100%">
         <div style="width:70%; text-align:justify; align-content:center; display:inline-block;">
           <p> Use the audio interview simulator and get a feedback on how our algorithm interprets your vocal emotions compared to other candidates.</p>
@@ -58,35 +58,11 @@
           <br>
         </div>
       </div>
-  </div>
 
-
-  <div class="row">
-    <!--
-    Video Interview button
-    -->
-     <div class="column" id="left-col" align="center">
-         <form action="/video" method="post" align="center">
-         <input type="submit" name="video" value="Video Interview" align="center">
-       </form>
-     </div>
-
-     <!--
-     Audio Interview button
-     -->
-     <div class="column" id="left-col" align="center">
-         <form action="/audio_index" method="post" align="center">
-         <input type="submit" name="audio_index" value="Audio Interview" align="center">
-       </form>
-     </div>
-   </div>
-
-
-   <div class="row">
-     <!--
-     Text Interview presentation
-     -->
-     <div class="column" id="left-col" align="center">
+      <!--
+      Text Interview presentation
+      -->
+      <div class="column_home" id="left-col" align="center">
        <img src = "/static/CSS/text.png" width="100%">
          <div style="width:70%; text-align:justify; align-content:center; display:inline-block;">
            <p> Use the text interview simulator and get a feedback on how our algorithm interprets your psychological traits through compared to other candidates.</p>
@@ -102,18 +78,47 @@
          <br>
          </div>
      </div>
-    </div>
 
-   <div class="row">
+  </div>
+
+
+  <div class="row">
+    <!--
+    Video Interview button
+    -->
+     <div class="column_home" id="left-col" align="center">
+         <form action="/video" method="post" align="center">
+         <input type="submit" name="video" value="Video Interview" align="center">
+       </form>
+     </div>
+
      <!--
+     Audio Interview button
+     -->
+     <div class="column_home" id="left-col" align="center">
+         <form action="/audio_index" method="post" align="center">
+         <input type="submit" name="audio_index" value="Audio Interview" align="center">
+       </form>
+     </div>
+
+    <!--
      Text Interview button
      -->
-      <div class="column" id="left-col" align="center">
+    <div class="column_home" id="left-col" align="center">
         <form action="/text" method="post" align="center">
           <input type="submit" name="text" value="Text Interview" align="center">
         </form>
-      </div>
     </div>
+</div>
+
+<br>
+<br>
+<br>
+
+<p> This project was developped as a Research Project at Telecom ParisTech, in partnership with Pôle Emploi. All code and models can be found on the GitHub repository. </p>
+<br>
+<div class="github-card" data-github="maelfabien/Multimodal-Emotion-Recognition" data-width="50%" data-height="70%" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
       {# Fin du bloc "body" #}
     {% endblock %}

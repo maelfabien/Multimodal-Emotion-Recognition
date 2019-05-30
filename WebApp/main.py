@@ -56,19 +56,21 @@ df = pd.read_csv('static/js/histo.txt', sep=",")
 
 @app.route('/video', methods=['POST'])
 def video() :
+    flash('You will have 45 seconds to discuss the topic mentioned above. Due to restrictions, we are not able to redirect you once the video is over. Please move your URL to /dash instead of /video_1 once over. You will be able to see your results then.')
     return render_template('video.html')
 
 @app.route('/video_1', methods=['POST'])
 def video_1() :
     try :
         return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')
+    #return Response(stream_template('video.html', gen()))
     except :
         return None
 
 @app.route('/dash', methods=("POST", "GET"))
 def dash():
     df_2 = pd.read_csv('static/js/histo_perso.txt')
-    emotion = df_2.density.mode()[0]
+    
 
     def emo_prop(df_2) :
         return [int(100*len(df_2[df_2.density==0])/len(df_2)),
@@ -78,6 +80,27 @@ def dash():
                     int(100*len(df_2[df_2.density==4])/len(df_2)),
                     int(100*len(df_2[df_2.density==5])/len(df_2)),
                     int(100*len(df_2[df_2.density==6])/len(df_2))]
+
+    emotions = ["Angry", "Disgust", "Fear",  "Happy", "Sad", "Surprise", "Neutral"]
+    emo_perso = {}
+    emo_glob = {}
+    
+    for i in range(len(emotions)) :
+        emo_perso[emotions[i]] = len(df_2[df_2.density==i])
+        emo_glob[emotions[i]] = len(df[df.density==i])
+    
+    df_perso = pd.DataFrame.from_dict(emo_perso, orient='index')
+    df_perso = df_perso.reset_index()
+    df_perso.columns = ['EMOTION', 'VALUE']
+    df_perso.to_csv('static/js/hist_vid_perso.txt', sep=",", index=False)
+
+    df_glob = pd.DataFrame.from_dict(emo_glob, orient='index')
+    df_glob = df_glob.reset_index()
+    df_glob.columns = ['EMOTION', 'VALUE']
+    df_glob.to_csv('static/js/hist_vid_glob.txt', sep=",", index=False)
+    
+    emotion = df_2.density.mode()[0]
+    emotion_other = df.density.mode()[0]
 
     def emotion_label(emotion) :
         if emotion == 0 :
@@ -95,7 +118,7 @@ def dash():
         else :
             return "Neutral"
 
-    return render_template('dash.html', emo=emotion_label(emotion), prob=emo_prop(df_2))
+    return render_template('dash.html', emo=emotion_label(emotion), emo_other = emotion_label(emotion_other), prob = emo_prop(df_2), prob_other = emo_prop(df))
 
 
 ################################################################################

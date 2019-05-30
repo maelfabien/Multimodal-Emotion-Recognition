@@ -1,100 +1,57 @@
-// Global const
-var margin = {top: 30, right: 30, bottom: 30, left: 30}
-const w = 600 - margin.left - margin.right;
-const h = 600 - margin.top - margin.bottom;
+// Set the dimensions and margins of the graph
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
-let dataset = [];
+// set the ranges
+var x_other = d3.scaleBand()
+          .range([0, width])
+          .padding(0.1);
+var y_other = d3.scaleLinear()
+          .range([height, 0]);
 
-// Create SVG element for histogram
-let svg_hist_dens = d3.select("#hist_density")
-                .append("svg")
-                  .attr("width", w + margin.left + margin.right)
-                  .attr("height", h/2 + margin.top + margin.bottom)
-                .append("g")
-                  .attr("transform","translate(" + 1.3 * margin.left + "," + margin.top + ")")
-
-// Color scale for density
-var myColor = d3.scaleSequential().domain([0,5000]).interpolator(d3.interpolateBrBG)
-
-// Draw function for density histogram
-function draw_hist_density() {
-
-  // X axis
-  var x_hist = d3.scaleLinear()
-      .domain([0, d3.max(dataset, function(d) { return d.density; })])
-      .range([0, w]);
-
-  // X axis legend
-  svg_hist_dens.append("g")
-      .attr("transform", "translate(0," + h/2 + ")")
-      .call(d3.axisBottom(x_hist));
-
-  // Create histogram
-  var histogram = d3.histogram()
-       .value((d) => d.density)
-       .domain(x_hist.domain())
-       .thresholds(x_hist.ticks(100))
-
-  // Create bins
-  var bins = histogram(dataset)
-
-  // Y axis
-  var y_hist = d3.scaleLinear()
-                  .range([h/2, 0])
-                  .domain([0, d3.max(bins, (d) => d.length)])
-
-  // Y axis legend
-  svg_hist_dens.append("g")
-     .attr("class", "y axis")
-     .call(d3.axisLeft(y_hist));
-
-  // Plot histogram
-  svg_hist_dens.selectAll("rect")
-    .data(bins)
-    .enter()
-    .append("rect")
-      .attr("x", 1)
-      .attr("transform", function(d) { return "translate(" + x_hist(d.x0) + "," + y_hist(d.length) + ")"; })
-      .attr("width", 20)
-      .attr("height", function(d) { return h/2 - y_hist(d.length); })
-      .attr("data-legend","Other Candidates")
-      .style("fill", "#69b3a2")
-
-  svg_hist_dens.selectAll("new_rect")
-    .data(bins)
-    .enter()
-    .append("rect")
-      .attr("x", 1)
-      .attr("transform", function(d) { return "translate(" + x_hist(d.x0) + "," + y_hist(d.length) + ")"; })
-      .attr("width", 10)
-      .attr("height", function(d) { return h/2 - y_hist(d.length); })
-      .attr("data-legend","You")
-      .style("fill", "#ff0000")
-
-  legend = svg_hist_dens.append("g")
-    .attr("class","legend")
-    .attr("transform","translate(50,30)")
-    .style("font-size","12px")
-    .call(d3.legend)
-
-};
+// append the svg object to the body of the page
+var svg_other = d3.select("#hist_density")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
 
 
-// Load and cast data
-d3.csv("static/js/histo.txt")
-  .row( (d, i) => {
-    return {
-      density: +d.density
-    };
-  }
-)
-  .get( (error, rows) => {
-    console.log("Loaded " + rows.length + " rows");
-    if (rows.length > 0){
-       console.log("First row: ", rows[0])
-       console.log("Last row " , rows[rows.length - 1])
-    }
-    dataset = rows;
-    draw_hist_density();
-  }
-);
+// get the data
+d3.csv("static/js/hist_vid_glob.txt", function(error, data) {
+
+  if (error) throw error;
+
+  // format the data
+  data.forEach(function(d) {
+    d.VALUE = +d.VALUE;
+  });
+
+  // Scale the range of the data in the domains
+  x_other.domain(data.map(function(d) { return d.EMOTION; }));
+  y_other.domain([0, d3.max(data, function(d) { return d.VALUE; })]);
+
+  // append the rectangles for the bar chart
+  svg_other.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x_other(d.EMOTION); })
+      .attr("width", x_other.bandwidth())
+      .attr("y", function(d) { return y_other(d.VALUE); })
+      .attr("height", function(d) { return height - y_other(d.VALUE); })
+      .style("fill", "#b71b1b");
+
+  // add the x Axis
+  svg_other.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x_other));
+
+  // add the y Axis
+  svg_other.append("g")
+      .call(d3.axisLeft(y_other));
+
+});

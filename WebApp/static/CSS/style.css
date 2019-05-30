@@ -79,6 +79,14 @@ input[type="text"] {
   height: 100%;
 }
 
+.column_home {
+  align-content:center;
+  float: left;
+  width: 33%;
+  height: 100%;
+}
+
+
 .center_text {
   align-content:center;
   width: 50%;
@@ -274,4 +282,25 @@ textarea {
   left: 0;
   top: 0;
   opacity: 0;
+}
+
+.popup {
+    z-index:214748364;
+    width:20%;
+    height:20%;
+    position:absolute;
+    background:red;
+    opacity:1;
+}
+
+.bottomright {
+     position: fixed;
+     bottom: 0px;
+     right: 0px;
+}
+
+.demo {
+     background-color: HotPink;
+     padding: 20px;
+     margin: 5px;
 }
