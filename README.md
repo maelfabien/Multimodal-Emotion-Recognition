@@ -30,6 +30,10 @@ We have also written a paper on our work : https://www.overleaf.com/read/xvtrrfp
 
 In this project, we are exploring state of the art models in multimodal sentiment analysis. We have chosen to explore text, sound and video inputs and develop an ensemble model that gathers the information from all these sources and displays it in a clear and interpretable way.
 
+## 0. Technologies
+
+![image](/Presentation/Images/techno.png)
+
 ## I. Context
 
 Affective computing is a field of Machine Learning and Computer Science that studies the recognition and the processing of human affects.
