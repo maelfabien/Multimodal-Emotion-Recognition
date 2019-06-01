@@ -294,13 +294,13 @@ def text_1():
             d.write(line + "," + str(counts[line]) + '\n')
         d.close()
 
-    df_words_co = pd.read_csv('static/js/words_common.txt', sep=',')
+    df_words_co = pd.read_csv('static/js/words_common.txt', sep=',', error_bad_lines=False)
     df_words_co.FREQ = df_words_co.FREQ.apply(pd.to_numeric)
     df_words_co = df_words_co.groupby('WORDS').sum().reset_index()
     df_words_co.to_csv('static/js/words_common.txt', sep=",", index=False)
     common_words_others = df_words_co.sort_values(by=['FREQ'], ascending=False)['WORDS'][:15]
 
-    df_words_perso = pd.read_csv('static/js/words_perso.txt', sep=',')
+    df_words_perso = pd.read_csv('static/js/words_perso.txt', sep=',', error_bad_lines=False)
     common_words_perso = df_words_perso.sort_values(by=['FREQ'], ascending=False)['WORDS'][:15]
 
     return render_template('result.html', traits = probas, trait = trait, trait_others = trait_others, probas_others = probas_others, num_words = num_words, common_words = common_words_perso, common_words_others=common_words_others)
