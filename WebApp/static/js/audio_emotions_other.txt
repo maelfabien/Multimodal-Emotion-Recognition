@@ -221,3 +221,5 @@ Angry
 Disgust
 Neutral
 Neutral
+Sad
+Sad
