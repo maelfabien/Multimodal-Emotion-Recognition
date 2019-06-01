@@ -1,9 +1,17 @@
-var margin = {top: 30, right: 30, bottom: 70, left: 60},
-    width = 550 - margin.left - margin.right,
-    height = 550 - margin.top - margin.bottom;
+// Set the dimensions and margins of the graph
+var margin = {top: 20, right: 20, bottom: 30, left: 70},
+    width = 500 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+// set the ranges
+var x = d3.scaleBand()
+          .range([0, width])
+          .padding(0.1);
+var y = d3.scaleLinear()
+          .range([height, 0]);
 
 // append the svg object to the body of the page
-var svg = d3.select("#hist_density_perso")
+var svg = d3.select("#histo")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -11,38 +19,38 @@ var svg = d3.select("#hist_density_perso")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-// Parse the Data
-d3.csv("/static/js/text_perso.txt", function(data) {
+// get the data
+d3.csv("static/js/text_perso.txt", function(error, data) {
 
-  // X axis
-  var x = d3.scaleBand()
-    .range([ 0, width ])
-    .domain(data.map(function(d) { return d.Trait; }))
-    .padding(0.2);
-  svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
-    .selectAll("text")
-      .attr("transform", "translate(-10,0)rotate(-45)")
-      .style("text-anchor", "end");
+  if (error) throw error;
 
-  // Add Y axis
-  var y = d3.scaleLinear()
-    .domain([0, d3.max(data, function(d) { return d.Value; })])
-    .range([ height, 0]);
+  // format the data
+  data.forEach(function(d) {
+    d.Value = +d.Value;
+  });
 
-  svg.append("g")
-    .call(d3.axisLeft(y));
+  // Scale the range of the data in the domains
+  x.domain(data.map(function(d) { return d.Trait; }));
+  y.domain([0, d3.max(data, function(d) { return d.Value; })]);
 
-  // Bars
-  svg.selectAll("mybar")
-    .data(data)
-    .enter()
-    .append("rect")
+  // append the rectangles for the bar chart
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
       .attr("x", function(d) { return x(d.Trait); })
-      .attr("y", function(d) { return y(+d.Value); })
       .attr("width", x.bandwidth())
+      .attr("y", function(d) { return y(d.Value); })
       .attr("height", function(d) { return height - y(d.Value); })
-      .attr("fill", "#69b3a2")
+      .style("fill", "#b71b1b");
 
-})
+  // add the x Axis
+  svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // add the y Axis
+  svg.append("g")
+      .call(d3.axisLeft(y));
+
+});

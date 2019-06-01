@@ -20,62 +20,107 @@
 
   {% block body %}
 
-<h4>Dominant trait : </h4>
-<h1> {{trait}} </h1>
-
-<br>
-<label>Text length : {{num_words}}</label>
-<br>
-<br>
-<br>
-
 <div class="row">
-  <div class="column" id="left-col" align="center">
+  <h2><i>Perceived Psychological Traits</i></h2>
 
+  <br>
+   <br>
+  <div class="column_home" id="left-col" align="center">
+    <div>
     <div class="legend1">
-        <br>
-         <div class="legend1"> <p class="country-name"><span class="key-dot you"></span>Your personal psychological traits perceived</p> </div>
-      </div>
-      <div id="hist_density_perso"></div>
-  </div>
-  <div class="column" id="left-col" align="center">
-
-    <div class="column" id="right-col" align="center">
-
-    <div class="legend1">
-        <br>
-         <div class="legend1"> <p class="country-name"><span class="key-dot others"></span>Other candidates' personal psychological traits perceived</p> </div>
-      </div>
-      <div id="hist_density"></div>
-  </div>
-  <div class="column" id="right-col" align="center">
-
-    <div class="parent">
-      <p>Probabilities of each trait: </p>
-        <ul align="left">
-          {% for name, proba in traits%}
-            <li>{{name}} : {{proba}}%</li>
-          {% endfor %}
-        </ul>
+    <div class="legend1"> <p class="country-name"><span class="key-dot you"></span>You</p> </div>
+    <div class="legend1"> <p class="country-name"><span class="key-dot others"></span>Other candidates</p> </div>
     </div>
-    <br>
-      <hr width="50%" style="margin-left: 25%">
-    <br>
-    <div class="parent">
-      <p>Most common words : </p>
-        <ul align="left">
-           {% for el in common_words[:15] %}
-              <li>{{el[0]}}</li>
-            {% endfor %}
-        </ul>
+      <div id="histo"></div>
     </div>
+  </div>
 
+  <div class="column_home" id="left-col" align="center">
+      <br>
+      <p>Your most visible trait is : </p>
+        <br>
+        <h4> {{trait}} </h4>
+        <br>
+        <div class="parent">
+          <p>Psychological Traits : </p>
+            <ul align="left">
+            <li>Extraversion : {{traits[0]}}%</li>
+            <li>Neuroticism : {{traits[1]}}%</li>
+            <li>Agreeableness : {{traits[2]}}%</li>
+            <li>Conscientiousness : {{traits[3]}}%</li>
+            <li>Openness : {{traits[4]}}%</li>
+          </ul>
+      </div>
+      <br>
+    <br>
+  </div>
+
+  <div class="column_home" id="left-col" align="center">
+    <div class="parent">
+        <p>Most common words : </p>
+          <ul align="left">
+             {% for el in common_words %}
+                <li>{{el}}</li>
+              {% endfor %}
+          </ul>
+      </div>
   </div>
 </div>
 
- <script type="text/javascript" src="static/js/hist_txt.js"></script>
- <script type="text/javascript" src="static/js/hist_txt_perso.js"></script>
-  <!--<img src='newplot.png'>-->
+  <br>
+  <br>
+  <br>
+  <br>
+  <hr width="50%" style="margin-left: 25%; margin-right:25%">
+  <br>
+  <br>
+
+
+ <div class="row">
+  <h2><i>Other candidates</i></h2>
+
+  <br>
+   <br>
+  <div class="column_home" id="left-col" align="center">
+    <div>
+      <div id="hist_density"></div>
+    </div>
+  </div>
+
+  <div class="column_home" id="left-col" align="center">
+      <br>
+      <p>Their most visible trait is : </p>
+        <br>
+        <h4> {{trait_others}} </h4>
+        <br>
+        <div class="parent">
+          <p>Psychological Traits : </p>
+            <ul align="left">
+            <li>Extraversion : {{probas_others[0]}}%</li>
+            <li>Neuroticism : {{probas_others[1]}}%</li>
+            <li>Agreeableness : {{probas_others[2]}}%</li>
+            <li>Conscientiousness : {{probas_others[3]}}%</li>
+            <li>Openness : {{probas_others[4]}}%</li>
+            </ul>
+      </div>
+      <br>
+    <br>
+  </div>
+
+  <div class="column_home" id="left-col" align="center">
+    <div class="parent">
+        <p>Most common words : </p>
+          <ul align="left">
+             {% for el in common_words_others %}
+                <li>{{el}}</li>
+              {% endfor %}
+          </ul>
+      </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="static/js/hist_txt_perso.js"></script>
+<script type="text/javascript" src="static/js/hist_txt.js"></script>
 
   <form>
     <input type="button" value="Back" onclick="history.go(-1)">

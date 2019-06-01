@@ -212,4 +212,5 @@ class predict:
         y_pred = model.transform([X])
         
         K.clear_session()
+        
         return y_pred

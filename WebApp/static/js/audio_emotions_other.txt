@@ -218,3 +218,6 @@ Angry
 Angry
 Angry
 Angry
+Disgust
+Neutral
+Neutral
