@@ -71,7 +71,7 @@ def video_1() :
 @app.route('/dash', methods=("POST", "GET"))
 def dash():
     df_2 = pd.read_csv('static/js/histo_perso.txt')
-    
+
 
     def emo_prop(df_2) :
         return [int(100*len(df_2[df_2.density==0])/len(df_2)),
@@ -85,11 +85,11 @@ def dash():
     emotions = ["Angry", "Disgust", "Fear",  "Happy", "Sad", "Surprise", "Neutral"]
     emo_perso = {}
     emo_glob = {}
-    
+
     for i in range(len(emotions)) :
         emo_perso[emotions[i]] = len(df_2[df_2.density==i])
         emo_glob[emotions[i]] = len(df[df.density==i])
-    
+
     df_perso = pd.DataFrame.from_dict(emo_perso, orient='index')
     df_perso = df_perso.reset_index()
     df_perso.columns = ['EMOTION', 'VALUE']
@@ -99,7 +99,7 @@ def dash():
     df_glob = df_glob.reset_index()
     df_glob.columns = ['EMOTION', 'VALUE']
     df_glob.to_csv('static/js/hist_vid_glob.txt', sep=",", index=False)
-    
+
     emotion = df_2.density.mode()[0]
     emotion_other = df.density.mode()[0]
 
@@ -194,6 +194,9 @@ def audio_analysis():
     df_other = pd.DataFrame(emotion_dist_other, index=SER._emotion.values(), columns=['VALUE']).rename_axis('EMOTION')
     df_other.to_csv(os.path.join('static', 'js','audio_emotions_dist_other.txt'), sep=',')
 
+    # Sleep
+    time.sleep(0.5)
+
     return render_template('audio_analysis.html', emo=major_emotion, emo_other=major_emotion_other, prob=emotion_dist, prob_other=emotion_dist_other)
 
 
@@ -228,7 +231,7 @@ def get_text_info(text):
 
 @app.route('/text_1', methods=['POST'])
 def text_1():
-    
+
     text = request.form.get('text')
     traits = ['Extraversion', 'Neuroticism', 'Agreeableness', 'Conscientiousness', 'Openness']
     probas = get_personality(text)[0].tolist()
@@ -243,30 +246,30 @@ def text_1():
     perso['Agreeableness'] = probas[2]
     perso['Conscientiousness'] = probas[3]
     perso['Openness'] = probas[4]
-    
+
     df_text_perso = pd.DataFrame.from_dict(perso, orient='index')
     df_text_perso = df_text_perso.reset_index()
     df_text_perso.columns = ['Trait', 'Value']
-    
+
     df_text_perso.to_csv('static/js/text_perso.txt', sep=',', index=False)
-    
+
     means = {}
     means['Extraversion'] = np.mean(df_new['Extraversion'])
     means['Neuroticism'] = np.mean(df_new['Neuroticism'])
     means['Agreeableness'] = np.mean(df_new['Agreeableness'])
     means['Conscientiousness'] = np.mean(df_new['Conscientiousness'])
     means['Openness'] = np.mean(df_new['Openness'])
-    
+
     probas_others = [np.mean(df_new['Extraversion']), np.mean(df_new['Neuroticism']), np.mean(df_new['Agreeableness']), np.mean(df_new['Conscientiousness']), np.mean(df_new['Openness'])]
     probas_others = [int(e*100) for e in probas_others]
-    
+
     df_mean = pd.DataFrame.from_dict(means, orient='index')
     df_mean = df_mean.reset_index()
     df_mean.columns = ['Trait', 'Value']
 
     df_mean.to_csv('static/js/text_mean.txt', sep=',', index=False)
     trait_others = df_mean.ix[df_mean['Value'].idxmax()]['Trait']
-    
+
     probas = [int(e*100) for e in probas]
 
     data_traits = zip(traits, probas)
@@ -318,63 +321,63 @@ def text_pdf():
     text = parser.from_file(f.filename)['content']
     traits = ['Extraversion', 'Neuroticism', 'Agreeableness', 'Conscientiousness', 'Openness']
     probas = get_personality(text)[0].tolist()
-    
+
     df_text = pd.read_csv('static/js/text.txt', sep=",")
     df_new = df_text.append(pd.DataFrame([probas], columns=traits))
     df_new.to_csv('static/js/text.txt', sep=",", index=False)
-    
+
     perso = {}
     perso['Extraversion'] = probas[0]
     perso['Neuroticism'] = probas[1]
     perso['Agreeableness'] = probas[2]
     perso['Conscientiousness'] = probas[3]
     perso['Openness'] = probas[4]
-    
+
     df_text_perso = pd.DataFrame.from_dict(perso, orient='index')
     df_text_perso = df_text_perso.reset_index()
     df_text_perso.columns = ['Trait', 'Value']
-    
+
     df_text_perso.to_csv('static/js/text_perso.txt', sep=',', index=False)
-    
+
     means = {}
     means['Extraversion'] = np.mean(df_new['Extraversion'])
     means['Neuroticism'] = np.mean(df_new['Neuroticism'])
     means['Agreeableness'] = np.mean(df_new['Agreeableness'])
     means['Conscientiousness'] = np.mean(df_new['Conscientiousness'])
     means['Openness'] = np.mean(df_new['Openness'])
-    
+
     probas_others = [np.mean(df_new['Extraversion']), np.mean(df_new['Neuroticism']), np.mean(df_new['Agreeableness']), np.mean(df_new['Conscientiousness']), np.mean(df_new['Openness'])]
     probas_others = [int(e*100) for e in probas_others]
-    
+
     df_mean = pd.DataFrame.from_dict(means, orient='index')
     df_mean = df_mean.reset_index()
     df_mean.columns = ['Trait', 'Value']
-    
+
     df_mean.to_csv('static/js/text_mean.txt', sep=',', index=False)
     trait_others = df_mean.ix[df_mean['Value'].idxmax()]['Trait']
-    
+
     probas = [int(e*100) for e in probas]
-    
+
     data_traits = zip(traits, probas)
-    
+
     session['probas'] = probas
     session['text_info'] = {}
     session['text_info']["common_words"] = []
     session['text_info']["num_words"] = []
-    
+
     common_words, num_words, counts = get_text_info(text)
-    
+
     session['text_info']["common_words"].append(common_words)
     session['text_info']["num_words"].append(num_words)
-    
+
     trait = traits[probas.index(max(probas))]
-    
+
     with open("static/js/words_perso.txt", "w") as d:
         d.write("WORDS,FREQ" + '\n')
         for line in counts :
             d.write(line + "," + str(counts[line]) + '\n')
         d.close()
-    
+
     with open("static/js/words_common.txt", "a") as d:
         for line in counts :
             d.write(line + "," + str(counts[line]) + '\n')
