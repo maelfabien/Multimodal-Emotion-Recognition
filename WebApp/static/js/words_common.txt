@@ -39,7 +39,7 @@ Fabien,10
 Finance,10
 France,5
 French,4
-Hello,21
+Hello,27
 Hi,31
 I,80
 IT,5
@@ -49,6 +49,7 @@ L,9
 Lausanne,10
 MS,5
 Madam,5
+Mael,2
 Master,5
 Maël,10
 My,5
@@ -194,7 +195,7 @@ interests,5
 intern,5
 interns,5
 internship,15
-is,9
+is,11
 isn,3
 it,5
 join,5
@@ -223,8 +224,8 @@ motivates,1
 mountains,3
 moving,3
 multimodal,4
-my,31
-name,5
+my,33
+name,7
 navigate,3
 new,1
 non-life,5

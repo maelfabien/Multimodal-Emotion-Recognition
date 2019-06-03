@@ -139,7 +139,7 @@ def audio_recording():
     SER = speechEmotionRecognition()
 
     # Voice Recording
-    rec_duration = 5 # in sec
+    rec_duration = 16 # in sec
     rec_sub_dir = os.path.join('voice_recording.wav')
     SER.voice_recording(rec_sub_dir, duration=rec_duration)
 

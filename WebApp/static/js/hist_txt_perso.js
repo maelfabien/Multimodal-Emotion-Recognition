@@ -1,3 +1,5 @@
+d3.selectAll("svg").remove()
+
 // Set the dimensions and margins of the graph
 var margin = {top: 20, right: 20, bottom: 30, left: 70},
     width = 500 - margin.left - margin.right,

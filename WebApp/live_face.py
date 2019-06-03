@@ -124,7 +124,7 @@ def gen():
     global k
     k = 0
     
-    while end - start < 15 :
+    while end - start < 45 :
         
         k = k+1
         
