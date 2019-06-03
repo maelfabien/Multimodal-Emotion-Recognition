@@ -210,6 +210,9 @@ class speechEmotionRecognition:
             predict = np.argmax(self._model.predict(X), axis=1)
             predict = [self._emotion.get(emotion) for emotion in predict]
 
+        # Clear Keras session
+        K.clear_session()
+
         # Predict timestamp
         timestamp = np.concatenate([[chunk_size], np.ones((len(predict) - 1)) * chunk_step]).cumsum()
         timestamp = np.round(timestamp / sample_rate)
