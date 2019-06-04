@@ -129,6 +129,10 @@ def dash():
 # Audio Index
 @app.route('/audio_index', methods=['POST'])
 def audio_index():
+
+    # Flash message
+    flash("After pressing the button above, you will have 15sec to answer the question.")
+    
     return render_template('audio.html', display_button=False)
 
 # Audio Recording
