@@ -489,3 +489,15 @@ Disgust
 Disgust
 Disgust
 Disgust
+Angry
+Neutral
+Angry
+Neutral
+Disgust
+Angry
+Angry
+Disgust
+Disgust
+Angry
+Neutral
+Neutral

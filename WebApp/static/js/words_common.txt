@@ -1,7 +1,7 @@
 WORDS,FREQ
 0,2
 1,2
-10,9
+10,10
 16,2
 2,2
 20,2
@@ -53,7 +53,7 @@ apart,2
 application,16
 apply,6
 appropriate,2
-apps,9
+apps,10
 april,2
 art,2
 article,4
@@ -96,7 +96,7 @@ ch,2
 challenge,4
 challenging,4
 chance,4
-charge,11
+charge,12
 choose,2
 city,4
 clarification,2
@@ -170,8 +170,8 @@ description,2
 detection,2
 deutsche,30
 develop,8
-developer,18
-development,11
+developer,20
+development,12
 different,8
 difficulty,2
 digital,2
@@ -187,7 +187,7 @@ doctorate,2
 document,2
 docx,2
 doubt,2
-downloaded,9
+downloaded,10
 draw,4
 duality,4
 duty,2
@@ -248,7 +248,7 @@ french,2
 fully,2
 g,2
 gain,4
-game,18
+game,20
 generale,4
 genetics,2
 geneva,2
@@ -266,12 +266,12 @@ graduate,14
 graph,8
 gratify,4
 great,2
-group,13
+group,14
 growth,6
 guideline,2
 gynecology,2
-handle,11
-happy,13
+handle,12
+happy,14
 hard,6
 hear,2
 hec,2
@@ -303,7 +303,7 @@ increase,2
 increasingly,2
 incredible,2
 individual,4
-individually,9
+individually,10
 information,4
 infrastructure,2
 innovate,2
@@ -327,7 +327,7 @@ interview,4
 intrinsic,4
 introduce,2
 involve,4
-io,17
+io,18
 j,2
 job,8
 join,8
@@ -345,7 +345,7 @@ land,2
 landmark,2
 language,2
 large,2
-lately,9
+lately,10
 launch,2
 lausanne,8
 lead,6
@@ -403,10 +403,10 @@ mine,2
 minute,2
 miss,2
 mistake,2
-mobile,9
+mobile,10
 model,2
 modeling,2
-monitor,9
+monitor,10
 month,8
 motivate,2
 move,6
@@ -440,7 +440,7 @@ opportunity,16
 orchestra,4
 order,4
 otcex,4
-outcome,13
+outcome,14
 outlook,4
 outside,8
 outstanding,4
@@ -448,7 +448,7 @@ overall,4
 p,4
 paris,14
 paristech,6
-part,19
+part,20
 particular,4
 passion,4
 past,2
@@ -482,8 +482,8 @@ profession,4
 professional,4
 program,4
 programme,4
-progress,13
-project,43
+progress,14
+project,46
 promising,4
 provide,6
 public,2
@@ -552,7 +552,7 @@ short,2
 show,4
 showcase,2
 side,2
-since,17
+since,18
 sincerely,8
 sir,6
 sit,2
@@ -563,7 +563,7 @@ skill,12
 societe,4
 sound,2
 space,2
-speak,9
+speak,10
 speaker,2
 special,2
 specific,4
@@ -590,12 +590,12 @@ synergy,4
 synonymous,2
 system,2
 tackle,2
-take,21
+take,22
 talented,4
 task,2
 taste,4
 teach,8
-team,30
+team,32
 technical,4
 technicality,4
 technique,2
@@ -615,9 +615,9 @@ three,4
 thrill,4
 throughout,4
 thus,6
-time,21
+time,22
 tool,2
-top,9
+top,10
 topic,2
 trade,4
 trading,12
@@ -648,7 +648,7 @@ welcome,2
 well,8
 willing,4
 word,2
-work,31
+work,32
 working,2
 would,18
 write,4

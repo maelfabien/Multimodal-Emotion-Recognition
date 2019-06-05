@@ -1,5 +1,4 @@
 WORDS,FREQ
-lettrepe,1
 work,1
 group,1
 project,3
