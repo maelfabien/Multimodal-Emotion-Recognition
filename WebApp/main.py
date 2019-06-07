@@ -38,6 +38,7 @@ app.config['UPLOAD_FOLDER'] = '/Upload'
 ################################## INDEX #######################################
 ################################################################################
 
+# Home page
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
@@ -46,6 +47,7 @@ def index():
 ################################## RULES #######################################
 ################################################################################
 
+# Rules of the game
 @app.route('/rules')
 def rules():
     return render_template('rules.html')
@@ -54,16 +56,21 @@ def rules():
 ############################### VIDEO INTERVIEW ################################
 ################################################################################
 
+# Read the overall dataframe before the user starts to add his own data
 df = pd.read_csv('static/js/histo.txt', sep=",")
 
+# Video interview template
 @app.route('/video', methods=['POST'])
 def video() :
+    # Display a warning message
     flash('You will have 45 seconds to discuss the topic mentioned above. Due to restrictions, we are not able to redirect you once the video is over. Please move your URL to /dash instead of /video_1 once over. You will be able to see your results then.')
     return render_template('video.html')
 
+# Display the video flow (face, landmarks, emotion)
 @app.route('/video_1', methods=['POST'])
 def video_1() :
     try :
+        # Response is used to display a flow of information
         return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')
     #return Response(stream_template('video.html', gen()))
     except :
