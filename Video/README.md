@@ -2,7 +2,7 @@
 
 The aim of this section is to explore facial emotion recognition techniques from a live webcam video stream.
 
-![alt text](images/Read_Images/header.png)
+![alt text](Images/Read_Images/header.png)
 
 ## Data
 
@@ -10,7 +10,7 @@ The data set used for training is the **Kaggle FER2013** emotion recognition dat
 
 The data consists of 48x48 pixel grayscale images of faces. The faces have been automatically registered so that the face is more or less centered and occupies about the same amount of space in each image. The task is to categorize each face based on the emotion shown in the facial expression in to one of seven categories (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral).
 
-![alt text](images/Read_Images/bar_plot.png)
+![alt text](Images/Read_Images/bar_plot.png)
 
 ## Requirements
 
@@ -94,19 +94,19 @@ The treatment of the image is done through OpenCV
 
 *1. Read the initial image*
 
-![alt text](images/Read_Images/face_1.png)
+![alt text](Images/Read_Images/face_1.png)
 
 *2. Apply gray filter and find faces*
 
-![alt text](images/Read_Images/face_2.png)
+![alt text](Images/Read_Images/face_2.png)
 
 *3. Zoom and rescale each image*
 
-![alt text](images/Read_Images/face_5.png)
+![alt text](Images/Read_Images/face_5.png)
 
 Live prediction Illustration :
 
-![alt text](images/Read_Images/Mon-film-7_1.gif)
+![alt text](Images/Read_Images/Mon-film-7_1.gif)
 
 ## Sources
 - Visualization : https://github.com/JostineHo/mememoji/blob/master/data_visualization.ipynb
