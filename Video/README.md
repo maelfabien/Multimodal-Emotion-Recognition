@@ -108,6 +108,7 @@ The models have been trained on Google Colab using free GPUs.
 | DeXpression Architecture                |     --.-%     |
 | Hybrid (HOG, Landmarks, Image)          |     45.8%     |
 
+
 # Live prediction
 
 Since the input data is centered around the face, making a live prediction requires :
