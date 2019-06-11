@@ -21,9 +21,9 @@ We have also written a paper on our work : https://www.overleaf.com/read/xvtrrfp
 - [II. Data Sources](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#ii-data-sources)
 - [III. Downloads](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#iii-download)
 - [IV. Methodology](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#iv-methodology)
-  - [a. Text Processing](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#a-text-processing)
-  - [b. Audio Processing](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#b-audio-processing)
-  - [c. Video Processing](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#c-video-processing)
+  - [a. Text Analysis](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#a-text-processing)
+  - [b. Audio Analysis](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#b-audio-processing)
+  - [c. Video Analysis](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#c-video-processing)
   - [d. Ensemble Model](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#d-ensemble-model)
 - [V. How to use it ?](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#v-how-to-use-it-)
 - [VI. Research Paper](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vii-research-paper)
@@ -60,7 +60,7 @@ Our aim is to develop a model able to provide a live sentiment analysis with a v
 - Textual input, such as answers to questions that would be asked to a person from the platform
 - Video input from a live webcam or stored from an MP4 or WAV file, from which we split the audio and the images
 
-### a. Text Processing
+### a. [Text Analysis](https://github.com/maelfabien/Multimodal-Emotion-Recognition/tree/master/Text)
 
 ![image](/Presentation/Images/text_app.png)
 
@@ -89,7 +89,7 @@ Following the three blocks, we chose to stack 3 LSTM cells with 180 outputs each
 
 ![image](/Presentation/Images/text_pipeline.png)
 
-### b. Audio Processing
+### b. [Audio Analysis](https://github.com/maelfabien/Multimodal-Emotion-Recognition/tree/master/Audio)
 
 ![image](/Presentation/Images/audio_app.png)
 
@@ -120,7 +120,7 @@ To limit overfitting, we tuned the model with :
     <img src="/Presentation/Images/Accuracy_Speech.png" width="400" height="400" />
 </p>
 
-### c. Video Processing
+### c. [Video Analysis](https://github.com/maelfabien/Multimodal-Emotion-Recognition/tree/master/Video)
 
 ![image](/Presentation/Images/video_app.png)
 
@@ -160,6 +160,8 @@ When it comes to applying CNNs in real life application, being able to explain t
 ![image](/Presentation/Images/light.png)
 
 ### d. Ensemble Model
+
+The ensemble model has not been implemented on this version.
 
 ![image](/Presentation/Images/ensemble_pipeline.png)
 
