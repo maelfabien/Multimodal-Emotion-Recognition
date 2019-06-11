@@ -56,7 +56,7 @@ def gen():
     def detect_face(frame):
         
         #Cascade classifier pre-trained model
-        cascPath = 'Models/face_landmarks.dat'
+        cascPath = 'models/face_landmarks.dat'
         faceCascade = cv2.CascadeClassifier(cascPath)
         
         #BGR -> Gray conversion
@@ -127,13 +127,13 @@ def gen():
     (ebrStart, ebrEnd) = face_utils.FACIAL_LANDMARKS_IDXS["right_eyebrow"]
     
     # Load the pre-trained X-Ception model
-    model = load_model('Models/video.h5')
+    model = load_model('models/video.h5')
     
     # Load the face detector
     face_detect = dlib.get_frontal_face_detector()
     
     # Load the facial landmarks predictor
-    predictor_landmarks  = dlib.shape_predictor("Models/face_landmarks.dat")
+    predictor_landmarks  = dlib.shape_predictor("models/face_landmarks.dat")
 
     # Prediction vector
     predictions = []
@@ -274,11 +274,11 @@ def gen():
         cv2.putText(frame,'Number of Faces : ' + str(len(rects)),(40, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, 155, 1)
         
         # For flask, save image as t.jpg (rewritten at each step)
-        cv2.imwrite('t.jpg', frame)
+        cv2.imwrite('tmp/t.jpg', frame)
         
         # Yield the image at each step
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
+               b'Content-Type: image/jpeg\r\n\r\n' + open('tmp/t.jpg', 'rb').read() + b'\r\n')
         
         # Emotion mapping
         #emotion = {0:'Angry', 1:'Disgust', 2:'Fear', 3:'Happy', 4:'Neutral', 5:'Sad', 6:'Surprise'}

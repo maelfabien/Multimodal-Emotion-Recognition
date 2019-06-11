@@ -15,18 +15,19 @@ import requests
 from flask import Flask, render_template, session, request, redirect, flash, Response
 
 ### Audio imports ###
-from speechEmotionRecognition import *
+from library.speech_emotion_recognition import *
 
 ### Video imports ###
-from live_face import *
+from library.video_emotion_recognition import *
 
 ### Text imports ###
-from predict import *
+from library.text_emotion_recognition import *
+from library.text_preprocessor import *
 from nltk import *
 from tika import parser
 from werkzeug.utils import secure_filename
 import tempfile
-from text_preprocessor import *
+
 
 
 # Flask config
@@ -76,8 +77,8 @@ def video_1() :
     except :
         return None
 
-@app.route('/dash', methods=("POST", "GET"))
-def dash():
+@app.route('/video_dash', methods=("POST", "GET"))
+def video_dash():
     df_2 = pd.read_csv('static/js/histo_perso.txt')
 
 
@@ -127,7 +128,7 @@ def dash():
         else :
             return "Neutral"
 
-    return render_template('dash.html', emo=emotion_label(emotion), emo_other = emotion_label(emotion_other), prob = emo_prop(df_2), prob_other = emo_prop(df))
+    return render_template('video_dash.html', emo=emotion_label(emotion), emo_other = emotion_label(emotion_other), prob = emo_prop(df_2), prob_other = emo_prop(df))
 
 
 ################################################################################
@@ -152,7 +153,7 @@ def audio_recording():
 
     # Voice Recording
     rec_duration = 16 # in sec
-    rec_sub_dir = os.path.join('voice_recording.wav')
+    rec_sub_dir = os.path.join('tmp','voice_recording.wav')
     SER.voice_recording(rec_sub_dir, duration=rec_duration)
 
     # Send Flash message
@@ -162,8 +163,8 @@ def audio_recording():
 
 
 # Audio Emotion Analysis
-@app.route('/audio_analysis', methods=("POST", "GET"))
-def audio_analysis():
+@app.route('/audio_dash', methods=("POST", "GET"))
+def audio_dash():
 
     # Sub dir to speech emotion recognition model
     model_sub_dir = os.path.join('Models', 'audio.hdf5')
@@ -172,7 +173,7 @@ def audio_analysis():
     SER = speechEmotionRecognition(model_sub_dir)
 
     # Voice Record sub dir
-    rec_sub_dir = os.path.join('voice_recording.wav')
+    rec_sub_dir = os.path.join('tmp','voice_recording.wav')
 
     # Predict emotion in voice at each time step
     step = 1 # in sec
@@ -209,7 +210,7 @@ def audio_analysis():
     # Sleep
     time.sleep(0.5)
 
-    return render_template('audio_analysis.html', emo=major_emotion, emo_other=major_emotion_other, prob=emotion_dist, prob_other=emotion_dist_other)
+    return render_template('audio_dash.html', emo=major_emotion, emo_other=major_emotion_other, prob=emotion_dist, prob_other=emotion_dist_other)
 
 
 ################################################################################
@@ -321,7 +322,7 @@ def text_1():
     df_words_perso = pd.read_csv('static/js/words_perso.txt', sep=',', error_bad_lines=False)
     common_words_perso = df_words_perso.sort_values(by=['FREQ'], ascending=False)['WORDS'][:15]
 
-    return render_template('result.html', traits = probas, trait = trait, trait_others = trait_others, probas_others = probas_others, num_words = num_words, common_words = common_words_perso, common_words_others=common_words_others)
+    return render_template('text_dash.html', traits = probas, trait = trait, trait_others = trait_others, probas_others = probas_others, num_words = num_words, common_words = common_words_perso, common_words_others=common_words_others)
 
 ALLOWED_EXTENSIONS = set(['pdf'])
 
@@ -408,7 +409,7 @@ def text_pdf():
     df_words_perso = pd.read_csv('static/js/words_perso.txt', sep=',', error_bad_lines=False)
     common_words_perso = df_words_perso.sort_values(by=['FREQ'], ascending=False)['WORDS'][:15]
 
-    return render_template('result.html', traits = probas, trait = trait, trait_others = trait_others, probas_others = probas_others, num_words = num_words, common_words = common_words_perso, common_words_others=common_words_others)
+    return render_template('text_dash.html', traits = probas, trait = trait, trait_others = trait_others, probas_others = probas_others, num_words = num_words, common_words = common_words_perso, common_words_others=common_words_others)
 
 if __name__ == '__main__':
     app.run(debug=True)
