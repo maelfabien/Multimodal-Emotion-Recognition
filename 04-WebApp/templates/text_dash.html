@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+      <script type="text/javascript" src="/static/js/d3/d3.js"></script>
+      <script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    <title>Dashboard</title>
+
+  </head>
+  <body>
+
+  <a href="/">
+    <img src = "/static/CSS/images/text_head.png" width="100%">
+  </a>
+
+  <br>
+  <br>
+
+  {% block body %}
+
+<div class="row">
+  <h2><i>Perceived Psychological Traits</i></h2>
+
+  <br>
+   <br>
+  <div class="column_home" id="left-col" align="center">
+    <div>
+    <div class="legend1">
+    <div class="legend1"> <p class="country-name"><span class="key-dot you"></span>You</p> </div>
+    <div class="legend1"> <p class="country-name"><span class="key-dot others"></span>Other candidates</p> </div>
+    </div>
+      <div id="histo"></div>
+    </div>
+  </div>
+
+  <div class="column_home" id="left-col" align="center">
+      <br>
+      <p>Your most visible trait is : </p>
+        <br>
+        <h4> {{trait}} </h4>
+        <br>
+        <div class="parent">
+          <p>Psychological Traits : </p>
+            <ul align="left">
+            <li>Extraversion : {{traits[0]}}%</li>
+            <li>Neuroticism : {{traits[1]}}%</li>
+            <li>Agreeableness : {{traits[2]}}%</li>
+            <li>Conscientiousness : {{traits[3]}}%</li>
+            <li>Openness : {{traits[4]}}%</li>
+          </ul>
+      </div>
+      <br>
+    <br>
+  </div>
+
+  <div class="column_home" id="left-col" align="center">
+    <div class="parent">
+        <p>Most common words : </p>
+          <ul align="left">
+             {% for el in common_words %}
+                <li>{{el}}</li>
+              {% endfor %}
+          </ul>
+      </div>
+  </div>
+</div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <hr width="50%" style="margin-left: 25%; margin-right:25%">
+  <br>
+  <br>
+
+
+ <div class="row">
+  <h2><i>Other candidates</i></h2>
+
+  <br>
+   <br>
+  <div class="column_home" id="left-col" align="center">
+    <div>
+      <div id="hist_density"></div>
+    </div>
+  </div>
+
+  <div class="column_home" id="left-col" align="center">
+      <br>
+      <p>Their most visible trait is : </p>
+        <br>
+        <h4> {{trait_others}} </h4>
+        <br>
+        <div class="parent">
+          <p>Psychological Traits : </p>
+            <ul align="left">
+            <li>Extraversion : {{probas_others[0]}}%</li>
+            <li>Neuroticism : {{probas_others[1]}}%</li>
+            <li>Agreeableness : {{probas_others[2]}}%</li>
+            <li>Conscientiousness : {{probas_others[3]}}%</li>
+            <li>Openness : {{probas_others[4]}}%</li>
+            </ul>
+      </div>
+      <br>
+    <br>
+  </div>
+
+  <div class="column_home" id="left-col" align="center">
+    <div class="parent">
+        <p>Most common words : </p>
+          <ul align="left">
+             {% for el in common_words_others %}
+                <li>{{el}}</li>
+              {% endfor %}
+          </ul>
+      </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/static/js/hist_txt_perso.js"></script>
+<script type="text/javascript" src="/static/js/hist_txt_glob.js"></script>
+
+  <form>
+    <input type="button" value="Back" onclick="history.go(-1)">
+  </form>
+
+  {% endblock %}
+
+</body>
+</html>

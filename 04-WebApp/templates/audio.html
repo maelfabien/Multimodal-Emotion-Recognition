@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+    <title>Interview Simulator</title>
+  </head>
+  <body>
+      <!--
+     Audio image header
+      -->
+      <a href="/">
+        <img src = "/static/CSS/images/audio_head.png" width="100%">
+      </a>
+
+     {% block body %}
+
+         <!--
+        Interview question
+         -->
+        <br>
+        <blockquote>
+          <p class="quotation">Tell us about the last time you showed leadership.</p>
+        </blockquote>
+
+        <!--
+        Audio recording button
+        -->
+        <br>
+        <form action="/audio_recording" method="post">
+          <input type="submit" name="audio_recording" value="Start Recording">
+        </form>
+
+        <!--
+        Flash Messages
+        -->
+        <br>
+        <br>
+        <br>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="Won">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <br>
+        <br>
+
+        <!--
+        Emotion analysis button
+        -->
+        {% if display_button == True %}
+          <form action="/audio_dash" method="get">
+            <input type="submit" name="audio_analysis" value="Get Emotion Analysis">
+          </form>
+        {% endif %}
+
+    {% endblock %}
+
+    <!--
+    Rules
+    -->
+    <br>
+    <br>
+    <br>
+    <a href="/rules">How does it work ?</a>
+    <br>
+    <br>
+    <form>
+    <input type="button" value="Back" onclick="history.go(-1)">
+  </form>
+  
+    <br>
+  </body>
+</html>

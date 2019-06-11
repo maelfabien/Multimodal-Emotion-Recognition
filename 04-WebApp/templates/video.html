@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+    <title>Interview Simulator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <a href="/">
+      <img src = "/static/CSS/images/video_head.png" width="100%">
+    </a>
+
+ {% block body %}
+
+<br>
+<blockquote>
+  <p class="quotation">Tell us about the last time you showed leadership.</p>
+</blockquote> 
+
+<br>
+<form action="/video_1" method="post">
+  <input type="submit" name="video_1" value="Start Recording"> 
+</form>
+
+<br>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="Won">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+{% endblock %}
+
+<br>
+
+<br>
+ <a href="/rules">How does it work ?</a>
+
+<br>
+<br>
+<form>
+    <input type="button" value="Back" onclick="history.go(-1)">
+  </form>
+  
+  </body>
+</html>
+
+<script>
+</script>

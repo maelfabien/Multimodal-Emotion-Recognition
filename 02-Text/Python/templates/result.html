@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+
+{% block body %}
+
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text" href="/static/style.css">
+    <title>Personality traits recognition</title>
+  </head>
+
+<label>Dominant trait : {{trait}}</label>
+
+<label>Probabilities</label>
+<ol>
+{% for name, proba in traits%}
+  <li>{{name}} : {{proba}}</li>
+{% endfor %}
+</ol>
+
+<label>Most common words</label>
+<ol>
+{% for el in common_words[:15] %}
+  <li>{{el[0]}}</li>
+{% endfor %}
+</ol>
+
+<label>Text length : {{num_words}}</label>
+
+
+<form method="POST" action="/text">
+    <input type="text" id="text" name="text" required
+    minlength="1" maxlength="12000" size="500" href="/static/style.css"><br>
+    <input type="submit" value="Restart analysis" href="/static/style.css">
+</form>
+
+{% endblock %}
+

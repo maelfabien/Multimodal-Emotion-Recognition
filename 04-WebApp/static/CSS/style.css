@@ -1,0 +1,306 @@
+/* Le CSS va ici */
+html * {
+   font-family: Arial;
+}
+
+body {
+	text-align: center;
+  margin: 0;
+  padding: 0;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+} 
+
+table {
+  border-collapse: collapse;
+  align-content: center;
+  width: 50%;
+}
+
+
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+input#bar{
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    height: 50px;
+    width: 500px;
+    border:1px solid #eaeaea;
+    outline:none;
+}
+input:hover{
+    border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+}
+input:focus{
+    border-color:#4d90fe;
+}
+
+input[type="submit"] {
+    border-radius: 10px;
+    background: #45AF7F;
+    border: 1px solid #f2f2f2;
+    color: #ffffff;
+    cursor: default;
+    font-size: 14px;
+    font-weight: bold;
+    width: 200px;
+    padding: 0 16px;
+    height:50px;
+}
+
+input[type="submit"]:hover {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background: #f8f8f8;
+    border: 1px solid #c6c6c6;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    color: #222;
+}
+
+input[type="text"] {
+	font-size:1em;
+}
+
+.column {
+  align-content:center;
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+.column_home {
+  align-content:center;
+  float: left;
+  width: 33%;
+  height: 100%;
+}
+
+
+.center_text {
+  align-content:center;
+  width: 50%;
+  vertical-align: middle;
+  text-align:justify;
+  text-align-last: center;
+}
+
+#left-col {
+  align-content:center;
+  text-align: center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#right-col {
+  align-content:center;
+	text-align: center;
+}
+
+/* The alert message box */
+.Won {
+  padding: 20px;
+  background-color: #7cc958; /* Green */
+  color: white;
+  width: 500px;
+  margin: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.Lost {
+  padding: 20px;
+  background-color: #db6d6d; /* Green */
+  color: white;
+  width: 500px;
+  margin: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+ul {
+  padding: 20px; 
+  /*list-style-position: inside;*/
+  /*list-style-type: none;*/
+}
+
+/*
+input[type="submit"].but {
+  background-color: #AABFF2;
+}
+*/
+
+input[type="button"] {
+    border-radius: 10px;
+    background: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    color: #757575;
+    cursor: default;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100px;
+    padding: 0 16px;
+    height:50px;
+}
+
+input[type="button"]:hover {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background: #f8f8f8;
+    border: 1px solid #c6c6c6;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    color: #222;
+}
+
+blockquote{
+  font-size: 20px;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: .5em 10px;
+  padding: 0 10px;
+  padding: 10px 20px;
+  line-height: 1.4;
+}
+
+blockquote:before {
+  display: inline;
+  height: 0;
+  line-height: 0;
+  left: -10px;
+  position: relative;
+  top: 30px;
+  color: #ccc;
+  font-size: 3em;
+}
+
+p{
+  margin: 0;
+}
+
+footer{
+  margin:0;
+  text-align: right;
+  font-size: 1em;
+  font-style: italic;
+}
+
+textarea { 
+  font-size: 15px; 
+}
+
+.country-name {
+    margin: 0 !important;
+}
+
+.key-dot {
+    display: inline-block;
+    height: 10px;
+    margin-right: .5em;
+    width: 10px;
+}
+
+.legend {
+    margin-right:20px;
+}
+
+.you { background: #ff0000;}
+.others { background: #69b3a2;}
+}
+
+/*HTML Horizonal Legend*/
+.country-name {
+    margin: 0 !important;
+}
+.key-dot {
+    display: inline-block;
+    height: 10px;
+    margin-right: .5em;
+    width: 10px;
+}
+
+.parent {
+  text-align: center;
+}
+.parent > ul {
+  display: inline-block;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.popup {
+    z-index:214748364;
+    width:20%;
+    height:20%;
+    position:absolute;
+    background:red;
+    opacity:1;
+}
+
+.bottomright {
+     position: fixed;
+     bottom: 0px;
+     right: 0px;
+}
+
+.demo {
+     background-color: HotPink;
+     padding: 20px;
+     margin: 5px;
+}

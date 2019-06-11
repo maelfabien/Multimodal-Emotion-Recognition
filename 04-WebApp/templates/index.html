@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+    <title>Interview Simulator</title>
+
+  </head>
+  <body>
+    <a href="/">
+      <img src = "/static/CSS/images/head.png" width="100%">
+    </a>
+    <br>
+
+ {% block body %}
+
+  <!--
+  Video Interview presentation
+  -->
+  <div class="row">
+      <div class="column_home" id="left-col" align="center">
+        <img src = "/static/CSS/images/video.png" width="100%">
+        <div style="width:70%; text-align:justify; align-content:center; display:inline-block;">
+          <p> Use the video interview simulator and get a feedback on how our algorithm interprets your facial emotions compared to other candidates.</p>
+          <br>
+          <p> You will be provided a feedback on your facial emotions such as :
+          <ul>
+            <li>Anger</li>
+            <li>Happiness</li>
+            <li>Fear</li>
+            <li>Sadness</li>
+            <li>Surprise</li>
+            <li>Disgust</li>
+          </ul>
+          <br>
+          <br>
+        </div>
+      </div>
+
+      <!--
+      Audio Interview presentation
+      -->
+      <div class="column_home" id="left-col" align="center">
+        <img src = "/static/CSS/images/audio.png" width="100%">
+        <div style="width:70%; text-align:justify; align-content:center; display:inline-block;">
+          <p> Use the audio interview simulator and get a feedback on how our algorithm interprets your vocal emotions compared to other candidates.</p>
+          <br>
+          <p> You will be provided a feedback on your vocal emotions such as :
+          <ul>
+            <li>Anger</li>
+            <li>Happiness</li>
+            <li>Fear</li>
+            <li>Sadness</li>
+            <li>Surprise</li>
+            <li>Disgust</li>
+          </ul>
+          <br>
+          <br>
+        </div>
+      </div>
+
+      <!--
+      Text Interview presentation
+      -->
+      <div class="column_home" id="left-col" align="center">
+       <img src = "/static/CSS/images/text.png" width="100%">
+         <div style="width:70%; text-align:justify; align-content:center; display:inline-block;">
+           <p> Use the text interview simulator and get a feedback on how our algorithm interprets your psychological traits through compared to other candidates.</p>
+           <br>
+           <p> You will be provided a feedback on your Big Five Psychological traits, which include :
+           <ul>
+             <li>Openness</li>
+             <li>Conscientiousness</li>
+             <li>Extraversion</li>
+             <li>Agreeableness</li>
+             <li>Neuroticism</li>
+         </ul>
+         <br>
+         </div>
+     </div>
+
+  </div>
+
+
+  <div class="row">
+    <!--
+    Video Interview button
+    -->
+     <div class="column_home" id="left-col" align="center">
+         <form action="/video" method="post" align="center">
+         <input type="submit" name="video" value="Video Interview" align="center">
+       </form>
+     </div>
+
+     <!--
+     Audio Interview button
+     -->
+     <div class="column_home" id="left-col" align="center">
+         <form action="/audio_index" method="post" align="center">
+         <input type="submit" name="audio_index" value="Audio Interview" align="center">
+       </form>
+     </div>
+
+    <!--
+     Text Interview button
+     -->
+    <div class="column_home" id="left-col" align="center">
+        <form action="/text" method="post" align="center">
+          <input type="submit" name="text" value="Text Interview" align="center">
+        </form>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+
+      {# Fin du bloc "body" #}
+    {% endblock %}
+
+    <br>
+    <br>
+    <a href="/rules">How does it work ?</a>
+    <br>
+    <br>
+
+  </body>
+</html>

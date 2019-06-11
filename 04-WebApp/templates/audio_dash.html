@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+      <script type="text/javascript" src="/static/js/d3/d3.js"></script>
+      <script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    <title>Dashboard</title>
+
+  </head>
+  <body>
+
+  <a href="/">
+    <img src = "/static/CSS/images/audio_head.png" width="100%">
+  </a>
+
+  <br>
+  <br>
+
+  {% block body %}
+
+ <div class="row">
+   <h2><i>Perceived emotions</i></h2>
+   <br>
+   <br>
+  <div class="column" id="left-col" align="center">
+    <div class="legend1">
+    <div class="legend1"> <p class="country-name"><span class="key-dot you"></span>You</p> </div>
+    <div class="legend1"> <p class="country-name"><span class="key-dot others"></span>Other candidates</p> </div>
+    </div>
+      <div id="audio_emotions_dist"></div>
+  </div>
+  <div class="column" id="left-col" align="center">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+        <p>Your most frequent emotion is : <b>{{emo}}</b></p>
+        <div class="parent">
+          <ul align="left">
+            <li>Angry    : {{prob[0]}}%</li>
+            <li>Disgust  : {{prob[1]}}%</li>
+            <li>Fear     : {{prob[2]}}%</li>
+            <li>Happy    : {{prob[3]}}%</li>
+            <li>Neutral  : {{prob[4]}}%</li>
+            <li>Sad      : {{prob[5]}}%</li>
+            <li>Surprise : {{prob[6]}}%</li>
+          </ul>
+        </div>
+      <br>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <hr width="50%" style="margin-left: 25%; margin-right:25%">
+  <br>
+  <br>
+
+  <div class="row">
+    <h2><i>Other candidates</i></h2>
+    <br>
+    <br>
+   <div class="column" id="left-col" align="center">
+       <div id="audio_emotions_dist_other"></div>
+   </div>
+   <div class="column" id="left-col" align="center">
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+         <p>Other candidates most frequent emotion is : <b>{{emo_other}}</b></p>
+         <div class="parent">
+           <ul align="left">
+             <li>Angry    : {{prob_other[0]}}%</li>
+             <li>Disgust  : {{prob_other[1]}}%</li>
+             <li>Fear     : {{prob_other[2]}}%</li>
+             <li>Happy    : {{prob_other[3]}}%</li>
+             <li>Neutral  : {{prob_other[4]}}%</li>
+             <li>Sad      : {{prob_other[5]}}%</li>
+             <li>Surprise : {{prob_other[6]}}%</li>
+           </ul>
+         </div>
+       <br>
+     </div>
+  </div>
+
+  <script type="text/javascript" src="/static/js/hist_aud_perso.js"></script>
+  <script type="text/javascript" src="/static/js/hist_aud_glob.js"></script>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <form>
+    <input type="button" value="Back" onclick="history.go(-1)">
+  </form>
+
+  {% endblock %}
+
+</body>
+</html>

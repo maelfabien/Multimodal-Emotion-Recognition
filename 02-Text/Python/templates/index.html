@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>Personality traits recognition</title>
+  </head>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+  <body>
+    {% block body %}
+      <form method="POST" action="/text">
+   <input type="text" id="text" name="text" required
+       minlength="1" maxlength="12000" size="500" href="/static/style.css"><br>
+   <input type="submit" value="Start analysis" href="/static/style.css">
+  </form>
+    {% endblock %}
+  </body>
+</html>
+
