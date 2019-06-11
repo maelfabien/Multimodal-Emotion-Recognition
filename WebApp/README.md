@@ -23,3 +23,16 @@ The user should be able to click on any of the sections, take the interview, and
 For both the text and the audio, a button will directly allow you to get feedback. A dashboard displays your performance compared to other candidates.
 
 For the video, due to restrictions of Flask, we are recording the video input for 45 seconds. After this time, the image will freeze. Simply switch the URL to `/video_dash` instead of `/video1` in the URL bar to go to the dashboard.
+
+## Organization
+
+The organization of the project is the following :
+
+- Models : All the pre-trained models used by the WebApp
+- library : The Python scripts that run the emotion detection algorithms
+- static :
+  - CSS : The CSS style sheet and fixed images to display
+  - JS : The JavaScript of the app (D3.js) and the databases that store the information
+- templates : All the HTML pages of the project
+- tmp : Temporary files (i.e. an image from video interview, an audio file or a PDF)
+- main.py : The Flask page that calls the functions and redirects to HTML files
