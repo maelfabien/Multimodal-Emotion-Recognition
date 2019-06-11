@@ -48,8 +48,8 @@ input:focus{
 }
 
 input[type="submit"] {
-    border-radius: 2px;
-    background: #394080;
+    border-radius: 10px;
+    background: #45AF7F;
     border: 1px solid #f2f2f2;
     color: #ffffff;
     cursor: default;
@@ -167,7 +167,7 @@ input[type="submit"].but {
 */
 
 input[type="button"] {
-    border-radius: 2px;
+    border-radius: 10px;
     background: #f2f2f2;
     border: 1px solid #f2f2f2;
     color: #757575;
