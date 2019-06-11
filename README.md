@@ -6,11 +6,13 @@ Don't hesitate to ⭐ the repo if you enjoy our work !
 
 ## In a nutshell
 
-We developped a multimodal emotion recognition platform to analyze the emotions of job candidates, in partnership with the French Employment Agency. We analye facial, vocal and textual emotions, using mostly deep learning based approaches. We deployed a web app using Flask :
+We developped a multimodal emotion recognition platform to analyze the emotions of job candidates, in partnership with the French Employment Agency. 
+
+We analye facial, vocal and textual emotions, using mostly deep learning based approaches. We deployed a web app using Flask :
 
 ![image](/Presentation/Images/webapp2.png)
 
-The tool can be accessed here : https://emotion.onrender.com/
+The tool can be accessed from the WebApp repository, by installing the requirements and launching `main.py`.
 
 We have also written a paper on our work : https://www.overleaf.com/read/xvtrrfpvzwhf
 
@@ -25,8 +27,7 @@ We have also written a paper on our work : https://www.overleaf.com/read/xvtrrfp
   - [d. Ensemble Model](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#d-ensemble-model)
 - [V. How to use it ?](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#v-how-to-use-it-)
 - [VI. Research Paper](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#vii-research-paper)
-- [VII. Deployment and WebApp](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
-- [VIII. Deployment](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
+- [VII. Deployment](https://github.com/maelfabien/Multimodal-Emotion-Recognition/blob/master/README.md#viii-deployment)
 
 In this project, we are exploring state of the art models in multimodal sentiment analysis. We have chosen to explore text, sound and video inputs and develop an ensemble model that gathers the information from all these sources and displays it in a clear and interpretable way.
 
@@ -61,6 +62,8 @@ Our aim is to develop a model able to provide a live sentiment analysis with a v
 
 ### a. Text Processing
 
+![image](/Presentation/Images/text_app.png)
+
 #### Pipeline
 
 The text-based personality recognition pipeline has the following structure :
@@ -87,6 +90,8 @@ Following the three blocks, we chose to stack 3 LSTM cells with 180 outputs each
 ![image](/Presentation/Images/text_pipeline.png)
 
 ### b. Audio Processing
+
+![image](/Presentation/Images/audio_app.png)
 
 #### Pipeline
 
@@ -116,6 +121,8 @@ To limit overfitting, we tuned the model with :
 </p>
 
 ### c. Video Processing
+
+![image](/Presentation/Images/video_app.png)
 
 #### Pipeline
 
@@ -159,34 +166,21 @@ When it comes to applying CNNs in real life application, being able to explain t
 ## V. How to use it ?
 
 There are several resources available :
-- the working notebooks can be found in the Text/Video/Sound sections
+- the working notebooks can be found in the Text/Video/Audio sections
 - the final notebooks can be accessed through the Google Colab link in the table at the beginning
-- the web app can be either started locally : clone the project, and in the WebApp repository, launch `python app.py`
-- or through the web app link that we provide : https://emotion.onrender.com/
 
-To run individual algorithms, you can :
-- Run the file `live_face.py` to run the facial emotion recognition.
-
-![image](/Presentation/Images/Mon-film-7_1.gif)
-
-- The other algorithms are packaged to be ran into the WebApp directly, and take text and audio files as inputs.
+To use the web app :
+- Clone the project locally
+- Go in the WebApp folder
+- Run `$ pip install -r requirements.txt``
+- Launch `python app.py`
 
 ## VI. Research Paper
 
 If you are interested in the research paper we are working on currently, feel free to check out this link :
 https://www.overleaf.com/read/xvtrrfpvzwhf
 
-## VII. Deployment and WebApp
-
-The WebApp folder is a Flask WebApp that deploys our algorithms online. Our work can be accessed here : https://emotion.onrender.com/
-
-We created a web interface in which the user can :
-- try a facial emotion recognition interview, and get a feedback on the perceived facial and vocal emotions
-- or try a text psychological traits recognition, either by typing an answer to a question asked, or by uploading a PDF cover letter for example
-
-![image](/Presentation/Images/webapp2.png)
-
-## VIII. Contributors
+## VII. Contributors
 
 <table><tr><td align="center">
 	<a href="https://github.com/Anatoli-deBRADKE">
