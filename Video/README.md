@@ -22,7 +22,6 @@ Numpy : 1.15.4
 OpenCV : 4.0.0
 ```
 
-
 ## Files
 
 The different files that can be found in this repo :
@@ -108,6 +107,10 @@ The models have been trained on Google Colab using free GPUs.
 | DeXpression Architecture                |     --.-%     |
 | Hybrid (HOG, Landmarks, Image)          |     45.8%     |
 
+# Download the model and the data
+| Modality | Data | Processed Data (for training) | Pre-trained Model | Colab Notebook | Other |
+|:--------:|:----:|:-----------------------------:|:-----------------:|:--------------:|:-----:|
+| Video | [here](https://drive.google.com/file/d/1hWqVdOYNvCuioiDk-CBgMtKOgl05aA--/view?usp=sharing) | [X-train](https://drive.google.com/file/d/14xs-0nZNQuuMdtTOwqcJQm_GZ_rTO8mB/view?usp=sharing) [y-train](https://drive.google.com/file/d/1EX5KkPquwpHD9ZKpTxGhk3_RFmVDD8bf/view?usp=sharing) [X-test](https://drive.google.com/file/d/1TFH3kvGDS0iWjqKYo3lZuIu65I9h0LYr/view?usp=sharing) [y-test](https://drive.google.com/file/d/1HTzGc_J4kTQRFvLIvcMQA3mt6PnyNT53/view?usp=sharing) |  [Weights](https://drive.google.com/file/d/1-L3LnxVXv4vByg_hqxXMZPvjKSQ12Ycs/view?usp=sharing) [Model](https://drive.google.com/file/d/1_dpHN9L6hsQYzTX2zk9K5JF2CZ1FOcZh/view?usp=sharing) | [Colab Notebook](https://colab.research.google.com/drive/1dV1IvYLV24vXGvyzMFNAA18csu8btV2-) | [Face Detect Model](https://drive.google.com/file/d/18YMrAStwXbN-aPZ45ylNrdAXQQPJx0Hd/view?usp=sharing) |
 
 # Live prediction
 
