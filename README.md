@@ -8,7 +8,7 @@ Don't hesitate to ⭐ the repo if you enjoy our work !
 
 We developped a multimodal emotion recognition platform to analyze the emotions of job candidates, in partnership with the French Employment Agency. We analye facial, vocal and textual emotions, using mostly deep learning based approaches. We deployed a web app using Flask :
 
-![image](/Presentation/Images/webapp.png)
+![image](/Presentation/Images/webapp2.png)
 
 The tool can be accessed here : https://emotion.onrender.com/
 
@@ -184,7 +184,7 @@ We created a web interface in which the user can :
 - try a facial emotion recognition interview, and get a feedback on the perceived facial and vocal emotions
 - or try a text psychological traits recognition, either by typing an answer to a question asked, or by uploading a PDF cover letter for example
 
-![image](/Presentation/Images/webapp.png)
+![image](/Presentation/Images/webapp2.png)
 
 ## VIII. Contributors
 
