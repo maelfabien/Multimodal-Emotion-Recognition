@@ -275,7 +275,7 @@ happy,14
 hard,6
 hear,2
 hec,2
-hello,31
+hello,33
 help,2
 hesitate,2
 high,6

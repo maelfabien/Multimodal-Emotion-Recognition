@@ -77,8 +77,11 @@ def video_1() :
     except :
         return None
 
+# Dashboard
 @app.route('/video_dash', methods=("POST", "GET"))
 def video_dash():
+    
+    # Load personal history
     df_2 = pd.read_csv('static/js/db/histo_perso.txt')
 
 
