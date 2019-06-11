@@ -26,17 +26,13 @@ OpenCV : 4.0.0
 ## Files
 
 The different files that can be found in this repo :
-- `Notebook_Images` : A set of pictures saved from the notebooks for the final report
-- `Test_Images` : A set of pictures used to test the pipeline of image treatment
-- `Model_Images` : Models structures saved using `plot_model`
-- `Resources` : Some resources that have to used to build the notebooks
-- `Other_Notebooks` : Notebooks that have been created but were not used in the final version
-- `Emoji` : A group of Emojis used to display the emotion in the live prediction version
-- `emotionaldan` : A folder dedicated to Deep Alignment Network 
-- `haarcascade_frontalface_default.xml` : Pre-trained Frontal Face Detection Algorithm
+- `Images` : All pictures used in the ReadMe, in the notebooks or save from the models
+- `Resources` : Some resources that have been used to build the notebooks
+- `Notebooks` : Notebooks that have been used to obtain the final model
+- `Model`: Contains the pre-trained models for emotion recognition, face detection and facial landmarks
+- `Python` : The code to launch the live facial emotion recognition
 
-We'll now cover into more details what each notebook contains :
-- `00-Fer2013.ipynb` : Gathers all the work
+Among the notebooks, the role of each notebook is the following :
 - `01-Pre-Processing.ipynb` : Transform the initial CSV file into train and test data sets
 - `02-HOG_Features.ipynb` : A manual extraction of features (Histograms of Oriented Gradients, Landmarks) and SVM
 - `03-Pre-Processing-EmotionalDAN.ipynb` : An implementation of Deep Alignment Networks to extract features
@@ -48,8 +44,42 @@ We'll now cover into more details what each notebook contains :
 - `09-Prediction.ipynb` : Live Webcam prediction of the model
 - `10-Hybrid.ipynb` : A hybrid deep learning model taking both the HOG/Landmarks model and the image
 
-The Model weights can be found on this public drive :
-*Link to Come*
+## Video Processing
+
+#### Pipeline
+
+The video processing pipeline was built the following way :
+- Launch the webcam
+- Identify the face by Histogram of Oriented Gradients
+- Zoom on the face
+- Dimension the face to 48 * 48 pixels
+- Make a prediction on the face using our pre-trained model
+- Also identify the number of blinks on the facial landmarks on each picture
+
+#### Model
+
+The model we have chosen is an **XCeption** model, since it outperformed the other approaches we developed so far. We tuned the model with :
+- Data augmentation
+- Early stopping
+- Decreasing learning rate on plateau
+- L2-Regularization
+- Class weight balancing
+- And kept the best model
+
+As you might have understood, the aim was to limit overfitting as much as possible in order to obtain a robust model.
+
+- To know more on how we prevented overfitting, check this article : https://maelfabien.github.io/deeplearning/regu/
+- To know more on the **XCeption** model, check this article : https://maelfabien.github.io/deeplearning/xception/
+
+![image](/Images/Read_Images/model_fit.png)
+
+The XCeption architecture is based on DepthWise Separable convolutions that allow to train much fewer parameters, and therefore reduce training time on Colab's GPUs to less than 90 minutes.
+
+![image](/Images/Read_Images/video_pipeline2.png)
+
+When it comes to applying CNNs in real life application, being able to explain the results is a great challenge. We can indeed  plot class activation maps, which display the pixels that have been activated by the last convolution layer. We notice how the pixels are being activated differently depending on the emotion being labeled. The happiness seems to depend on the pixels linked to the eyes and mouth, whereas the sadness or the anger seem for example to be more related to the eyebrows.
+
+![image](/Images/Read_Images/light.png)
 
 ## Performance
 
