@@ -1,5 +1,7 @@
 # Text-based Personality Traits Recognition
 
+![image](text_app.png)
+
 In this section you will find all resources, models and Python scripts relative to text-based personality traits recognition.
 
 ## Introduction
