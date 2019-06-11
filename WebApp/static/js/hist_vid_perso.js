@@ -21,7 +21,7 @@ var svg = d3.select("#hist_density_perso")
 
 
 // get the data
-d3.csv("static/js/hist_vid_perso.txt", function(error, data) {
+d3.csv("static/js/db/hist_vid_perso.txt", function(error, data) {
 
   if (error) throw error;
 

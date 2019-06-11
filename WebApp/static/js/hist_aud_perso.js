@@ -23,7 +23,7 @@ var svg = d3.select("#audio_emotions_dist")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // get the data
-d3.csv("static/js/audio_emotions_dist.txt", function(error, data) {
+d3.csv("static/js/db/audio_emotions_dist.txt", function(error, data) {
 
   if (error) throw error;
 

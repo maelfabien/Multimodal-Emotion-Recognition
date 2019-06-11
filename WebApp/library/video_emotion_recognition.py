@@ -285,12 +285,12 @@ def gen():
         
         # Once reaching the end, write the results to the personal file and to the overall file
         if end-start > max_time - 1 :
-            with open("static/js/histo_perso.txt", "w") as d:
+            with open("db/histo_perso.txt", "w") as d:
                 d.write("density"+'\n')
                 for val in predictions :
                     d.write(str(val)+'\n')
                 d.close()
-            with open("static/js/histo.txt", "a") as d:
+            with open("db/histo.txt", "a") as d:
                 for val in predictions :
                     d.write(str(val)+'\n')
                 d.close()

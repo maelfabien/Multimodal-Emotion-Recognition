@@ -22,7 +22,7 @@ var svg = d3.select("#histo")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // get the data
-d3.csv("static/js/text_perso.txt", function(error, data) {
+d3.csv("static/js/db/text_perso.txt", function(error, data) {
 
   if (error) throw error;
 

@@ -275,6 +275,7 @@ happy,14
 hard,6
 hear,2
 hec,2
+hello,31
 help,2
 hesitate,2
 high,6
@@ -600,10 +601,10 @@ technical,4
 technicality,4
 technique,2
 technology,2
-telecom,6
+telecom,9
 tensorflow,2
 term,4
-text,2
+text,6
 thank,4
 thanks,4
 theory,2
