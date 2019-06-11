@@ -71,15 +71,15 @@ As you might have understood, the aim was to limit overfitting as much as possib
 - To know more on how we prevented overfitting, check this article : https://maelfabien.github.io/deeplearning/regu/
 - To know more on the **XCeption** model, check this article : https://maelfabien.github.io/deeplearning/xception/
 
-![image](/Images/Read_Images/model_fit.png)
+![image](Images/Read_Images/model_fit.png)
 
 The XCeption architecture is based on DepthWise Separable convolutions that allow to train much fewer parameters, and therefore reduce training time on Colab's GPUs to less than 90 minutes.
 
-![image](/Images/Read_Images/video_pipeline2.png)
+![image](Images/Read_Images/video_pipeline2.png)
 
 When it comes to applying CNNs in real life application, being able to explain the results is a great challenge. We can indeed  plot class activation maps, which display the pixels that have been activated by the last convolution layer. We notice how the pixels are being activated differently depending on the emotion being labeled. The happiness seems to depend on the pixels linked to the eyes and mouth, whereas the sadness or the anger seem for example to be more related to the eyebrows.
 
-![image](/Images/Read_Images/light.png)
+![image](Images/Read_Images/light.png)
 
 ## Performance
 
