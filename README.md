@@ -10,7 +10,7 @@ We developped a multimodal emotion recognition platform to analyze the emotions 
 
 We analye facial, vocal and textual emotions, using mostly deep learning based approaches. We deployed a web app using Flask :
 
-![image](/Presentation/Images/webapp2.png)
+![image](/00-Presentation/Images/webapp2.png)
 
 The tool can be accessed from the WebApp repository, by installing the requirements and launching `main.py`.
 
@@ -33,7 +33,7 @@ In this project, we are exploring state of the art models in multimodal sentimen
 
 ## 0. Technologies
 
-![image](/Presentation/Images/techno.png)
+![image](/00-Presentation/Images/techno.png)
 
 ## I. Context
 
@@ -62,7 +62,7 @@ Our aim is to develop a model able to provide a live sentiment analysis with a v
 
 ### a. [Text Analysis](https://github.com/maelfabien/Multimodal-Emotion-Recognition/tree/master/Text)
 
-![image](/Presentation/Images/text_app.png)
+![image](/00-Presentation/Images/text_app.png)
 
 #### Pipeline
 
@@ -87,11 +87,11 @@ The one-dimensional convolution layer plays a role comparable to feature extract
 Our final model first includes 3 consecutive blocks consisting of the following four layers : one-dimensional convolution layer - max pooling - spatial dropout - batch normalization. The numbers of convolution filters are respectively 128, 256 and 512 for each block, kernel size is 8, max pooling size is 2 and dropout rate is 0.3.
 Following the three blocks, we chose to stack 3 LSTM cells with 180 outputs each. Finally, a fully connected layer of 128 nodes is added before the last classification layer.
 
-![image](/Presentation/Images/text_pipeline.png)
+![image](/00-Presentation/Images/text_pipeline.png)
 
 ### b. [Audio Analysis](https://github.com/maelfabien/Multimodal-Emotion-Recognition/tree/master/Audio)
 
-![image](/Presentation/Images/audio_app.png)
+![image](/00-Presentation/Images/audio_app.png)
 
 #### Pipeline
 
@@ -109,7 +109,7 @@ The model we have chosen is a **Time Distributed Convolutional Neural Network**.
 The main idea of a **Time Distributed Convolutional Neural Network** is to apply a rolling window (fixed size and time-step) all along the log-mel-spectrogram.
 Each of these windows will be the entry of a convolutional neural network, composed by four Local Feature Learning Blocks (LFLBs) and the output of each of these convolutional networks will be fed into a recurrent neural network composed by 2 cells LSTM (Long Short Term Memory) to learn the long-term contextual dependencies. Finally, a fully connected layer with *softmax* activation is used to predict the emotion detected in the voice.
 
-![image](/Presentation/Images/sound_pipeline.png)
+![image](/00-Presentation/Images/sound_pipeline.png)
 
 To limit overfitting, we tuned the model with :
 - Audio data augmentation
@@ -122,7 +122,7 @@ To limit overfitting, we tuned the model with :
 
 ### c. [Video Analysis](https://github.com/maelfabien/Multimodal-Emotion-Recognition/tree/master/Video)
 
-![image](/Presentation/Images/video_app.png)
+![image](/00-Presentation/Images/video_app.png)
 
 #### Pipeline
 
@@ -149,21 +149,21 @@ As you might have understood, the aim was to limit overfitting as much as possib
 - To know more on how we prevented overfitting, check this article : https://maelfabien.github.io/deeplearning/regu/
 - To know more on the **XCeption** model, check this article : https://maelfabien.github.io/deeplearning/xception/
 
-![image](/Presentation/Images/model_fit.png)
+![image](/00-Presentation/Images/model_fit.png)
 
 The XCeption architecture is based on DepthWise Separable convolutions that allow to train much fewer parameters, and therefore reduce training time on Colab's GPUs to less than 90 minutes.
 
-![image](/Presentation/Images/video_pipeline2.png)
+![image](/00-Presentation/Images/video_pipeline2.png)
 
 When it comes to applying CNNs in real life application, being able to explain the results is a great challenge. We can indeed  plot class activation maps, which display the pixels that have been activated by the last convolution layer. We notice how the pixels are being activated differently depending on the emotion being labeled. The happiness seems to depend on the pixels linked to the eyes and mouth, whereas the sadness or the anger seem for example to be more related to the eyebrows.
 
-![image](/Presentation/Images/light.png)
+![image](/00-Presentation/Images/light.png)
 
 ### d. Ensemble Model
 
 The ensemble model has not been implemented on this version.
 
-![image](/Presentation/Images/ensemble_pipeline.png)
+![image](/00-Presentation/Images/ensemble_pipeline.png)
 
 ## V. How to use it ?
 
