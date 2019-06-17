@@ -1,6 +1,6 @@
 # Text-based Personality Traits Recognition
 
-![image](/00-Presentation/text_app.png)
+![image](/00-Presentation/Images/text_app.png)
 
 In this section you will find all resources, models and Python scripts relative to text-based personality traits recognition.
 
