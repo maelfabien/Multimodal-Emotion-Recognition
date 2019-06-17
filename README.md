@@ -6,7 +6,7 @@ Don't hesitate to ⭐ the repo if you enjoy our work !
 
 ## In a nutshell
 
-We developped a multimodal emotion recognition platform to analyze the emotions of job candidates, in partnership with the French Employment Agency. 
+We developped a multimodal emotion recognition platform to analyze the emotions of job candidates, in partnership with the French Employment Agency.
 
 We analye facial, vocal and textual emotions, using mostly deep learning based approaches. We deployed a web app using Flask :
 
@@ -117,7 +117,7 @@ To limit overfitting, we tuned the model with :
 - And kept the best model
 
 <p align="center">
-    <img src="/Presentation/Images/Accuracy_Speech.png" width="400" height="400" />
+    <img src="/00-Presentation/Images/Accuracy_Speech.png" width="400" height="400" />
 </p>
 
 ### c. [Video Analysis](https://github.com/maelfabien/Multimodal-Emotion-Recognition/tree/master/Video)
@@ -199,5 +199,5 @@ https://www.overleaf.com/read/xvtrrfpvzwhf
 	<td align="center"><a href="https://github.com/STF-R"><img src="https://avatars0.githubusercontent.com/u/43505879?v=4" width="100px;" alt="mfix22"/>
 	<br /><sub><b>STF-R</b></sub>
 	</a><br /><a href="https://github.com/maelfabien/Multimodal-Emotion-Recognition/commits?author=STF-R" title="Code">💻</a></td>
-	
+
 </tr></table>

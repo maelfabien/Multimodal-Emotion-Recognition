@@ -1,6 +1,6 @@
 # Text-based Personality Traits Recognition
 
-![image](text_app.png)
+![image](/00-Presentation/text_app.png)
 
 In this section you will find all resources, models and Python scripts relative to text-based personality traits recognition.
 
@@ -47,7 +47,7 @@ Gensim : 3.4.0
 
 ## Pipeline
 
-![image](/Presentation/Images/text_pipeline.png)
+![image](/00-Presentation/Images/text_pipeline.png)
 
 The text-based personality recognition pipeline has the following structure :
 - Text data retrieving
@@ -66,7 +66,7 @@ The text-based personality recognition pipeline has the following structure :
 ## Model
 
 We have chosen a neural network architecture based on both one-dimensional convolutional neural networks and recurrent neural networks.
-The one-dimensional convolution layer plays a role comparable to feature extraction : it allows finding patterns in text data. The Long-Short Term Memory cell is then used in order to leverage on the sequential nature of natural language : unlike regular neural network where inputs are assumed to be independent of each other, these architectures progressively accumulate and capture information through the sequences. LSTMs have the property of selectively remembering patterns for long durations of time. 
+The one-dimensional convolution layer plays a role comparable to feature extraction : it allows finding patterns in text data. The Long-Short Term Memory cell is then used in order to leverage on the sequential nature of natural language : unlike regular neural network where inputs are assumed to be independent of each other, these architectures progressively accumulate and capture information through the sequences. LSTMs have the property of selectively remembering patterns for long durations of time.
 Our final model first includes 3 consecutive blocks consisting of the following four layers : one-dimensional convolution layer - max pooling - spatial dropout - batch normalization. The numbers of convolution filters are respectively 128, 256 and 512 for each block, kernel size is 8, max pooling size is 2 and dropout rate is 0.3.
 Following the three blocks, we chose to stack 3 LSTM cells with 180 outputs each. Finally, a fully connected layer of 128 nodes is added before the last classification layer.
 
@@ -74,4 +74,4 @@ Following the three blocks, we chose to stack 3 LSTM cells with 180 outputs each
 
 We tried different baseline models in order to assess the performance of our final architecture. Here are the accuracies of the different models.
 
-![image](/Presentation/Images/perf_text_final.png)
+![image](/00-Presentation/Images/perf_text_final.png)
