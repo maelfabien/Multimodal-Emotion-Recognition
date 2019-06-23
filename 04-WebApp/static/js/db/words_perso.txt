@@ -1,2 +1,10 @@
 WORDS,FREQ
-hello,1
+feel,1
+like,1
+confident,1
+impact,1
+ready,1
+work,1
+skill,1
+positive,1
+ecosystem,1
