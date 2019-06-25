@@ -1,4 +1,5 @@
 WORDS,FREQ
+<<<<<<< HEAD
 work,1
 group,1
 project,3
@@ -25,3 +26,14 @@ top,1
 downloaded,1
 apps,1
 lately,1
+=======
+feel,1
+like,1
+confident,1
+impact,1
+ready,1
+work,1
+skill,1
+positive,1
+ecosystem,1
+>>>>>>> f5d77ca6bf9ee142e8625d0da5f5140497ddd45d

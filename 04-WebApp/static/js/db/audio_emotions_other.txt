@@ -597,6 +597,7 @@ Neutral
 Neutral
 Neutral
 Neutral
+<<<<<<< HEAD
 Angry
 Angry
 Angry
@@ -621,6 +622,8 @@ Angry
 Disgust
 Angry
 Angry
+=======
+>>>>>>> f5d77ca6bf9ee142e8625d0da5f5140497ddd45d
 Neutral
 Neutral
 Neutral
@@ -629,9 +632,19 @@ Neutral
 Neutral
 Neutral
 Neutral
+<<<<<<< HEAD
 Disgust
 Disgust
 Sad
+=======
+Neutral
+Neutral
+Neutral
+Neutral
+Neutral
+Neutral
+Neutral
+>>>>>>> f5d77ca6bf9ee142e8625d0da5f5140497ddd45d
 Neutral
 Neutral
 Neutral
@@ -643,5 +656,21 @@ Neutral
 Neutral
 Disgust
 Disgust
+<<<<<<< HEAD
 Sad
 Neutral
+=======
+Neutral
+Disgust
+Disgust
+Disgust
+Angry
+Angry
+Angry
+Disgust
+Disgust
+Disgust
+Angry
+Angry
+Angry
+>>>>>>> f5d77ca6bf9ee142e8625d0da5f5140497ddd45d

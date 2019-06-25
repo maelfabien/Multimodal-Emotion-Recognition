@@ -119,6 +119,7 @@ computer,14
 computing,2
 conception,4
 concise,2
+confident,1
 confront,2
 consensus,4
 consider,16
@@ -195,7 +196,7 @@ e,8
 earlier,4
 early,2
 economic,2
-ecosystem,4
+ecosystem,5
 edge,2
 effort,2
 email,4
@@ -227,7 +228,7 @@ facial,4
 far,2
 fatality,2
 favourable,4
-feel,6
+feel,7
 field,10
 finance,6
 financial,16
@@ -294,7 +295,7 @@ hundred,4
 hybrid,2
 idea,4
 illustrate,4
-impact,4
+impact,5
 important,6
 importantly,2
 impress,4
@@ -366,7 +367,7 @@ lettrepe,6
 level,2
 leverage,2
 life,2
-like,10
+like,11
 lionel,4
 list,2
 london,10
@@ -468,6 +469,7 @@ pleasure,4
 point,4
 portfolio,4
 position,10
+positive,1
 post,2
 precise,4
 preferred,2
@@ -501,7 +503,7 @@ rank,8
 raphael,6
 reach,2
 read,4
-ready,2
+ready,3
 real,4
 realise,4
 realize,2
@@ -560,7 +562,7 @@ sit,2
 situation,2
 six,4
 sixth,2
-skill,12
+skill,13
 societe,4
 sound,2
 space,2
@@ -649,7 +651,11 @@ welcome,2
 well,8
 willing,4
 word,2
+<<<<<<< HEAD
 work,38
+=======
+work,33
+>>>>>>> f5d77ca6bf9ee142e8625d0da5f5140497ddd45d
 working,2
 would,18
 write,4
