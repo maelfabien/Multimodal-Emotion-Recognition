@@ -9,6 +9,7 @@ import time
 import re
 import os
 from collections import Counter
+import altair as alt
 
 ### Flask imports
 import requests
@@ -131,6 +132,58 @@ def video_dash():
         else :
             return "Neutral"
 
+    ### Altair Plot
+    df_altair = pd.read_csv('static/js/db/prob.csv', header=None, index_col=None).reset_index()
+    df_altair.columns = ['Time', 'Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
+
+    
+    angry = alt.Chart(df_altair).mark_line(color='orange', strokeWidth=2).encode(
+       x='Time:Q',
+       y='Angry:Q',
+       tooltip=["Angry"]
+    )
+
+    disgust = alt.Chart(df_altair).mark_line(color='red', strokeWidth=2).encode(
+        x='Time:Q',
+        y='Disgust:Q',
+        tooltip=["Disgust"])
+
+
+    fear = alt.Chart(df_altair).mark_line(color='green', strokeWidth=2).encode(
+        x='Time:Q',
+        y='Fear:Q',
+        tooltip=["Fear"])
+
+
+    happy = alt.Chart(df_altair).mark_line(color='blue', strokeWidth=2).encode(
+        x='Time:Q',
+        y='Happy:Q',
+        tooltip=["Happy"])
+
+
+    sad = alt.Chart(df_altair).mark_line(color='black', strokeWidth=2).encode(
+        x='Time:Q',
+        y='Sad:Q',
+        tooltip=["Sad"])
+
+
+    surprise = alt.Chart(df_altair).mark_line(color='pink', strokeWidth=2).encode(
+        x='Time:Q',
+        y='Surprise:Q',
+        tooltip=["Surprise"])
+
+
+    neutral = alt.Chart(df_altair).mark_line(color='brown', strokeWidth=2).encode(
+        x='Time:Q',
+        y='Neutral:Q',
+        tooltip=["Neutral"])
+
+
+    chart = (angry + disgust + fear + happy + sad + surprise + neutral).properties(
+    width=1000, height=400, title='Probability of each emotion over time')
+
+    chart.save('static/css/chart.html')
+    
     return render_template('video_dash.html', emo=emotion_label(emotion), emo_other = emotion_label(emotion_other), prob = emo_prop(df_2), prob_other = emo_prop(df))
 
 
@@ -208,7 +261,7 @@ def audio_dash():
 
     # Export emotion distribution to .csv format for D3JS
     df_other = pd.DataFrame(emotion_dist_other, index=SER._emotion.values(), columns=['VALUE']).rename_axis('EMOTION')
-    df_other.to_csv(os.path.join('static/js/','audio_emotions_dist_other.txt'), sep=',')
+    df_other.to_csv(os.path.join('static/js/db','audio_emotions_dist_other.txt'), sep=',')
 
     # Sleep
     time.sleep(0.5)

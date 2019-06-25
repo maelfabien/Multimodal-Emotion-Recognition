@@ -3,11 +3,11 @@ Neutral
 Neutral
 Neutral
 Neutral
-Sad
+Neutral
+Neutral
+Neutral
+Neutral
 Disgust
-Angry
-Neutral
-Neutral
-Neutral
-Neutral
+Disgust
+Sad
 Neutral

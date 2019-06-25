@@ -141,9 +141,17 @@ def gen():
     # Timer
     global k
     k = 0
-    max_time = 45
+    max_time = 15
     start = time.time()
     
+    angry_0 = []
+    disgust_1 = []
+    fear_2 = []
+    happy_3 = []
+    sad_4 = []
+    surprise_5 = []
+    neutral_6 = []
+
     # Record for 45 seconds
     while end - start < max_time :
         
@@ -163,6 +171,7 @@ def gen():
         rects = face_detect(gray, 1)
         
         #gray, detected_faces, coord = detect_face(frame)
+        
         
         # For each detected face
         for (i, rect) in enumerate(rects):
@@ -187,6 +196,15 @@ def gen():
             
             # Make Emotion prediction on the face, outputs probabilities
             prediction = model.predict(face)
+            
+            # For plotting purposes with Altair
+            angry_0.append(prediction[0][0].astype(float))
+            disgust_1.append(prediction[0][1].astype(float))
+            fear_2.append(prediction[0][2].astype(float))
+            happy_3.append(prediction[0][3].astype(float))
+            sad_4.append(prediction[0][4].astype(float))
+            surprise_5.append(prediction[0][5].astype(float))
+            neutral_6.append(prediction[0][6].astype(float))
             
             # Most likely emotion
             prediction_result = np.argmax(prediction)
@@ -285,17 +303,41 @@ def gen():
         
         # Once reaching the end, write the results to the personal file and to the overall file
         if end-start > max_time - 1 :
-            with open("db/histo_perso.txt", "w") as d:
+            with open("static/js/db/histo_perso.txt", "w") as d:
                 d.write("density"+'\n')
                 for val in predictions :
                     d.write(str(val)+'\n')
                 d.close()
-            with open("db/histo.txt", "a") as d:
+            with open("static/js/db/histo.txt", "a") as d:
                 for val in predictions :
                     d.write(str(val)+'\n')
                 d.close()
-                
+    
+            rows = zip(angry_0,disgust_1,fear_2,happy_3,sad_4,surprise_5,neutral_6)
+
+            import csv
+            with open("static/js/db/prob.csv", "w") as d:
+                writer = csv.writer(d)
+                for row in rows:
+                    writer.writerow(row)
+                d.close()
+
+            with open("static/js/db/prob_tot.csv", "a") as d:
+                writer = csv.writer(d)
+                for row in rows:
+                    writer.writerow(row)
+                d.close()
+            K.clear_session()
             break
 
 # Clear session to allow user to do another test afterwards
-K.clear_session()
+#K.clear_session()
+
+
+    # d.write(','.join(str(i) for i in angry_0)+'\n')
+    # d.write(','.join(str(i) for i in disgust_1)+'\n')
+    #d.write(','.join(str(i) for i in fear_2)+'\n')
+    # d.write(','.join(str(i) for i in happy_3)+'\n')
+    #  d.write(','.join(str(i) for i in sad_4)+'\n')
+    #  d.write(','.join(str(i) for i in surprise_5)+'\n')
+#  d.write(','.join(str(i) for i in neutral_6)+'\n')

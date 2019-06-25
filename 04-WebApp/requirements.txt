@@ -19,8 +19,6 @@ scikit-learn
 dill
 keras
 wordcloud
-Flask
-Werkzeug
 numpy
 pandas
 cv2
