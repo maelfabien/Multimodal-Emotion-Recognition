@@ -56,7 +56,7 @@ def gen():
     def detect_face(frame):
         
         #Cascade classifier pre-trained model
-        cascPath = 'models/face_landmarks.dat'
+        cascPath = 'Models/face_landmarks.dat'
         faceCascade = cv2.CascadeClassifier(cascPath)
         
         #BGR -> Gray conversion
@@ -127,13 +127,13 @@ def gen():
     (ebrStart, ebrEnd) = face_utils.FACIAL_LANDMARKS_IDXS["right_eyebrow"]
     
     # Load the pre-trained X-Ception model
-    model = load_model('models/video.h5')
+    model = load_model('Models/video.h5')
     
     # Load the face detector
     face_detect = dlib.get_frontal_face_detector()
     
     # Load the facial landmarks predictor
-    predictor_landmarks  = dlib.shape_predictor("models/face_landmarks.dat")
+    predictor_landmarks  = dlib.shape_predictor("Models/face_landmarks.dat")
 
     # Prediction vector
     predictions = []

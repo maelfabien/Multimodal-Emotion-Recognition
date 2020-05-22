@@ -182,7 +182,7 @@ def video_dash():
     chart = (angry + disgust + fear + happy + sad + surprise + neutral).properties(
     width=1000, height=400, title='Probability of each emotion over time')
 
-    chart.save('static/css/chart.html')
+    chart.save('static/CSS/chart.html')
     
     return render_template('video_dash.html', emo=emotion_label(emotion), emo_other = emotion_label(emotion_other), prob = emo_prop(df_2), prob_other = emo_prop(df))
 
@@ -339,7 +339,7 @@ def text_1():
     df_mean.columns = ['Trait', 'Value']
     
     df_mean.to_csv('static/js/db/text_mean.txt', sep=',', index=False)
-    trait_others = df_mean.ix[df_mean['Value'].idxmax()]['Trait']
+    trait_others = df_mean.loc[df_mean['Value'].idxmax()]['Trait']
     
     probas = [int(e*100) for e in probas]
     
