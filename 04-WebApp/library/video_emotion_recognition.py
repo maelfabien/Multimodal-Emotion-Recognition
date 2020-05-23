@@ -307,11 +307,11 @@ def gen():
                 d.write("density"+'\n')
                 for val in predictions :
                     d.write(str(val)+'\n')
-                d.close()
+                
             with open("static/js/db/histo.txt", "a") as d:
                 for val in predictions :
                     d.write(str(val)+'\n')
-                d.close()
+               
     
             rows = zip(angry_0,disgust_1,fear_2,happy_3,sad_4,surprise_5,neutral_6)
 
@@ -320,16 +320,17 @@ def gen():
                 writer = csv.writer(d)
                 for row in rows:
                     writer.writerow(row)
-                d.close()
+         
 
             with open("static/js/db/prob_tot.csv", "a") as d:
                 writer = csv.writer(d)
                 for row in rows:
                     writer.writerow(row)
-                d.close()
+          
             K.clear_session()
             break
 
+    video_capture.release()
 # Clear session to allow user to do another test afterwards
 #K.clear_session()
 
