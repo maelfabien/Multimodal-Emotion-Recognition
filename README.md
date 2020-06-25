@@ -4,6 +4,8 @@
 
 Don't hesitate to ⭐ the repo if you enjoy our work !
 
+![https://tracking.gitads.io/?repo=Multimodal-Emotion-Recognition](https://images.gitads.io/Multimodal-Emotion-Recognition)
+
 ## In a nutshell
 
 We developped a multimodal emotion recognition platform to analyze the emotions of job candidates, in partnership with the French Employment Agency.
