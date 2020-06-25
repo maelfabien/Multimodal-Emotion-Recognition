@@ -4,7 +4,9 @@
 
 Don't hesitate to ⭐ the repo if you enjoy our work !
 
-<a href="https://tracking.gitads.io/?repo=Multimodal-Emotion-Recognition"> <iframe src="https://images.gitads.io/Multimodal-Emotion-Recognition" allowfullscreen></iframe></a>
+![](https://tracking.gitads.io/?repo=Multimodal-Emotion-Recognition)
+
+To learn more about the sponsor, click here: https://images.gitads.io/Multimodal-Emotion-Recognition
 
 ## In a nutshell
 
