@@ -4,7 +4,7 @@
 
 Don't hesitate to ⭐ the repo if you enjoy our work !
 
-I'm displaying some ads to help maintain this repository (I am working on a major update), if the product below looks interesting to you, don't hesitate to click :) 
+Real-Time Multimodal Emotion Recognition is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial. 
 
 <a href="https://tracking.gitads.io/?repo=Multimodal-Emotion-Recognition"><img src="https://images.gitads.io/Multimodal-Emotion-Recognition" alt="Illustration"/></a>
 
