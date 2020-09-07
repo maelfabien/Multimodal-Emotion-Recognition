@@ -4,10 +4,6 @@
 
 Don't hesitate to ⭐ the repo if you enjoy our work !
 
-Real-Time Multimodal Emotion Recognition is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial. 
-
-<a href="https://tracking.gitads.io/?repo=Multimodal-Emotion-Recognition"><img src="https://images.gitads.io/Multimodal-Emotion-Recognition" alt="Illustration"/></a>
-
 ## In a nutshell
 
 We developped a multimodal emotion recognition platform to analyze the emotions of job candidates, in partnership with the French Employment Agency.
