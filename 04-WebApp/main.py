@@ -70,7 +70,7 @@ def video() :
 
 # Display the video flow (face, landmarks, emotion)
 @app.route('/video_1', methods=['POST'])
-def video_1() :
+def video_1():
     try :
         # Response is used to display a flow of information
         return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')

@@ -21,7 +21,7 @@ keras
 wordcloud
 numpy
 pandas
-cv2
+# cv2
 time
 re
 os
